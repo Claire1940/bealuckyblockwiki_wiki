@@ -5,6 +5,7 @@ import {
   ArrowRight,
   BookOpen,
   CalendarDays,
+  ChevronDown,
   Check,
   CircleHelp,
   Clock3,
@@ -43,7 +44,6 @@ import {
 } from "@/lib/site";
 
 const HeroStats = lazy(() => import("@/components/home/HeroStats"));
-const FAQSection = lazy(() => import("@/components/home/FAQSection"));
 const CTASection = lazy(() => import("@/components/home/CTASection"));
 
 const LoadingPlaceholder = ({ height = "h-64" }: { height?: string }) => (
@@ -111,6 +111,7 @@ function MetricCard({
 export default function HomePage() {
   const t = useMessages() as any;
   const [copiedCode, setCopiedCode] = useState<string | null>(null);
+  const [expandedFaqIndex, setExpandedFaqIndex] = useState<number | null>(0);
 
   const resourceCards = [
     {
@@ -736,21 +737,26 @@ export default function HomePage() {
     href: "/guard-escape-tips",
   };
 
-  const updateFeed = [
+  const weeklyBadge = {
+    label: "Update Cadence",
+    value: "Every Saturday",
+  };
+
+  const weeklyQuickFacts = [
     {
-      day: "Saturday cadence",
-      title: "Be a Lucky Block Weekly Updates",
-      text: "Use Saturday as the public-facing anchor for codes, route shifts, and fresh event attention.",
+      icon: Compass,
+      label: "Core Hook",
+      value: "Go farther for better luck",
     },
     {
-      day: "Live event pages",
-      title: "Roblox Event Tracking",
-      text: "Event pages are the quickest way to see what hook the game is surfacing right now.",
+      icon: Coins,
+      label: "Base Economy",
+      value: "Brainrots earn cash offline",
     },
     {
-      day: "Community chatter",
-      title: "Discord & X Follow-up",
-      text: "Official channels add the context behind the visible event card and code flow.",
+      icon: CalendarDays,
+      label: "Patch Rhythm",
+      value: "Saturday updates",
     },
   ];
 
@@ -760,7 +766,7 @@ export default function HomePage() {
       title: "COSMIC EVENT - Pull Lucky Blocks",
       tag: "New Drop",
       description:
-        "A fresh event centered on new Lucky Blocks, secret events, and another reason to track the homepage update flow.",
+        "A fresh event built around brand-new Lucky Blocks and new Secret Events.",
       href: OFFICIAL_LINKS.liveEvent,
     },
     {
@@ -768,7 +774,7 @@ export default function HomePage() {
       title: "NEXT UPDATE?!",
       tag: "Follow Event",
       description:
-        "A live Roblox event page that acts as the fastest public reminder for the next update hook.",
+        "A live follow page for players who want the next update reminder as soon as it goes up.",
       href: OFFICIAL_LINKS.updateEvent,
     },
     {
@@ -776,45 +782,140 @@ export default function HomePage() {
       title: "ADMIN ABUSE - Break a Lucky Block!",
       tag: "Recent Event",
       description:
-        "A recent short-window event that shows how quickly the game can pivot the homepage conversation.",
+        "A short-run special event centered on a Lucky Block gimmick and a one-week event window.",
       href: OFFICIAL_LINKS.recentEvent,
     },
   ];
 
-  const eventHighlights = [
-    "Current events are the best place to pair curiosity with action on the homepage.",
-    "Recent event names help players recognize which patches actually changed the conversation.",
-    "Use event cards alongside code coverage instead of separating them into isolated silos.",
+  const weeklyUpdatesCta = {
+    label: "Track This Week's Update",
+    href: OFFICIAL_LINKS.updateEvent,
+  };
+
+  const eventCountdownChip = {
+    label: "Live Window",
+    value: "Mar 21-23, 2026",
+  };
+
+  const eventCards = [
+    {
+      title: "COSMIC EVENT - Pull Lucky Blocks",
+      status: "Live Now",
+      dateRange: "Mar 21-23, 2026",
+      highlights: [
+        "Brand-new Lucky Blocks",
+        "New Secret Events",
+        "Follow and stay tuned",
+      ],
+      href: OFFICIAL_LINKS.liveEvent,
+    },
+    {
+      title: "NEXT UPDATE?!",
+      status: "Follow",
+      dateRange: "Current follow page",
+      highlights: [
+        "Built for update reminders",
+        "Easy entry point for the next patch",
+        "Official Roblox event page",
+      ],
+      href: OFFICIAL_LINKS.updateEvent,
+    },
+    {
+      title: "ADMIN ABUSE - Break a Lucky Block!",
+      status: "Recent",
+      dateRange: "Mar 14-21, 2026",
+      highlights: [
+        "Short weekly event window",
+        "Special Lucky Block twist",
+        "Time-limited event format",
+      ],
+      href: OFFICIAL_LINKS.recentEvent,
+    },
   ];
+
+  const eventsCta = {
+    label: "Follow Official Event Pages",
+    href: OFFICIAL_LINKS.updateEvent,
+  };
+
+  const creatorCard = {
+    label: "Creator",
+    value: "xFrozen x Dudes",
+  };
 
   const communityCards = [
     {
+      icon: PlayCircle,
       title: "Official Roblox Game",
-      subtitle: "Launch the experience and check the current public game snapshot.",
+      subtitle: "Launch the experience and check the latest game page updates.",
       buttonLabel: "Play Now",
       href: OFFICIAL_LINKS.game,
     },
     {
-      title: "Official Roblox Group",
-      subtitle: "Watch broader community activity and public group-side momentum.",
-      buttonLabel: "Open Group",
-      href: OFFICIAL_LINKS.group,
-    },
-    {
+      icon: MessageCircle,
       title: "Official Discord",
-      subtitle: "Best place for update chatter, code drops, and active player discussion.",
+      subtitle: "Best place for announcements, update chatter, and community discussion.",
       buttonLabel: "Join Discord",
       href: OFFICIAL_LINKS.discord,
     },
     {
+      icon: Users,
       title: "Official X",
-      subtitle: "Follow studio posts and fast public-facing update signals.",
+      subtitle: "Follow @xFrozenStudios for Roblox update teasers and studio posts.",
       buttonLabel: "Follow on X",
       href: OFFICIAL_LINKS.x,
     },
   ];
 
-  const faqItems = t.faq.questions as Array<{
+  const communityHighlights = [
+    "Discord is the fastest place to watch announcement flow.",
+    "Roblox event pages are used for update reminders and limited-time drops.",
+    "X is useful for broader studio teasers around Saturday content pushes.",
+  ];
+
+  const communityCta = {
+    label: "Join the Community",
+    href: OFFICIAL_LINKS.discord,
+  };
+
+  const faqQuickAnswerChips = [
+    "Saturday updates",
+    "Farther routes = better luck",
+    "Brainrots earn cash offline",
+    "Shop > Codes > Verify",
+  ];
+
+  const faqItems = [
+    {
+      question: "How often does Be a Lucky Block update?",
+      answer: "The game advertises a weekly Saturday update schedule.",
+    },
+    {
+      question: "What do farther destinations do?",
+      answer:
+        "Going to farther destinations gives you better luck, so pushing deeper routes is part of the core progression.",
+    },
+    {
+      question: "Why do Brainrots matter?",
+      answer:
+        "Brainrots are your base economy. Once you bring them back, they keep earning cash for you, including while you are offline.",
+    },
+    {
+      question: "What happens after the guards roll the Lucky Block?",
+      answer:
+        "Once the Lucky Block is rolled, you need to run back to your base before the guards catch you.",
+    },
+    {
+      question: "How do I redeem codes?",
+      answer:
+        "Open the Shop menu, go to the Codes section, enter the code, and press Verify.",
+    },
+    {
+      question: "Where should I check for new updates and codes?",
+      answer:
+        "Watch the Saturday patch cycle, follow the Roblox event pages, and keep an eye on the official Discord for announcements.",
+    },
+  ] as Array<{
     question: string;
     answer: string;
   }>;
@@ -1756,28 +1857,28 @@ export default function HomePage() {
             eyebrow="Module 13"
             title="Be a Lucky Block"
             highlight="Weekly Updates"
-            description="Saturday is the public update anchor for Be a Lucky Block, so this module connects the patch rhythm, live event pages, and community follow-up in one place."
+            description="Be a Lucky Block runs on a clear Saturday update rhythm, with fresh event pages, themed drops, and limited-time twists appearing around each weekly patch."
           />
 
           <div className="mb-8 flex justify-center">
             <div className="rounded-full border border-[hsl(var(--nav-theme)/0.3)] bg-[hsl(var(--nav-theme)/0.12)] px-5 py-3 text-sm font-semibold text-[hsl(var(--nav-theme-light))]">
-              Weekly Badge: UPDATES EVERY SATURDAY
+              {weeklyBadge.label}: {weeklyBadge.value}
             </div>
           </div>
 
           <div className="mb-8 grid gap-4 md:grid-cols-3">
-            {updateFeed.map((item) => (
-              <div key={item.title} className={panelClass}>
+            {weeklyQuickFacts.map((fact) => (
+              <div key={fact.label} className={panelClass}>
+                <fact.icon className="mb-4 h-6 w-6 text-[hsl(var(--nav-theme-light))]" />
                 <p className="mb-2 text-sm font-semibold uppercase tracking-[0.16em] text-[hsl(var(--nav-theme-light))]">
-                  {item.day}
+                  {fact.label}
                 </p>
-                <h3 className="mb-2 text-xl font-bold">{item.title}</h3>
-                <p className="text-sm text-muted-foreground">{item.text}</p>
+                <h3 className="text-xl font-bold">{fact.value}</h3>
               </div>
             ))}
           </div>
 
-          <div className="grid gap-4 md:grid-cols-3">
+          <div className="mb-8 grid gap-4 md:grid-cols-3">
             {patchCards.map((card) => (
               <a
                 key={card.title}
@@ -1797,6 +1898,18 @@ export default function HomePage() {
               </a>
             ))}
           </div>
+
+          <div className="flex justify-center">
+            <a
+              href={weeklyUpdatesCta.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--nav-theme))] px-6 py-3 font-semibold text-slate-950 transition hover:brightness-95"
+            >
+              <CalendarDays className="h-4 w-4" />
+              {weeklyUpdatesCta.label}
+            </a>
+          </div>
         </div>
       </section>
 
@@ -1806,33 +1919,56 @@ export default function HomePage() {
             eyebrow="Module 14"
             title="Be a Lucky Block"
             highlight="Events"
-            description="Events are where new homepage curiosity usually starts, so this section pairs current event cards with clear reasons to keep watching official channels."
+            description="Roblox event pages are the fastest way to spot live drops, preview pages, and follow-to-notify reminders for Be a Lucky Block."
           />
 
           <div className="mb-8 flex justify-center">
-            <div className="rounded-full border border-[hsl(var(--nav-theme-light)/0.32)] bg-white/5 px-5 py-3 text-sm font-semibold">
-              Countdown Chip: Watch current Roblox event pages for the next visible hook
+            <div className="rounded-full border border-[hsl(var(--nav-theme-light)/0.32)] bg-white/5 px-5 py-3 text-sm font-semibold text-[hsl(var(--nav-theme-light))]">
+              {eventCountdownChip.label}: {eventCountdownChip.value}
             </div>
           </div>
 
           <div className="mb-8 grid gap-4 md:grid-cols-3">
-            {eventHighlights.map((item) => (
-              <div key={item} className={accentPanelClass}>
-                <PartyPopper className="mb-4 h-8 w-8 text-[hsl(var(--nav-theme-light))]" />
-                <p className="text-sm text-muted-foreground">{item}</p>
-              </div>
+            {eventCards.map((card) => (
+              <a
+                key={card.title}
+                href={card.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="scroll-reveal rounded-3xl border border-border bg-white/5 p-6 transition hover:border-[hsl(var(--nav-theme)/0.45)] hover:bg-white/10"
+              >
+                <div className="mb-4 flex items-center justify-between gap-2">
+                  <span className="rounded-full border border-[hsl(var(--nav-theme)/0.25)] bg-[hsl(var(--nav-theme)/0.12)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-[hsl(var(--nav-theme-light))]">
+                    {card.status}
+                  </span>
+                  <span className="text-xs text-muted-foreground">{card.dateRange}</span>
+                </div>
+                <h3 className="mb-3 text-xl font-bold">{card.title}</h3>
+                <ul className="mb-4 space-y-2">
+                  {card.highlights.map((item) => (
+                    <li key={item} className="flex items-start gap-2 text-sm text-muted-foreground">
+                      <ArrowRight className="mt-0.5 h-4 w-4 flex-shrink-0 text-[hsl(var(--nav-theme-light))]" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <span className="inline-flex items-center gap-2 text-sm font-semibold text-[hsl(var(--nav-theme-light))]">
+                  Open Event Page
+                  <ArrowRight className="h-4 w-4" />
+                </span>
+              </a>
             ))}
           </div>
 
           <div className="flex justify-center">
             <a
-              href={OFFICIAL_LINKS.updateEvent}
+              href={eventsCta.href}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--nav-theme))] px-6 py-3 font-semibold text-slate-950 transition hover:brightness-95"
             >
-              <Clock3 className="h-4 w-4" />
-              Notify Me Through the Official Event Page
+              <PartyPopper className="h-4 w-4" />
+              {eventsCta.label}
             </a>
           </div>
         </div>
@@ -1844,10 +1980,33 @@ export default function HomePage() {
             eyebrow="Module 15"
             title="Be a Lucky Block"
             highlight="Discord & Community"
-            description="Keep the official Roblox game page, Roblox Group, Discord, and X visible on the homepage so players can verify new drops, events, and community signals quickly."
+            description="The community loop runs through Roblox, Discord, and X, where players keep up with updates, event teasers, and code drops."
           />
 
-          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          <div className="mb-8 grid gap-6 lg:grid-cols-[0.8fr_1.2fr]">
+            <div className={accentPanelClass}>
+              <p className="mb-2 text-sm font-semibold uppercase tracking-[0.18em] text-[hsl(var(--nav-theme-light))]">
+                {creatorCard.label}
+              </p>
+              <h3 className="mb-4 text-3xl font-bold">{creatorCard.value}</h3>
+              <p className="text-sm text-muted-foreground">
+                Official channels are the fastest way to follow update notes, event reminders, and new code announcements.
+              </p>
+            </div>
+            <div className={panelClass}>
+              <h3 className="mb-4 text-2xl font-bold">Community Highlights</h3>
+              <ul className="space-y-3">
+                {communityHighlights.map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-sm">
+                    <ArrowRight className="mt-0.5 h-4 w-4 flex-shrink-0 text-[hsl(var(--nav-theme-light))]" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <div className="mb-8 grid gap-4 md:grid-cols-3">
             {communityCards.map((card) => (
               <a
                 key={card.title}
@@ -1856,6 +2015,7 @@ export default function HomePage() {
                 rel="noopener noreferrer"
                 className="scroll-reveal rounded-3xl border border-border bg-white/5 p-6 transition hover:border-[hsl(var(--nav-theme)/0.45)] hover:bg-white/10"
               >
+                <card.icon className="mb-4 h-8 w-8 text-[hsl(var(--nav-theme-light))]" />
                 <h3 className="mb-2 text-lg font-bold">{card.title}</h3>
                 <p className="mb-4 text-sm text-muted-foreground">{card.subtitle}</p>
                 <span className="inline-flex items-center gap-2 text-sm font-semibold text-[hsl(var(--nav-theme-light))]">
@@ -1865,17 +2025,81 @@ export default function HomePage() {
               </a>
             ))}
           </div>
+
+          <div className="flex justify-center">
+            <a
+              href={communityCta.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--nav-theme))] px-6 py-3 font-semibold text-slate-950 transition hover:brightness-95"
+            >
+              <MessageCircle className="h-4 w-4" />
+              {communityCta.label}
+            </a>
+          </div>
         </div>
       </section>
 
-      <Suspense fallback={<LoadingPlaceholder />}>
-        <FAQSection
-          title={t.faq.title}
-          titleHighlight={t.faq.titleHighlight}
-          subtitle={t.faq.subtitle}
-          questions={faqItems}
-        />
-      </Suspense>
+      <section id="faq" className="scroll-mt-28 px-4 py-20 bg-white/[0.02]">
+        <div className="container mx-auto max-w-6xl">
+          <SectionHeading
+            eyebrow="Module 16"
+            title="Be a Lucky Block"
+            highlight="FAQ"
+            description="Quick answers for the most common questions new players ask when they first load into Be a Lucky Block."
+          />
+
+          <div className="mb-8 flex flex-wrap justify-center gap-3">
+            {faqQuickAnswerChips.map((chip) => (
+              <span
+                key={chip}
+                className="rounded-full border border-[hsl(var(--nav-theme)/0.24)] bg-background/45 px-4 py-2 text-sm"
+              >
+                {chip}
+              </span>
+            ))}
+          </div>
+
+          <div className="space-y-4">
+            {faqItems.map((item, index) => {
+              const expanded = expandedFaqIndex === index;
+
+              return (
+                <div
+                  key={item.question}
+                  className="scroll-reveal rounded-3xl border border-border bg-white/5 p-6 transition hover:border-[hsl(var(--nav-theme)/0.45)]"
+                >
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setExpandedFaqIndex(expanded ? null : index)
+                    }
+                    className="flex w-full items-center justify-between gap-4 text-left"
+                    aria-expanded={expanded}
+                  >
+                    <h3 className="text-lg font-semibold">{item.question}</h3>
+                    <ChevronDown
+                      className={`h-5 w-5 flex-shrink-0 text-[hsl(var(--nav-theme-light))] transition-transform duration-300 ${
+                        expanded ? "rotate-180" : ""
+                      }`}
+                    />
+                  </button>
+
+                  <div
+                    className={`overflow-hidden transition-all duration-300 ${
+                      expanded ? "max-h-72 pt-4 opacity-100" : "max-h-0 opacity-0"
+                    }`}
+                  >
+                    <p className="text-sm leading-relaxed text-muted-foreground">
+                      {item.answer}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
 
       <Suspense fallback={<LoadingPlaceholder />}>
         <CTASection

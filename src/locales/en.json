@@ -108,19 +108,19 @@
     },
     "buildPlanner": {
       "title": "Be a Lucky Block Weekly Updates",
-      "description": "Saturday patch rhythm and live events"
+      "description": "Update cadence, quick facts, and patch cards"
     },
     "thunderBreathing": {
       "title": "Be a Lucky Block Events",
-      "description": "Current Roblox event pages and drop hooks"
+      "description": "Live window, event cards, and follow CTA"
     },
     "fastLeveling": {
       "title": "Be a Lucky Block Discord & Community",
-      "description": "Official Roblox, Group, Discord, and X"
+      "description": "Creator snapshot, official links, and highlights"
     },
     "finalSelection": {
       "title": "Be a Lucky Block FAQ",
-      "description": "Fast answers for new and returning players"
+      "description": "Quick chips and accordion answers for new players"
     },
     "clanSystem": {
       "title": "Be a Lucky Block Video",
@@ -149,35 +149,31 @@
   "faq": {
     "title": "Be a Lucky Block",
     "titleHighlight": "FAQ",
-    "subtitle": "Quick answers for new and returning Be a Lucky Block players",
+    "subtitle": "Quick answers for the most common first-load questions",
     "questions": [
       {
         "question": "How often does Be a Lucky Block update?",
-        "answer": "Be a Lucky Block advertises a weekly Saturday update rhythm, so that is the main day to watch for fresh changes."
+        "answer": "The game advertises a weekly Saturday update schedule."
       },
       {
-        "question": "What does the RELEASE code give in Be a Lucky Block?",
-        "answer": "The current starter code covered on the homepage is RELEASE, and it gives Brr Brr Patapim."
+        "question": "What do farther destinations do?",
+        "answer": "Going to farther destinations gives you better luck, so pushing deeper routes is part of the core progression."
       },
       {
-        "question": "Why do farther destinations matter in Be a Lucky Block?",
-        "answer": "Farther destinations improve luck in Be a Lucky Block, which raises your ceiling for stronger pulls if you can survive the return."
+        "question": "Why do Brainrots matter?",
+        "answer": "Brainrots are your base economy. Once you bring them back, they keep earning cash for you, including while you are offline."
       },
       {
-        "question": "Why are Brainrots important in Be a Lucky Block?",
-        "answer": "Brainrots are important in Be a Lucky Block because they become the core of your base economy and keep earning cash offline."
+        "question": "What happens after the guards roll the Lucky Block?",
+        "answer": "Once the Lucky Block is rolled, you need to run back to your base before the guards catch you."
       },
       {
-        "question": "How do I redeem codes in Be a Lucky Block?",
-        "answer": "Open Be a Lucky Block, go to the Shop menu, open the Codes area, paste the code, and press Verify."
+        "question": "How do I redeem codes?",
+        "answer": "Open the Shop menu, go to the Codes section, enter the code, and press Verify."
       },
       {
-        "question": "When should I start trading in Be a Lucky Block?",
-        "answer": "Start trading in Be a Lucky Block after your base income is already stable, not while one pull still controls your whole progression."
-      },
-      {
-        "question": "Where should I track Be a Lucky Block updates first?",
-        "answer": "Track Be a Lucky Block updates through the official Discord, Roblox event pages, the Roblox game page, and the studio X account."
+        "question": "Where should I check for new updates and codes?",
+        "answer": "Watch the Saturday patch cycle, follow the Roblox event pages, and keep an eye on the official Discord for announcements."
       }
     ]
   },
@@ -254,19 +250,19 @@
     },
     "weeklyUpdates": {
       "title": "Be a Lucky Block Weekly Updates",
-      "summary": "Saturday is the homepage anchor for patch and code watching."
+      "summary": "Track Saturday cadence, quick facts, and patch cards from one homepage module."
     },
     "events": {
       "title": "Be a Lucky Block Events",
-      "summary": "Current and recent Roblox events are the fastest way to surface what the game is pushing right now."
+      "summary": "Use Roblox event pages to spot live drops, follow pages, and recent event windows."
     },
     "community": {
       "title": "Be a Lucky Block Discord & Community",
-      "summary": "Keep the official Roblox page, Group, Discord, and X easy to reach from the homepage."
+      "summary": "Jump from homepage to official Roblox, Discord, and X links in one click."
     },
     "faq": {
       "title": "Be a Lucky Block FAQ",
-      "summary": "Close the homepage with clear Be a Lucky Block answers around codes, luck, Brainrots, and updates."
+      "summary": "Finish with quick chips and fast answers for the most common first session questions."
     }
   }
 }
