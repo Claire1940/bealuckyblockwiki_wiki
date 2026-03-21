@@ -150,6 +150,12 @@ export default function HomePage() {
       href: "#brainrots",
     },
     {
+      icon: Trophy,
+      title: t.tools.specialBrainrots.title,
+      description: t.tools.specialBrainrots.description,
+      href: "#special-brainrots",
+    },
+    {
       icon: Handshake,
       title: t.tools.controls.title,
       description: t.tools.controls.description,
@@ -365,21 +371,21 @@ export default function HomePage() {
 
   const locationCards = [
     {
-      title: "Near Routes",
+      title: "Near Route",
       description:
-        "Best for learning timing, understanding guard pressure, and getting stable early deliveries.",
+        "Safest first farm for quick cash-ins, early upgrades, and cleaner reset timing.",
       range: "Closest band",
     },
     {
-      title: "Mid Routes",
+      title: "Mid Route",
       description:
-        "The balanced layer for players who already have income but still want repeatable returns.",
+        "Better luck than spawn-side farming without the longest and highest-pressure return path.",
       range: "Middle band",
     },
     {
-      title: "Far Routes",
+      title: "Far Route",
       description:
-        "The highest public luck band, ideal for ceiling runs after your base is already protecting you.",
+        "Best normal-route luck ceiling and strongest place to chase premium pulls before sprinting home.",
       range: "Longest band",
     },
   ];
@@ -405,84 +411,114 @@ export default function HomePage() {
     },
   ];
 
+  const locationHighlights = [
+    "Guard pressure rises hardest on long return routes, so movement speed and clean lines matter more at far distance tiers.",
+    "Move up one route tier at a time instead of forcing deep runs too early.",
+    "The best progression path is the farthest distance band you can clear consistently and safely.",
+  ];
+
+  const locationsCta =
+    "Compare the route table, then commit to the farthest tier you can finish consistently.";
+
   const rarityCards = [
     {
       title: "Starter Brainrots",
       description:
-        "Useful for building your first layer of passive income and stabilizing the base.",
+        "Use them to lock in your first passive-cash layer and keep the base economy moving.",
     },
     {
       title: "Standout Brainrots",
       description:
-        "The pieces that make mid-route farming feel worthwhile and create obvious upgrade momentum.",
+        "Mid-value pulls that make route farming feel efficient and fund your next upgrades faster.",
     },
     {
       title: "Premium Brainrots",
       description:
-        "High-interest pulls that drive trade attention, collection status, and event chatter.",
+        "High-interest pieces that combine collection flex, trade demand, and event visibility.",
     },
   ];
 
   const brainrotExplainers = [
-    "Brainrots are the main economy piece because they keep generating cash after a run is finished.",
-    "A free Brainrot from RELEASE speeds up the first offline cash loop.",
-    "Collectors care about standout pulls because they double as trading assets and flex pieces.",
-    "The entire homepage works better when players understand that a pull has no value until it reaches base.",
+    "Current free pull reminder: RELEASE gives Brr Brr Patapim.",
+    "Brainrots are the core reward loop: roll blocks, secure the pull, return to base, and reinvest into better odds.",
+    "Base economy grows through Brainrots because they continue generating cash while you are offline.",
+    "Public runs already show Strawberry-themed pulls and stronger block lines that support rarity sorting and value tracking.",
   ];
 
   const brainrotFilters = [
     "Starter Income",
-    "Stable Earner",
-    "Trade Piece",
-    "Special Chase",
+    "Offline Earner",
+    "Collection Flex",
+    "Trade Target",
   ];
 
   const specialBrainrots = [
     {
       name: "Inferno Secret Block",
-      note: "Secret-tier chase piece with strong visual recognition.",
+      tier: "Secret Tier",
+      note: "Recent secret-tier chase target shown in public runs.",
     },
     {
       name: "Divine Block",
-      note: "High-attention special that fits premium route runs.",
+      tier: "Divine Tier",
+      note: "High-end progression target tied to premium pull routes.",
     },
     {
       name: "Void Special",
-      note: "Good wishlist anchor for players tracking rare pulls.",
+      tier: "Special Tier",
+      note: "Standout special reward often shown after Divine progression.",
+    },
+    {
+      name: "Cyborg Block",
+      tier: "Special Tier",
+      note: "Named upgrade target already visible in current gameplay examples.",
+    },
+    {
+      name: "Mogging Block Secret",
+      tier: "Secret Tier",
+      note: "Late-game flex piece built for long-term collection appeal.",
     },
   ];
 
   const raritySpotlight = [
-    "Special Brainrots are natural click magnets because they compress rarity, trade value, and social proof into one card.",
-    "Keep them separated from the general Brainrot section so the homepage supports both broad and high-intent searches.",
-    "Use the community module to validate which special pieces are getting repeated attention this week.",
+    "Special and secret pulls are the biggest late-game chase targets for players and collectors.",
+    "Keep this module separate from general Brainrots so both broad discovery and high-intent rarity searches are covered.",
+    "Use community signals to compare which named special line is worth hunting next.",
   ];
 
   const wishlistPanel = [
-    "Track secret pieces mentioned in videos and Discord.",
-    "Keep duplicates separate from your long-term keepers.",
-    "Only trade a spotlight piece if your base already feels stable.",
+    "Track your current chase target and the next special line in queue.",
+    "Split duplicates from long-term keepers before you enter the trade market.",
+    "Hold spotlight specials until your base income is already stable.",
   ];
 
   const tradeTips = [
     "Start trading after your base income feels stable, not during your first upgrade squeeze.",
-    "Move duplicates, event pulls, and spare specials before core earners.",
-    "Use Discord, the Roblox Group, and X to see which pieces suddenly gain attention.",
+    "Move duplicates, event pulls, and spare specials before touching core earners.",
+    "Trading hub activity is one of the fastest paths to target secrets missed on normal rolls.",
+    "Red Carpet, Escape Tsunami, Jailbreak, and trading all feed the same chase economy.",
+    "Use Discord, the Roblox Group, X, and YouTube to track where demand is accelerating.",
   ];
 
   const valueNotes = [
     {
       title: "Best Time to Trade",
-      text: "Trade after a good return, not while you are tilted from a failed run.",
+      text: "Trade after your base income is stable, not while your account still depends on one fragile run.",
     },
     {
       title: "Best Pieces to Move",
-      text: "Duplicates and extra specials are easier to price than the Brainrots your base depends on.",
+      text: "Duplicates, event pulls, and spare specials are easier to move without disrupting your income setup.",
     },
     {
       title: "Best Use of Community",
-      text: "Official channels are the fastest way to see when a specific event or special is creating fresh demand.",
+      text: "Community channels reveal demand shifts fastest around secrets, specials, and event-linked pulls.",
     },
+  ];
+
+  const tradingGuardrails = [
+    "Check value notes before every swap.",
+    "Protect your base earners first.",
+    "Only move pieces that will not break your current income loop.",
   ];
 
   const baseFlow = [
@@ -1125,7 +1161,7 @@ export default function HomePage() {
             eyebrow="Module 05"
             title="Be a Lucky Block"
             highlight="Locations"
-            description="Split routes into understandable bands so players know when to stay near, when to scale into balance, and when to push for high-luck runs."
+            description="Locations are built around distance and return pressure: the farther you go, the stronger your luck gets, but the trip home becomes much harder."
           />
 
           <div className="mb-8 grid gap-6 md:grid-cols-3">
@@ -1169,6 +1205,30 @@ export default function HomePage() {
               </table>
             </div>
           </div>
+
+          <div className="mt-8 grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+            <div className={panelClass}>
+              <div className="mb-4 flex items-center gap-3">
+                <TrendingUp className="h-6 w-6 text-[hsl(var(--nav-theme-light))]" />
+                <h3 className="text-2xl font-bold">Route Highlights</h3>
+              </div>
+              <ul className="space-y-3">
+                {locationHighlights.map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-sm">
+                    <ArrowRight className="mt-0.5 h-4 w-4 flex-shrink-0 text-[hsl(var(--nav-theme-light))]" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className={accentPanelClass}>
+              <div className="mb-4 flex items-center gap-3">
+                <MapPinned className="h-6 w-6 text-[hsl(var(--nav-theme-light))]" />
+                <h3 className="text-2xl font-bold">Route Decision CTA</h3>
+              </div>
+              <p className="text-sm text-muted-foreground">{locationsCta}</p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -1178,7 +1238,7 @@ export default function HomePage() {
             eyebrow="Module 06"
             title="Be a Lucky Block"
             highlight="Brainrots"
-            description="Brainrots are the homepage economy anchor: they are the reward you chase, the income you bank, and the asset class that powers trade interest."
+            description="Brainrots are the core reward loop and income engine: unlock them from Lucky Blocks, secure them at base, and let them grow your account even while offline."
           />
 
           <div className="mb-8 grid gap-6 md:grid-cols-3">
@@ -1235,16 +1295,19 @@ export default function HomePage() {
             eyebrow="Module 07"
             title="Be a Lucky Block"
             highlight="Special Brainrots"
-            description="Separate special and secret pulls from the wider Brainrot section so the homepage supports both broad discovery and high-intent rarity clicks."
+            description="Special and secret pulls are the biggest late-game chase targets, so this section spotlights named pieces players already track in public gameplay."
           />
 
-          <div className="mb-8 grid gap-6 md:grid-cols-3">
+          <div className="mb-8 grid gap-6 md:grid-cols-2 xl:grid-cols-5">
             {specialBrainrots.map((item) => (
               <div key={item.name} className={accentPanelClass}>
                 <div className="mb-4 flex items-center gap-3">
                   <Trophy className="h-7 w-7 text-[hsl(var(--nav-theme-light))]" />
                   <h3 className="text-xl font-bold">{item.name}</h3>
                 </div>
+                <p className="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-[hsl(var(--nav-theme-light))]">
+                  {item.tier}
+                </p>
                 <p className="text-sm text-muted-foreground">{item.note}</p>
               </div>
             ))}
@@ -1286,7 +1349,7 @@ export default function HomePage() {
             eyebrow="Module 08"
             title="Be a Lucky Block"
             highlight="Trading Guide"
-            description="Trading works best after your economy is already protected, because duplicates and specials are easier to move than the Brainrots your base depends on."
+            description="Trading works best once your base income is stable, with duplicates and event pieces moved first while core earners stay protected."
           />
 
           <div className="mb-8 grid gap-4 md:grid-cols-3">
@@ -1308,6 +1371,25 @@ export default function HomePage() {
                 <p className="text-sm text-muted-foreground">{item.text}</p>
               </div>
             ))}
+          </div>
+
+          <div className="mt-8">
+            <div className={accentPanelClass}>
+              <div className="mb-4 flex items-center gap-3">
+                <TriangleAlert className="h-6 w-6 text-[hsl(var(--nav-theme-light))]" />
+                <h3 className="text-2xl font-bold">Trading Guardrails</h3>
+              </div>
+              <div className="grid gap-3 md:grid-cols-3">
+                {tradingGuardrails.map((item) => (
+                  <div
+                    key={item}
+                    className="rounded-2xl border border-[hsl(var(--nav-theme)/0.22)] bg-background/45 p-4 text-sm text-muted-foreground"
+                  >
+                    {item}
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>

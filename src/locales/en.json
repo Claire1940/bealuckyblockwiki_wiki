@@ -80,11 +80,15 @@
     },
     "oniRoute": {
       "title": "Be a Lucky Block Brainrots",
-      "description": "Rarity focus, value, and passive earnings"
+      "description": "Rarity tiers, offline earnings, and value filters"
+    },
+    "specialBrainrots": {
+      "title": "Be a Lucky Block Special Brainrots",
+      "description": "Secret chase cards, rarity spotlight, and wishlist"
     },
     "controls": {
       "title": "Be a Lucky Block Trading Guide",
-      "description": "Duplicates, specials, and swap timing"
+      "description": "Trade timing, demand watch, and protected swaps"
     },
     "questMap": {
       "title": "Be a Lucky Block Base Guide",
@@ -218,19 +222,19 @@
     },
     "locations": {
       "title": "Be a Lucky Block Locations",
-      "summary": "Separate near, mid, and far routes into clear farming bands so players know when to scale up."
+      "summary": "Distance boosts luck, but longer routes raise return pressure, so progression should move one tier at a time."
     },
     "brainrots": {
       "title": "Be a Lucky Block Brainrots",
-      "summary": "Brainrots drive value because they combine collection appeal, trade demand, and passive income."
+      "summary": "Brainrots power the loop from pull to base to offline cash, with RELEASE as the current free-start hook."
     },
     "specialBrainrots": {
       "title": "Be a Lucky Block Special Brainrots",
-      "summary": "Special and secret pulls deserve their own spotlight because they fuel hype and trade interest."
+      "summary": "Inferno Secret, Divine, Void, Cyborg, and Mogging Secret are standout late-game chase lines."
     },
     "tradingGuide": {
       "title": "Be a Lucky Block Trading Guide",
-      "summary": "Trade duplicates and specials after your economy is stable, not before."
+      "summary": "Trade after your base income is stable, move duplicates first, and track demand shifts through community channels."
     },
     "baseGuide": {
       "title": "Be a Lucky Block Base Guide",
