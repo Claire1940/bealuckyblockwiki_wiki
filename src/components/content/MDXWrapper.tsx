@@ -1,23 +1,23 @@
+import { getContentBySlug, type ContentType, type Language } from '@/lib/content'
+
 export async function MDXWrapper({
   language,
   slug,
   contentType = 'guide'
 }: {
-  language: string
+  language: Language
   slug: string
-  contentType?: string
+  contentType?: ContentType
 }) {
-  try {
-    // 动态导入 MDX 文件
-    const MDXContent = await import(`@/../../content/${language}/${contentType}/${slug}.mdx`)
+  const contentEntry = await getContentBySlug(contentType, slug, language)
 
-    return <MDXContent.default />
-  } catch (error) {
-    console.error(`Failed to load MDX: ${language}/${contentType}/${slug}`, error)
+  if (!contentEntry) {
     return (
       <div className="text-center py-12">
         <p className="text-muted-foreground">Content not found</p>
       </div>
     )
   }
+
+  return contentEntry.content
 }

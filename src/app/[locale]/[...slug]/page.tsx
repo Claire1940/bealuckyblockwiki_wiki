@@ -3,11 +3,11 @@ import { getTranslations } from "next-intl/server";
 import {
   getAllContentPaths,
   getAllContent,
+  getContentBySlug,
   isValidContentType,
   CONTENT_TYPES,
   type ContentType,
   type Language,
-  type ContentFrontmatter,
 } from "@/lib/content";
 import { NavigationPage } from "@/components/content/NavigationPage";
 import { DetailPage } from "@/components/content/DetailPage";
@@ -109,74 +109,34 @@ async function renderDetailPage(
   locale: Language,
 ) {
   const currentSlug = slugPath.join("/");
-
-  // 动态导入 MDX，同时获取 metadata 和内容组件
-  try {
-    const { default: MDXContent, metadata } = await import(
-      `../../../../content/${locale}/${contentType}/${currentSlug}.mdx`
-    );
-
-    // 获取相关文章
-    const allContent = await getAllContent(contentType, locale);
-    const relatedArticles = allContent
-      .filter((item) => item.slug !== currentSlug)
-      .slice(0, 3);
-
-    return (
-      <>
-        <ArticleStructuredData
-          frontmatter={metadata as ContentFrontmatter}
-          contentType={contentType}
-          locale={locale}
-          slug={currentSlug}
-        />
-        <DetailPage
-          frontmatter={metadata as ContentFrontmatter}
-          content={<MDXContent />}
-          contentType={contentType}
-          language={locale}
-          currentSlug={currentSlug}
-          relatedArticles={relatedArticles}
-        />
-      </>
-    );
-  } catch {
-    // 如果当前语言的 MDX 不存在，尝试加载英文版本
-    if (locale !== "en") {
-      try {
-        const { default: MDXContent, metadata } = await import(
-          `../../../../content/en/${contentType}/${currentSlug}.mdx`
-        );
-
-        const allContent = await getAllContent(contentType, locale);
-        const relatedArticles = allContent
-          .filter((item) => item.slug !== currentSlug)
-          .slice(0, 3);
-
-        return (
-          <>
-            <ArticleStructuredData
-              frontmatter={metadata as ContentFrontmatter}
-              contentType={contentType}
-              locale={locale}
-              slug={currentSlug}
-            />
-            <DetailPage
-              frontmatter={metadata as ContentFrontmatter}
-              content={<MDXContent />}
-              contentType={contentType}
-              language={locale}
-              currentSlug={currentSlug}
-              relatedArticles={relatedArticles}
-            />
-          </>
-        );
-      } catch {
-        notFound();
-      }
-    }
+  const contentEntry = await getContentBySlug(contentType, currentSlug, locale);
+  if (!contentEntry) {
     notFound();
   }
+
+  const allContent = await getAllContent(contentType, locale);
+  const relatedArticles = allContent
+    .filter((item) => item.slug !== currentSlug)
+    .slice(0, 3);
+
+  return (
+    <>
+      <ArticleStructuredData
+        frontmatter={contentEntry.frontmatter}
+        contentType={contentType}
+        locale={locale}
+        slug={currentSlug}
+      />
+      <DetailPage
+        frontmatter={contentEntry.frontmatter}
+        content={contentEntry.content}
+        contentType={contentType}
+        language={locale}
+        currentSlug={currentSlug}
+        relatedArticles={relatedArticles}
+      />
+    </>
+  );
 }
 
 /**
@@ -293,100 +253,54 @@ export async function generateMetadata({
       };
     }
   } else {
-    // 详情页元数据（从 MDX import 获取）
+    // 详情页元数据
     const slugPath = slug.slice(1);
     const currentSlug = slugPath.join("/");
-
-    try {
-      const { metadata } = await import(
-        `../../../../content/${locale}/${contentType}/${currentSlug}.mdx`
-      );
-
-      const fullPath = `/${slug.join("/")}`;
-
-      return {
-        title: `${metadata.title} | ${SITE_NAME}`,
-        description: metadata.description,
-        alternates: buildLanguageAlternates(
-          fullPath,
-          locale as Locale,
-          siteUrl,
-        ),
-        openGraph: {
-          type: "article",
-          siteName: SITE_NAME,
-          title: metadata.title,
-          description: metadata.description,
-          images: metadata.image ? [metadata.image] : [HERO_IMAGE_URL],
-          url: `${siteUrl}${locale === "en" ? fullPath : `/${locale}${fullPath}`}`,
-        },
-        twitter: {
-          card: "summary_large_image",
-          title: metadata.title,
-          description: metadata.description,
-          images: metadata.image ? [metadata.image] : [HERO_IMAGE_URL],
-        },
-        robots: {
-          index: true,
-          follow: true,
-          googleBot: {
-            index: true,
-            follow: true,
-            "max-video-preview": -1,
-            "max-image-preview": "large",
-            "max-snippet": -1,
-          },
-        },
-      };
-    } catch {
-      // Fallback 到英文
-      if (locale !== "en") {
-        try {
-          const { metadata } = await import(
-            `../../../../content/en/${contentType}/${currentSlug}.mdx`
-          );
-
-          const fullPath = `/${slug.join("/")}`;
-
-          return {
-            title: `${metadata.title} | ${SITE_NAME}`,
-            description: metadata.description,
-            alternates: buildLanguageAlternates(
-              fullPath,
-              locale as Locale,
-              siteUrl,
-            ),
-            openGraph: {
-              type: "article",
-              siteName: SITE_NAME,
-              title: metadata.title,
-              description: metadata.description,
-              images: metadata.image ? [metadata.image] : [HERO_IMAGE_URL],
-              url: `${siteUrl}${locale === "en" ? fullPath : `/${locale}${fullPath}`}`,
-            },
-            twitter: {
-              card: "summary_large_image",
-              title: metadata.title,
-              description: metadata.description,
-              images: metadata.image ? [metadata.image] : [HERO_IMAGE_URL],
-            },
-            robots: {
-              index: true,
-              follow: true,
-              googleBot: {
-                index: true,
-                follow: true,
-                "max-video-preview": -1,
-                "max-image-preview": "large",
-                "max-snippet": -1,
-              },
-            },
-          };
-        } catch {
-          return { title: "Not Found" };
-        }
-      }
+    const contentEntry = await getContentBySlug(
+      contentType,
+      currentSlug,
+      locale as Language,
+    );
+    if (!contentEntry) {
       return { title: "Not Found" };
     }
+
+    const { frontmatter } = contentEntry;
+    const fullPath = `/${slug.join("/")}`;
+
+    return {
+      title: `${frontmatter.title} | ${SITE_NAME}`,
+      description: frontmatter.description,
+      alternates: buildLanguageAlternates(
+        fullPath,
+        locale as Locale,
+        siteUrl,
+      ),
+      openGraph: {
+        type: "article",
+        siteName: SITE_NAME,
+        title: frontmatter.title,
+        description: frontmatter.description,
+        images: frontmatter.image ? [frontmatter.image] : [HERO_IMAGE_URL],
+        url: `${siteUrl}${locale === "en" ? fullPath : `/${locale}${fullPath}`}`,
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: frontmatter.title,
+        description: frontmatter.description,
+        images: frontmatter.image ? [frontmatter.image] : [HERO_IMAGE_URL],
+      },
+      robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+          index: true,
+          follow: true,
+          "max-video-preview": -1,
+          "max-image-preview": "large",
+          "max-snippet": -1,
+        },
+      },
+    };
   }
 }
