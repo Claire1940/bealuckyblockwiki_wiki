@@ -1,213 +1,496 @@
-'use client'
+"use client";
 
-import { useEffect, useRef, useState, Suspense, lazy } from 'react'
-import Link from 'next/link'
-import { Button } from '@/components/ui/button'
+import { Suspense, lazy, useEffect, useState } from "react";
+import { Link } from "@/i18n/navigation";
 import {
-	Gift,
-	ClipboardCheck,
-	Dumbbell,
-	Wind,
-	Flame,
-	Ghost,
-	Keyboard,
-	MapPin,
-	Trophy,
-	Coins,
-	RotateCcw,
-	Calculator,
-	Sparkles,
-	ChevronDown,
-	Zap,
-	ArrowRight,
-	Copy,
-	Check,
-	Swords,
-	Skull,
-	Map,
-	Crown,
-	AlertTriangle,
-	TrendingUp,
-	BookOpen,
-	MessageCircle,
-	Award,
-	Users,
-	Target,
-	Utensils,
-	Clock,
-	Shield,
-} from 'lucide-react'
-import { useMessages } from 'next-intl'
-import { VideoFeature } from '@/components/home/VideoFeature'
-import { NativeBannerAd, AdBanner } from '@/components/ads'
+  ArrowRight,
+  Check,
+  Clock,
+  Coins,
+  Copy,
+  Gift,
+  House,
+  MapPin,
+  MessageCircle,
+  Package,
+  Shield,
+  Sparkles,
+  Star,
+  TrendingUp,
+  Users,
+  Zap,
+} from "lucide-react";
+import { useMessages } from "next-intl";
+import { NativeBannerAd, AdBanner } from "@/components/ads";
+import { VideoFeature } from "@/components/home/VideoFeature";
+import {
+  HERO_IMAGE_URL,
+  OFFICIAL_LINKS,
+  ORGANIZATION_SAME_AS,
+  SITE_NAME,
+  SITE_URL,
+} from "@/lib/site";
 
-// 懒加载组件
-const HeroStats = lazy(() => import('@/components/home/HeroStats'))
-const FAQSection = lazy(() => import('@/components/home/FAQSection'))
-const CTASection = lazy(() => import('@/components/home/CTASection'))
+const HeroStats = lazy(() => import("@/components/home/HeroStats"));
+const FAQSection = lazy(() => import("@/components/home/FAQSection"));
+const CTASection = lazy(() => import("@/components/home/CTASection"));
 
-// 加载占位符组件
-const LoadingPlaceholder = ({ height = 'h-64' }: { height?: string }) => (
-  <div className={`${height} bg-white/5 border border-border rounded-xl animate-pulse flex items-center justify-center`}>
+const LoadingPlaceholder = ({ height = "h-64" }: { height?: string }) => (
+  <div
+    className={`${height} flex items-center justify-center rounded-xl border border-border bg-white/5 animate-pulse`}
+  >
     <div className="text-muted-foreground">Loading...</div>
   </div>
-)
+);
 
 export default function HomePage() {
-	const t = useMessages() as any
-	const siteUrl = process.env.NEXT_PUBLIC_SITE_URL
+  const t = useMessages() as any;
+  const [copiedCode, setCopiedCode] = useState<string | null>(null);
 
-	// 结构化数据
-	const structuredData = {
-		'@context': 'https://schema.org',
-		'@graph': [
-			{
-				'@type': 'WebSite',
-				'@id': `${siteUrl}/#website`,
-				url: siteUrl,
-				name: t.seo?.home?.title || 'Slayerbound Wiki',
-				description: t.seo?.home?.description || 'Complete Slayerbound resource hub with codes, training guides, breathing styles, and demon slayer strategies for the Roblox game.',
-				potentialAction: {
-					'@type': 'SearchAction',
-					target: `${siteUrl}/search?q={search_term_string}`,
-					'query-input': 'required name=search_term_string',
-				},
-			},
-			{
-				'@type': 'Organization',
-				'@id': `${siteUrl}/#organization`,
-				name: t.seo?.home?.title || 'Slayerbound Wiki',
-				alternateName: 'Slayerbound',
-				url: siteUrl,
-				description: t.seo?.home?.description || 'Complete Slayerbound Wiki resource hub for codes, tier lists, and guides',
-				logo: {
-					'@type': 'ImageObject',
-					url: `${siteUrl}/images/hero.webp`,
-					width: 768,
-					height: 432,
-				},
-				image: {
-					'@type': 'ImageObject',
-					url: `${siteUrl}/images/hero.webp`,
-					width: 768,
-					height: 432,
-					caption: 'Slayerbound Wiki - Master Demon Slayer Combat',
-				},
-				sameAs: [
-					'https://www.roblox.com/games/113829431520841/Slayerbound',
-					'https://discord.com/invite/slayerbound',
-					'https://trello.com/b/7IS1N5PR/slayerbound-official-trello',
-				],
-			},
-		],
-	}
+  const resourceCards = [
+    {
+      icon: Gift,
+      title: "Codes",
+      description: "Track RELEASE, redeem steps, and new drops first.",
+      href: "#codes",
+    },
+    {
+      icon: TrendingUp,
+      title: "Beginner",
+      description:
+        "Start with short safe routes before you push deeper luck runs.",
+      href: "#beginner",
+    },
+    {
+      icon: Package,
+      title: "Brainrots",
+      description: "Learn how pulls, specials, and offline cash fit together.",
+      href: "#brainrots",
+    },
+    {
+      icon: MapPin,
+      title: "Locations",
+      description: "Compare near, mid, and far routes by risk and return.",
+      href: "#locations",
+    },
+    {
+      icon: Users,
+      title: "Trading",
+      description:
+        "Trade around duplicates and specials without breaking income.",
+      href: "#trading",
+    },
+    {
+      icon: House,
+      title: "Base",
+      description: "Turn safe returns into stronger passive income loops.",
+      href: "#base",
+    },
+    {
+      icon: Zap,
+      title: "Upgrades",
+      description: "Prioritize speed, cash growth, and better route control.",
+      href: "#upgrades",
+    },
+    {
+      icon: Clock,
+      title: "Events",
+      description:
+        "Watch Saturday patches, live events, and official reminders.",
+      href: "#events",
+    },
+  ];
 
-	// 代码复制状态管理
-	const [copiedCode, setCopiedCode] = useState<string | null>(null)
+  const codeCard = {
+    code: "RELEASE",
+    reward: "Brr Brr Patapim",
+    status: "Active",
+    tag: "Starter Freebie",
+  };
 
-	const copyCode = async (code: string) => {
-		try {
-			await navigator.clipboard.writeText(code)
-			setCopiedCode(code)
-			setTimeout(() => setCopiedCode(null), 2000)
-		} catch (err) {
-			console.error('复制失败:', err)
-		}
-	}
+  const codeStats = [
+    { label: "Working Codes", value: "1" },
+    { label: "Expired Codes", value: "0" },
+    { label: "Current Reward", value: "Brr Brr Patapim" },
+    { label: "Update Rhythm", value: "Every Saturday" },
+  ];
 
-	// 滚动揭示动画
-	useEffect(() => {
-		const observer = new IntersectionObserver(
-			(entries) => {
-				entries.forEach((entry) => {
-					if (entry.isIntersecting) {
-						entry.target.classList.add('scroll-reveal-visible')
-					}
-				})
-			},
-			{ threshold: 0.1 }
-		)
+  const redeemSteps = [
+    "Open Be a Lucky Block in Roblox.",
+    "Tap the Shop button on the side of the screen.",
+    "Open the Codes tab or scroll to the code box in the shop menu.",
+    "Paste the code and press Verify.",
+    "Place your new Brainrot at base to start earning.",
+  ];
 
-		document.querySelectorAll('.scroll-reveal').forEach((el) => {
-			observer.observe(el)
-		})
+  const beginnerTimeline = [
+    {
+      step: "1",
+      title: "Claim Your Free Start",
+      text: "Redeem RELEASE before your first serious run so you begin with a free Brainrot.",
+    },
+    {
+      step: "2",
+      title: "Learn the Return Path",
+      text: "Use short routes first so you can consistently get back to base without wasting early rolls.",
+    },
+    {
+      step: "3",
+      title: "Bank Your First Pulls",
+      text: "Bring early Brainrots home quickly instead of gambling on longer detours.",
+    },
+    {
+      step: "4",
+      title: "Start Passive Income",
+      text: "Place Brainrots at base so your economy keeps moving even when you log off.",
+    },
+  ];
 
-		return () => observer.disconnect()
-	}, [])
+  const beginnerDo = [
+    "Redeem the starter code as soon as you enter the game.",
+    "Practice short, repeatable runs before testing far routes.",
+    "Turn your first Brainrots into base income immediately.",
+    "Rejoin if a fresh code does not work on your current server.",
+  ];
+
+  const beginnerDont = [
+    "Do not force long routes with no safety net.",
+    "Do not hold a strong pull too long while guards are nearby.",
+    "Do not ignore passive income while chasing a lucky high roll.",
+    "Do not waste time typing codes manually if you can paste them.",
+  ];
+
+  const locationTiers = [
+    {
+      tier: "Near Route",
+      luck: "Low",
+      risk: "Low",
+      bestFor: "First runs and safe cash flow",
+      playstyle: "Fast resets and steady banking",
+    },
+    {
+      tier: "Mid Route",
+      luck: "Medium",
+      risk: "Medium",
+      bestFor: "Balanced farming after your base is running",
+      playstyle: "Solid value without the longest return path",
+    },
+    {
+      tier: "Far Route",
+      luck: "High",
+      risk: "High",
+      bestFor: "Chasing premium pulls and stronger specials",
+      playstyle: "Big reward ceiling with a much harder escape",
+    },
+  ];
+
+  const locationHighlights = [
+    "Near Route: safest first farm for quick cash-ins and early upgrades.",
+    "Mid Route: better luck than spawn-side farming without the longest return path.",
+    "Far Route: strongest normal-route luck and the best place to chase premium pulls.",
+    "Guard Pressure: long return paths make movement speed and clean routes much more important.",
+    "Best Progression: move up one distance tier at a time instead of forcing deep runs too early.",
+  ];
+
+  const brainrotHighlights = [
+    "Current Free Pull: RELEASE gives Brr Brr Patapim.",
+    "Base Economy: Brainrots are your main source of steady income once they are secured at home.",
+    "Offline Earnings: your Brainrots continue generating cash while you are away.",
+    "Core Loop: roll blocks, secure the pull, return to base, and reinvest into better odds.",
+    "Visible Public Lines: recent runs already show Strawberry-themed pulls and multiple higher-tier block lines.",
+  ];
+
+  const specialBrainrots = [
+    "Inferno Secret Block",
+    "Divine Block",
+    "Void Special",
+    "Cyborg Block",
+    "Mogging Block Secret",
+  ];
+
+  const tradingHighlights = [
+    "Best Time to Trade: start after your base income feels stable, not during your first upgrade squeeze.",
+    "Best Pieces to Move: duplicates, event pulls, and spare specials are easier to trade than core earners.",
+    "Trading Hub: one of the main ways players target secrets they missed on normal rolls.",
+    "Community Watchlist: Discord, the Roblox group, X, and YouTube are the fastest places to spot fresh demand.",
+  ];
+
+  const baseFlow = [
+    {
+      title: "Start at Base",
+      description:
+        "Load into your base first so you can prepare, check your cash, and open the shop before the first run.",
+    },
+    {
+      title: "Claim the Free Boost",
+      description:
+        "Use RELEASE in Shop > Codes to get Brr Brr Patapim and give your base an early income push.",
+    },
+    {
+      title: "Run Short Before Long",
+      description:
+        "Use the closest destination first to learn timing, return routes, and guard pressure.",
+    },
+    {
+      title: "Bank Every Good Haul",
+      description:
+        "Once you get a worthwhile Brainrot, head home and secure it instead of risking everything for one extra roll.",
+    },
+  ];
+
+  const offlineCash = [
+    "Claim RELEASE for an immediate starter Brainrot.",
+    "Lock in safe Brainrots at base before ending a session.",
+    "Upgrade enough to reach better luck routes consistently.",
+    "Log off after a productive return, not after an empty run.",
+  ];
+
+  const upgradeLadder = [
+    {
+      stage: "Early Game",
+      focus: "Movement speed",
+      reason:
+        "More speed makes short runs safer and opens the path to farther destinations with better luck.",
+    },
+    {
+      stage: "After Stable Income",
+      focus: "Cash growth",
+      reason:
+        "Once you can return home reliably, stronger income lets every farming loop scale faster.",
+    },
+    {
+      stage: "Mid Progression",
+      focus: "Luck-related value",
+      reason:
+        "Better luck matters more once you can survive the longer routes where stronger drops show up.",
+    },
+  ];
+
+  const guardTips = [
+    "Use the closest destination until the route feels automatic.",
+    "Wait for the guards to roll the Lucky Block before you commit.",
+    "Grab the drop quickly and turn back with a plan.",
+    "Choose survival over greed when the return window gets tight.",
+  ];
+
+  const patchCards = [
+    {
+      date: "March 21, 2026",
+      title: "COSMIC EVENT - Pull Lucky Blocks",
+      tag: "New Drop",
+      description:
+        "A fresh event built around brand-new Lucky Blocks and new secret events.",
+      href: OFFICIAL_LINKS.liveEvent,
+    },
+    {
+      date: "March 21, 2026",
+      title: "NEXT UPDATE?!",
+      tag: "Follow Event",
+      description:
+        "A live follow page for players who want the next update reminder as soon as it goes up.",
+      href: OFFICIAL_LINKS.updateEvent,
+    },
+    {
+      date: "March 14, 2026",
+      title: "ADMIN ABUSE - Break a Lucky Block!",
+      tag: "Recent Event",
+      description:
+        "A short-run special event centered on a Lucky Block gimmick and a one-week event window.",
+      href: OFFICIAL_LINKS.recentEvent,
+    },
+  ];
+
+  const communityCards = [
+    {
+      title: "Official Roblox Game",
+      subtitle: "Launch the experience and check the latest page updates.",
+      buttonLabel: "Play Now",
+      href: OFFICIAL_LINKS.game,
+    },
+    {
+      title: "Official Roblox Group",
+      subtitle: "Watch the broader community activity around the game.",
+      buttonLabel: "Open Group",
+      href: OFFICIAL_LINKS.group,
+    },
+    {
+      title: "Official Discord",
+      subtitle:
+        "Best place for announcements, update chatter, and community discussion.",
+      buttonLabel: "Join Discord",
+      href: OFFICIAL_LINKS.discord,
+    },
+    {
+      title: "Official X",
+      subtitle: "Follow xFrozenStudios for studio posts and patch teases.",
+      buttonLabel: "Follow on X",
+      href: OFFICIAL_LINKS.x,
+    },
+  ];
+
+  const faqItems = [
+    {
+      question: "How often does Be a Lucky Block update?",
+      answer: "The game advertises a weekly Saturday update schedule.",
+    },
+    {
+      question: "What do farther destinations do?",
+      answer:
+        "Going farther improves your luck, which increases the chance of better pulls if you can survive the trip home.",
+    },
+    {
+      question: "Why do Brainrots matter?",
+      answer:
+        "Brainrots are the core of your base economy because they keep earning cash for you, including while you are offline.",
+    },
+    {
+      question: "How do I redeem codes?",
+      answer:
+        "Open the Shop menu, go to the Codes section, paste the code, and press Verify.",
+    },
+    {
+      question: "Where should I check for new updates and codes first?",
+      answer:
+        "Watch the Saturday patch cycle, Roblox event pages, and the official Discord for the fastest update flow.",
+    },
+  ];
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": `${SITE_URL}/#website`,
+        url: SITE_URL,
+        name: SITE_NAME,
+        description:
+          t.seo?.home?.description ||
+          "Be A Lucky Block Wiki with active codes, routes, brainrots, and weekly update coverage.",
+        image: HERO_IMAGE_URL,
+      },
+      {
+        "@type": "Organization",
+        "@id": `${SITE_URL}/#organization`,
+        name: SITE_NAME,
+        url: SITE_URL,
+        logo: HERO_IMAGE_URL,
+        image: HERO_IMAGE_URL,
+        sameAs: ORGANIZATION_SAME_AS,
+      },
+    ],
+  };
+
+  const copyCode = async (code: string) => {
+    try {
+      await navigator.clipboard.writeText(code);
+      setCopiedCode(code);
+      setTimeout(() => setCopiedCode(null), 2000);
+    } catch (error) {
+      console.error("Copy failed:", error);
+    }
+  };
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("scroll-reveal-visible");
+          }
+        });
+      },
+      { threshold: 0.1 },
+    );
+
+    document
+      .querySelectorAll(".scroll-reveal")
+      .forEach((element) => observer.observe(element));
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      {/* 结构化数据 */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
 
-      {/* Hero Section */}
-      <section className="relative pt-12 pb-20 px-4">
+      <section className="relative px-4 pb-20 pt-12">
         <div className="absolute inset-0 bg-gradient-to-b from-[hsl(var(--nav-theme)/0.1)] to-transparent" />
-
-        <div className="container mx-auto text-center relative z-10">
-          <div className="scroll-reveal inline-flex items-center space-x-2 px-4 py-2 bg-[hsl(var(--nav-theme)/0.2)] border border-[hsl(var(--nav-theme)/0.3)] rounded-full mb-8">
-            <Sparkles className="w-4 h-4 text-[hsl(var(--nav-theme-light))]" />
-            <span className="text-sm text-muted-foreground">{t.hero.badge}</span>
+        <div className="container relative z-10 mx-auto text-center">
+          <div className="scroll-reveal mb-8 inline-flex items-center gap-2 rounded-full border border-[hsl(var(--nav-theme)/0.3)] bg-[hsl(var(--nav-theme)/0.12)] px-4 py-2">
+            <Sparkles className="h-4 w-4 text-[hsl(var(--nav-theme-light))]" />
+            <span className="text-sm text-muted-foreground">
+              {t.hero.badge}
+            </span>
           </div>
 
-          <h1 className="scroll-reveal text-5xl md:text-7xl font-bold mb-6">
+          <h1 className="scroll-reveal mb-6 text-5xl font-bold md:text-7xl">
             {t.hero.title}
           </h1>
-
-          <p className="scroll-reveal text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-10">
+          <p className="scroll-reveal mx-auto mb-10 max-w-3xl text-lg text-muted-foreground md:text-xl">
             {t.hero.description}
           </p>
 
-          <div className="scroll-reveal flex flex-col sm:flex-row gap-4 justify-center mb-16">
+          <div className="scroll-reveal mb-16 flex flex-col justify-center gap-4 sm:flex-row">
             <a
               href="#codes"
-              className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium bg-[hsl(var(--nav-theme))] hover:bg-[hsl(var(--nav-theme)/0.9)] text-white px-8 py-6 text-lg transition-colors"
+              className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md bg-[hsl(var(--nav-theme))] px-8 py-6 text-lg font-medium text-slate-950 transition-colors hover:bg-[hsl(var(--nav-theme)/0.9)]"
             >
-              <Gift className="w-5 h-5" />
+              <Gift className="h-5 w-5" />
               {t.hero.getFreeCodesCTA}
             </a>
             <a
-              href="https://www.roblox.com/games/113829431520841/Slayerbound"
+              href={OFFICIAL_LINKS.game}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium border border-border hover:bg-white/10 px-8 py-6 text-lg transition-colors"
+              className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md border border-border px-8 py-6 text-lg font-medium transition-colors hover:bg-white/10"
             >
               {t.hero.playOnRobloxCTA}
             </a>
           </div>
 
-          {/* Stats */}
           <Suspense fallback={<LoadingPlaceholder height="h-32" />}>
             <HeroStats
               stats={[
-                { value: t.hero.stats.stat1.value, label: t.hero.stats.stat1.label },
-                { value: t.hero.stats.stat2.value, label: t.hero.stats.stat2.label },
-                { value: t.hero.stats.stat3.value, label: t.hero.stats.stat3.label },
-                { value: t.hero.stats.stat4.value, label: t.hero.stats.stat4.label }
+                {
+                  value: t.hero.stats.stat1.value,
+                  label: t.hero.stats.stat1.label,
+                },
+                {
+                  value: t.hero.stats.stat2.value,
+                  label: t.hero.stats.stat2.label,
+                },
+                {
+                  value: t.hero.stats.stat3.value,
+                  label: t.hero.stats.stat3.label,
+                },
+                {
+                  value: t.hero.stats.stat4.value,
+                  label: t.hero.stats.stat4.label,
+                },
               ]}
             />
           </Suspense>
         </div>
       </section>
 
-      {/* 广告位 1 */}
-      <NativeBannerAd adKey={process.env.NEXT_PUBLIC_AD_NATIVE_BANNER || ''} />
+      <NativeBannerAd adKey={process.env.NEXT_PUBLIC_AD_NATIVE_BANNER || ""} />
 
-      {/* Game Feature Video */}
       <section className="px-4 py-12">
-        <div className="scroll-reveal container mx-auto">
-          <div className="relative rounded-2xl overflow-hidden">
+        <div className="container mx-auto">
+          <div className="relative overflow-hidden rounded-2xl">
             <VideoFeature
-              videoId="hKBEMyrze2E"
-              title="SLAYERBOUND | RELEASE TRAILER"
+              videoId="90yMVIeJI2k"
+              title="Be a Lucky Block brainrot gameplay"
               posterImage="/images/hero.webp"
             />
-            <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black/80 to-transparent pointer-events-none">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">{t.gameFeature.title}</h2>
-              <p className="text-muted-foreground max-w-2xl">
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-8">
+              <h2 className="mb-4 text-3xl font-bold md:text-4xl">
+                {t.gameFeature.title}
+              </h2>
+              <p className="max-w-2xl text-muted-foreground">
                 {t.gameFeature.description}
               </p>
             </div>
@@ -215,996 +498,131 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 广告位：视频特性之后 */}
       <div className="py-8">
-        <AdBanner type="banner-320x50" adKey={process.env.NEXT_PUBLIC_AD_MOBILE_320X50} />
+        <AdBanner
+          type="banner-320x50"
+          adKey={process.env.NEXT_PUBLIC_AD_MOBILE_320X50}
+        />
       </div>
 
-      {/* Tools & Resources - 模块导航 */}
       <section className="px-4 py-20">
         <div className="container mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="scroll-reveal text-4xl md:text-5xl font-bold mb-4">
-              {t.tools.title} <span className="text-[hsl(var(--nav-theme-light))]">{t.tools.titleHighlight}</span>
+          <div className="mb-12 text-center">
+            <h2 className="scroll-reveal mb-4 text-4xl font-bold md:text-5xl">
+              {t.tools.title}{" "}
+              <span className="text-[hsl(var(--nav-theme-light))]">
+                {t.tools.titleHighlight}
+              </span>
             </h2>
-            <p className="scroll-reveal text-muted-foreground text-lg">
+            <p className="scroll-reveal text-lg text-muted-foreground">
               {t.tools.subtitle}
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {[
-              { icon: Gift, title: t.tools.codes.title, description: t.tools.codes.description, href: '#codes' },
-              { icon: ClipboardCheck, title: t.tools.redeemGuide.title, description: t.tools.redeemGuide.description, href: '#redeem-guide' },
-              { icon: Dumbbell, title: t.tools.trainingPaths.title, description: t.tools.trainingPaths.description, href: '#training-paths' },
-              { icon: Zap, title: t.tools.thunderBreathing.title, description: t.tools.thunderBreathing.description, href: '#thunder-breathing' },
-              { icon: TrendingUp, title: t.tools.fastLeveling.title, description: t.tools.fastLeveling.description, href: '#fast-leveling' },
-              { icon: Wind, title: t.tools.breathingTier.title, description: t.tools.breathingTier.description, href: '#breathing-tier' },
-              { icon: Flame, title: t.tools.demonArtTier.title, description: t.tools.demonArtTier.description, href: '#demon-art-tier' },
-              { icon: Ghost, title: t.tools.oniRoute.title, description: t.tools.oniRoute.description, href: '#oni-route' },
-              { icon: Keyboard, title: t.tools.controls.title, description: t.tools.controls.description, href: '#controls' },
-              { icon: MapPin, title: t.tools.questMap.title, description: t.tools.questMap.description, href: '#quest-map' },
-              { icon: Award, title: t.tools.finalSelection.title, description: t.tools.finalSelection.description, href: '#final-selection' },
-              { icon: Trophy, title: t.tools.bossDrops.title, description: t.tools.bossDrops.description, href: '#boss-drops' },
-              { icon: Coins, title: t.tools.currencyFarm.title, description: t.tools.currencyFarm.description, href: '#currency-farm' },
-              { icon: RotateCcw, title: t.tools.resetPlanner.title, description: t.tools.resetPlanner.description, href: '#reset-planner' },
-              { icon: Calculator, title: t.tools.buildPlanner.title, description: t.tools.buildPlanner.description, href: '#build-planner' },
-              { icon: Users, title: t.tools.clanSystem.title, description: t.tools.clanSystem.description, href: '#clan-system' },
-            ].map((tool, index) => (
+          <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
+            {resourceCards.map((card) => (
               <a
-                key={index}
-                href={tool.href}
-                className="scroll-reveal group p-6 bg-white/5 border border-border rounded-xl hover:bg-white/10 hover:border-[hsl(var(--nav-theme)/0.5)] transition cursor-pointer block"
+                key={card.href}
+                href={card.href}
+                className="scroll-reveal block rounded-xl border border-border bg-white/5 p-6 transition hover:border-[hsl(var(--nav-theme)/0.5)] hover:bg-white/10"
               >
-                <tool.icon className="w-12 h-12 text-[hsl(var(--nav-theme-light))] mb-4" />
-                <h3 className="text-xl font-bold mb-2">{tool.title}</h3>
-                <p className="text-muted-foreground text-sm">{tool.description}</p>
+                <card.icon className="mb-4 h-12 w-12 text-[hsl(var(--nav-theme-light))]" />
+                <h3 className="mb-2 text-xl font-bold">{card.title}</h3>
+                <p className="text-sm text-muted-foreground">
+                  {card.description}
+                </p>
               </a>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 广告位：代码表格之后 */}
-      <div className="py-8 space-y-4">
-        <AdBanner type="banner-468x60" adKey={process.env.NEXT_PUBLIC_AD_BANNER_468X60} />
-      </div>
-
-      {/* Slayerbound Codes */}
-      <section id="codes" className="px-4 py-20">
-        <div className="container mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="scroll-reveal text-4xl md:text-5xl font-bold mb-4">
-              {t.homepage.codes.title} <span className="text-[hsl(var(--nav-theme-light))]">{t.homepage.codes.titleHighlight}</span>
+      <section id="codes" className="px-4 py-20 bg-white/[0.02]">
+        <div className="container mx-auto max-w-6xl">
+          <div className="mb-12 text-center">
+            <h2 className="scroll-reveal mb-4 text-4xl font-bold md:text-5xl">
+              Be a Lucky Block{" "}
+              <span className="text-[hsl(var(--nav-theme-light))]">Codes</span>
             </h2>
-            <p className="scroll-reveal text-muted-foreground text-lg">
-              {t.homepage.codes.subtitle}
+            <p className="scroll-reveal text-lg text-muted-foreground">
+              Redeem the current starter code for a free Brainrot and a faster
+              first base loop.
             </p>
           </div>
 
-          <div className="scroll-reveal max-w-4xl mx-auto">
-            <div className="bg-white/5 border border-border rounded-xl overflow-hidden">
-              <div className="overflow-x-auto">
-                <table className="w-full">
-                  <thead>
-                    <tr className="border-b border-border bg-white/5">
-                      <th className="px-6 py-4 text-left font-semibold">{t.homepage.codes.table.headers.code}</th>
-                      <th className="px-6 py-4 text-left font-semibold">{t.homepage.codes.table.headers.reward}</th>
-                      <th className="px-6 py-4 text-left font-semibold">{t.homepage.codes.table.headers.status}</th>
-                      <th className="px-6 py-4 text-left font-semibold">Action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {t.homepage.codes.table.items.map((item: any, index: number) => (
-                      <tr key={index} className="border-b border-border hover:bg-white/5 transition">
-                        <td className="px-6 py-4 font-mono font-bold text-[hsl(var(--nav-theme-light))]">{item.code}</td>
-                        <td className="px-6 py-4">{item.reward}</td>
-                        <td className="px-6 py-4">
-                          <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold ${
-                            item.status === 'active' ? 'bg-green-500/20 text-green-400' : 'bg-red-500/20 text-red-400'
-                          }`}>
-                            {item.status === 'active' ? 'Active' : 'Expired'}
-                          </span>
-                        </td>
-                        <td className="px-6 py-4">
-                          <button
-                            onClick={() => copyCode(item.code)}
-                            className="inline-flex items-center gap-2 px-4 py-2 bg-[hsl(var(--nav-theme)/0.2)] hover:bg-[hsl(var(--nav-theme)/0.3)] border border-[hsl(var(--nav-theme)/0.3)] rounded-lg transition text-sm"
-                          >
-                            {copiedCode === item.code ? (
-                              <>
-                                <Check className="w-4 h-4" />
-                                Copied
-                              </>
-                            ) : (
-                              <>
-                                <Copy className="w-4 h-4" />
-                                Copy
-                              </>
-                            )}
-                          </button>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 广告位：代码表格之后 */}
-      <div className="py-8 space-y-4">
-        <AdBanner type="banner-300x250" adKey={process.env.NEXT_PUBLIC_AD_BANNER_300X250} />
-      </div>
-
-      {/* Slayerbound Redeem Guide */}
-      <section id="redeem-guide" className="px-4 py-20 bg-white/[0.02]">
-        <div className="container mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="scroll-reveal text-4xl md:text-5xl font-bold mb-4">
-              {t.homepage.redeemGuide.title} <span className="text-[hsl(var(--nav-theme-light))]">{t.homepage.redeemGuide.titleHighlight}</span>
-            </h2>
-            <p className="scroll-reveal text-muted-foreground text-lg">
-              {t.homepage.redeemGuide.subtitle}
-            </p>
-          </div>
-
-          <div className="scroll-reveal max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {t.homepage.redeemGuide.steps.map((step: any, index: number) => (
-              <div key={index} className="relative p-6 bg-white/5 border border-border rounded-xl">
-                <div className="absolute -top-4 -left-4 w-12 h-12 bg-[hsl(var(--nav-theme))] rounded-full flex items-center justify-center font-bold text-xl">
-                  {step.step}
+          <div className="scroll-reveal mb-8 grid grid-cols-2 gap-4 md:grid-cols-4">
+            {codeStats.map((item) => (
+              <div
+                key={item.label}
+                className="rounded-xl border border-border bg-white/5 p-5"
+              >
+                <div className="mb-1 text-2xl font-bold text-[hsl(var(--nav-theme-light))]">
+                  {item.value}
                 </div>
-                <h3 className="text-xl font-bold mb-2 mt-4">{step.title}</h3>
-                <p className="text-muted-foreground text-sm">{step.detail}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Slayerbound Training Paths */}
-      <section id="training-paths" className="px-4 py-20">
-        <div className="container mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="scroll-reveal text-4xl md:text-5xl font-bold mb-4">
-              {t.homepage.trainingPaths.title} <span className="text-[hsl(var(--nav-theme-light))]">{t.homepage.trainingPaths.titleHighlight}</span>
-            </h2>
-            <p className="scroll-reveal text-muted-foreground text-lg">
-              {t.homepage.trainingPaths.subtitle}
-            </p>
-          </div>
-
-          <div className="scroll-reveal max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
-            {t.homepage.trainingPaths.paths.map((path: any, index: number) => (
-              <div key={index} className="p-6 bg-white/5 border border-border rounded-xl hover:border-[hsl(var(--nav-theme)/0.5)] transition">
-                <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-2xl font-bold text-[hsl(var(--nav-theme-light))]">{path.name}</h3>
-                  <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                    path.difficulty === 'High' ? 'bg-red-500/20 text-red-400' : 'bg-yellow-500/20 text-yellow-400'
-                  }`}>
-                    {path.difficulty}
-                  </span>
-                </div>
-                <div className="space-y-3 text-sm">
-                  <div>
-                    <span className="text-muted-foreground">Location:</span>
-                    <p className="font-semibold">{path.location}</p>
-                  </div>
-                  <div>
-                    <span className="text-muted-foreground">Requirements:</span>
-                    <p className="font-semibold">{path.requirements}</p>
-                  </div>
-                  <div>
-                    <span className="text-muted-foreground">Cost:</span>
-                    <p className="font-semibold">{path.cost}</p>
-                  </div>
+                <div className="text-sm text-muted-foreground">
+                  {item.label}
                 </div>
               </div>
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* Slayerbound Thunder Breathing Guide */}
-      <section id="thunder-breathing" className="px-4 py-20 bg-white/[0.02]">
-        <div className="container mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="scroll-reveal text-4xl md:text-5xl font-bold mb-4">
-              {t.homepage.thunderBreathing.title} <span className="text-[hsl(var(--nav-theme-light))]">{t.homepage.thunderBreathing.titleHighlight}</span>
-            </h2>
-            <p className="scroll-reveal text-muted-foreground text-lg">
-              {t.homepage.thunderBreathing.subtitle}
-            </p>
-          </div>
-
-          <div className="scroll-reveal max-w-4xl mx-auto mb-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="p-6 bg-white/5 border border-border rounded-xl">
-                <div className="flex items-center gap-3 mb-4">
-                  <MapPin className="w-6 h-6 text-[hsl(var(--nav-theme-light))]" />
-                  <h3 className="text-xl font-bold">Location</h3>
+          <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
+            <div className="scroll-reveal rounded-xl border border-border bg-white/5 p-6">
+              <div className="mb-4 flex items-center justify-between gap-4">
+                <div>
+                  <p className="text-sm text-[hsl(var(--nav-theme-light))]">
+                    1 active code • 0 expired
+                  </p>
+                  <h3 className="text-2xl font-bold">{codeCard.code}</h3>
                 </div>
-                <p className="text-muted-foreground">{t.homepage.thunderBreathing.location}</p>
-              </div>
-
-              <div className="p-6 bg-white/5 border border-border rounded-xl">
-                <div className="flex items-center gap-3 mb-4">
-                  <AlertTriangle className="w-6 h-6 text-[hsl(var(--nav-theme-light))]" />
-                  <h3 className="text-xl font-bold">Difficulty</h3>
-                </div>
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold bg-yellow-500/20 text-yellow-400">
-                  {t.homepage.thunderBreathing.difficulty}
+                <span className="rounded-full border border-green-500/30 bg-green-500/10 px-3 py-1 text-xs font-semibold text-green-400">
+                  {codeCard.status}
                 </span>
               </div>
-            </div>
-          </div>
-
-          <div className="scroll-reveal max-w-4xl mx-auto mb-8">
-            <div className="p-6 bg-white/5 border border-border rounded-xl">
-              <div className="flex items-center gap-3 mb-4">
-                <Check className="w-6 h-6 text-[hsl(var(--nav-theme-light))]" />
-                <h3 className="text-xl font-bold">{t.homepage.thunderBreathing.requirements.title}</h3>
-              </div>
-              <div className="flex flex-wrap gap-3">
-                {t.homepage.thunderBreathing.requirements.items.map((item: string, index: number) => (
-                  <span key={index} className="px-4 py-2 bg-[hsl(var(--nav-theme)/0.2)] border border-[hsl(var(--nav-theme)/0.3)] rounded-lg text-sm font-semibold">
-                    {item}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          <div className="scroll-reveal max-w-4xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {t.homepage.thunderBreathing.steps.map((step: any, index: number) => (
-                <div key={index} className="p-6 bg-white/5 border border-border rounded-xl">
-                  <div className="flex items-start gap-4">
-                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-[hsl(var(--nav-theme)/0.2)] border border-[hsl(var(--nav-theme)/0.3)] flex items-center justify-center">
-                      <span className="text-xl font-bold text-[hsl(var(--nav-theme-light))]">{step.step}</span>
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-bold mb-2">{step.title}</h3>
-                      <p className="text-muted-foreground text-sm">{step.detail}</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Slayerbound Fast Leveling Guide */}
-      <section id="fast-leveling" className="px-4 py-20">
-        <div className="container mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="scroll-reveal text-4xl md:text-5xl font-bold mb-4">
-              {t.homepage.fastLeveling.title} <span className="text-[hsl(var(--nav-theme-light))]">{t.homepage.fastLeveling.titleHighlight}</span>
-            </h2>
-            <p className="scroll-reveal text-muted-foreground text-lg">
-              {t.homepage.fastLeveling.subtitle}
-            </p>
-          </div>
-
-          <div className="scroll-reveal max-w-5xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {t.homepage.fastLeveling.methods.map((method: any, index: number) => (
-                <div key={index} className="p-6 bg-white/5 border border-border rounded-xl">
-                  <div className="flex items-center gap-3 mb-4">
-                    {method.icon === 'map' && <Map className="w-8 h-8 text-[hsl(var(--nav-theme-light))]" />}
-                    {method.icon === 'utensils' && <Utensils className="w-8 h-8 text-[hsl(var(--nav-theme-light))]" />}
-                    {method.icon === 'route' && <TrendingUp className="w-8 h-8 text-[hsl(var(--nav-theme-light))]" />}
-                    <h3 className="text-xl font-bold">{method.title}</h3>
-                  </div>
-                  <p className="text-muted-foreground mb-4">{method.description}</p>
-                  <ul className="space-y-2">
-                    {method.tips.map((tip: string, tipIndex: number) => (
-                      <li key={tipIndex} className="flex items-start gap-2 text-sm">
-                        <Check className="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0" />
-                        <span>{tip}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Slayerbound Breathing Tier */}
-      <section id="breathing-tier" className="px-4 py-20 bg-white/[0.02]">
-        <div className="container mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="scroll-reveal text-4xl md:text-5xl font-bold mb-4">
-              {t.homepage.breathingTier.title} <span className="text-[hsl(var(--nav-theme-light))]">{t.homepage.breathingTier.titleHighlight}</span>
-            </h2>
-            <p className="scroll-reveal text-muted-foreground text-lg">
-              {t.homepage.breathingTier.subtitle}
-            </p>
-            <div className="scroll-reveal mt-4 inline-flex items-center gap-2 px-4 py-2 bg-[hsl(var(--nav-theme)/0.2)] border border-[hsl(var(--nav-theme)/0.3)] rounded-lg">
-              <Swords className="w-4 h-4 text-[hsl(var(--nav-theme-light))]" />
-              <span className="text-sm">{t.homepage.breathingTier.dataNote}</span>
-            </div>
-          </div>
-
-          <div className="scroll-reveal max-w-5xl mx-auto">
-            <div className="bg-white/5 border border-border rounded-xl overflow-hidden">
-              <div className="overflow-x-auto">
-                <table className="w-full">
-                  <thead>
-                    <tr className="border-b border-border bg-white/5">
-                      <th className="px-6 py-4 text-left font-semibold">{t.homepage.breathingTier.table.headers.breathing}</th>
-                      <th className="px-6 py-4 text-left font-semibold">{t.homepage.breathingTier.table.headers.pveScore}</th>
-                      <th className="px-6 py-4 text-left font-semibold">{t.homepage.breathingTier.table.headers.pvpScore}</th>
-                      <th className="px-6 py-4 text-left font-semibold">{t.homepage.breathingTier.table.headers.difficulty}</th>
-                      <th className="px-6 py-4 text-left font-semibold">{t.homepage.breathingTier.table.headers.cost}</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {t.homepage.breathingTier.table.items.map((item: any, index: number) => (
-                      <tr key={index} className="border-b border-border hover:bg-white/5 transition">
-                        <td className="px-6 py-4">
-                          <div className="flex items-center gap-2">
-                            <Swords className="w-5 h-5 text-[hsl(var(--nav-theme-light))]" />
-                            <span className="font-bold text-[hsl(var(--nav-theme-light))]">{item.breathing}</span>
-                          </div>
-                        </td>
-                        <td className="px-6 py-4 text-muted-foreground">{item.pveScore}</td>
-                        <td className="px-6 py-4 text-muted-foreground">{item.pvpScore}</td>
-                        <td className="px-6 py-4">
-                          <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                            item.difficulty === 'Hard' ? 'bg-red-500/20 text-red-400' :
-                            item.difficulty === 'Medium' ? 'bg-yellow-500/20 text-yellow-400' :
-                            'bg-gray-500/20 text-gray-400'
-                          }`}>
-                            {item.difficulty}
-                          </span>
-                        </td>
-                        <td className="px-6 py-4 text-sm">{item.cost}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Slayerbound Demon Art Tier */}
-      <section id="demon-art-tier" className="px-4 py-20">
-        <div className="container mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="scroll-reveal text-4xl md:text-5xl font-bold mb-4">
-              {t.homepage.demonArtTier.title} <span className="text-[hsl(var(--nav-theme-light))]">{t.homepage.demonArtTier.titleHighlight}</span>
-            </h2>
-            <p className="scroll-reveal text-muted-foreground text-lg">
-              {t.homepage.demonArtTier.subtitle}
-            </p>
-          </div>
-
-          <div className="scroll-reveal max-w-4xl mx-auto">
-            <div className="p-8 bg-white/5 border border-border rounded-xl text-center">
-              <Skull className="w-16 h-16 text-[hsl(var(--nav-theme-light))] mx-auto mb-6" />
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-[hsl(var(--nav-theme)/0.2)] border border-[hsl(var(--nav-theme)/0.3)] rounded-full mb-6">
-                <span className="text-sm font-semibold">{t.homepage.demonArtTier.statusBadge}</span>
-              </div>
-              <p className="text-muted-foreground mb-8">{t.homepage.demonArtTier.emptyStateText}</p>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
-                <div className="p-6 bg-white/5 border border-border rounded-xl">
-                  <h3 className="text-lg font-bold mb-4 text-[hsl(var(--nav-theme-light))]">What We Know</h3>
-                  <ul className="space-y-2">
-                    {t.homepage.demonArtTier.knownFacts.map((fact: string, index: number) => (
-                      <li key={index} className="flex items-start gap-2 text-sm">
-                        <Check className="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0" />
-                        <span>{fact}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="p-6 bg-white/5 border border-border rounded-xl">
-                  <h3 className="text-lg font-bold mb-4 text-[hsl(var(--nav-theme-light))]">Coming Soon</h3>
-                  <ul className="space-y-2">
-                    {t.homepage.demonArtTier.dataGaps.map((gap: string, index: number) => (
-                      <li key={index} className="flex items-start gap-2 text-sm">
-                        <Sparkles className="w-4 h-4 text-[hsl(var(--nav-theme-light))] mt-0.5 flex-shrink-0" />
-                        <span>{gap}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-
-              <div className="mt-8">
+              <p className="mb-2 text-muted-foreground">
+                Reward: {codeCard.reward}
+              </p>
+              <p className="mb-6 text-sm text-muted-foreground">
+                {codeCard.tag}
+              </p>
+              <div className="flex flex-col gap-3 sm:flex-row">
+                <button
+                  type="button"
+                  onClick={() => copyCode(codeCard.code)}
+                  className="inline-flex items-center justify-center gap-2 rounded-md bg-[hsl(var(--nav-theme))] px-6 py-3 font-medium text-slate-950 transition hover:bg-[hsl(var(--nav-theme)/0.9)]"
+                >
+                  {copiedCode === codeCard.code ? (
+                    <>
+                      <Check className="h-4 w-4" />
+                      Copied
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="h-4 w-4" />
+                      Copy RELEASE
+                    </>
+                  )}
+                </button>
                 <a
-                  href="https://trello.com/b/7IS1N5PR/slayerbound-official-trello"
+                  href={OFFICIAL_LINKS.discord}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-[hsl(var(--nav-theme))] hover:bg-[hsl(var(--nav-theme)/0.9)] text-white rounded-lg transition"
+                  className="inline-flex items-center justify-center gap-2 rounded-md border border-border px-6 py-3 font-medium transition hover:bg-white/10"
                 >
-                  {t.homepage.demonArtTier.ctaText}
-                  <ArrowRight className="w-4 h-4" />
+                  Watch Discord for Updates
                 </a>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Slayerbound Oni Route */}
-      <section id="oni-route" className="px-4 py-20 bg-white/[0.02]">
-        <div className="container mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="scroll-reveal text-4xl md:text-5xl font-bold mb-4">
-              {t.homepage.oniRoute.title} <span className="text-[hsl(var(--nav-theme-light))]">{t.homepage.oniRoute.titleHighlight}</span>
-            </h2>
-            <p className="scroll-reveal text-muted-foreground text-lg">
-              {t.homepage.oniRoute.subtitle}
-            </p>
-            <div className="scroll-reveal mt-4 inline-flex items-center gap-2 px-4 py-2 bg-[hsl(var(--nav-theme)/0.2)] border border-[hsl(var(--nav-theme)/0.3)] rounded-lg">
-              <Ghost className="w-4 h-4 text-[hsl(var(--nav-theme-light))]" />
-              <span className="text-sm">{t.homepage.oniRoute.warningText}</span>
-            </div>
-          </div>
-
-          <div className="scroll-reveal max-w-5xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
-              {t.homepage.oniRoute.flowNodes.map((node: any, index: number) => (
-                <div key={node.id} className="relative">
-                  <div className="p-6 bg-white/5 border border-border rounded-xl text-center hover:border-[hsl(var(--nav-theme)/0.5)] transition">
-                    <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-[hsl(var(--nav-theme)/0.2)] border border-[hsl(var(--nav-theme)/0.3)] flex items-center justify-center">
-                      <span className="font-bold text-[hsl(var(--nav-theme-light))]">{node.id}</span>
-                    </div>
-                    <h3 className="font-bold mb-2">{node.title}</h3>
-                    <p className="text-xs text-muted-foreground">{node.type}</p>
-                  </div>
-                  {index < t.homepage.oniRoute.flowNodes.length - 1 && (
-                    <div className="hidden md:block absolute top-1/2 -right-2 transform translate-x-1/2 -translate-y-1/2">
-                      <ArrowRight className="w-6 h-6 text-[hsl(var(--nav-theme-light))]" />
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-
-            <div className="p-6 bg-white/5 border border-border rounded-xl">
-              <h3 className="text-lg font-bold mb-4 text-[hsl(var(--nav-theme-light))]">Additional Information Needed</h3>
-              <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                {t.homepage.oniRoute.unknowns.map((unknown: string, index: number) => (
-                  <li key={index} className="flex items-center gap-2 text-sm">
-                    <span className="text-[hsl(var(--nav-theme-light))]">•</span>
-                    <span>{unknown}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Slayerbound Controls */}
-      <section id="controls" className="px-4 py-20">
-        <div className="container mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="scroll-reveal text-4xl md:text-5xl font-bold mb-4">
-              {t.homepage.controls.title} <span className="text-[hsl(var(--nav-theme-light))]">{t.homepage.controls.titleHighlight}</span>
-            </h2>
-            <p className="scroll-reveal text-muted-foreground text-lg">
-              {t.homepage.controls.subtitle}
-            </p>
-          </div>
-
-          <div className="scroll-reveal max-w-3xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {t.homepage.controls.keys.map((control: any, index: number) => (
-              <div key={index} className="p-4 bg-white/5 border border-border rounded-xl text-center hover:border-[hsl(var(--nav-theme)/0.5)] transition">
-                <div className="font-mono font-bold text-2xl text-[hsl(var(--nav-theme-light))] mb-2">
-                  {control.key}
-                </div>
-                <div className="text-sm text-muted-foreground">
-                  {control.action}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Slayerbound Quest Map */}
-      <section id="quest-map" className="px-4 py-20 bg-white/[0.02]">
-        <div className="container mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="scroll-reveal text-4xl md:text-5xl font-bold mb-4">
-              {t.homepage.questMap.title} <span className="text-[hsl(var(--nav-theme-light))]">{t.homepage.questMap.titleHighlight}</span>
-            </h2>
-            <p className="scroll-reveal text-muted-foreground text-lg">
-              {t.homepage.questMap.subtitle}
-            </p>
-            <p className="scroll-reveal text-sm text-[hsl(var(--nav-theme-light))] mt-2">
-              {t.homepage.questMap.recommendedSequence}
-            </p>
-          </div>
-
-          <div className="scroll-reveal max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
-            {t.homepage.questMap.pins.map((pin: any) => (
-              <div key={pin.id} className="p-6 bg-white/5 border border-border rounded-xl hover:border-[hsl(var(--nav-theme)/0.5)] transition">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 rounded-full bg-[hsl(var(--nav-theme)/0.2)] border border-[hsl(var(--nav-theme)/0.3)] flex items-center justify-center">
-                    <Map className="w-5 h-5 text-[hsl(var(--nav-theme-light))]" />
-                  </div>
-                  <h3 className="text-lg font-bold">{pin.name}</h3>
-                </div>
-
-                <div className="space-y-3 text-sm">
-                  <div>
-                    <span className="text-muted-foreground">Region:</span>
-                    <p className="font-semibold">{pin.region}</p>
-                  </div>
-                  <div>
-                    <span className="text-muted-foreground">Objective:</span>
-                    <p className="font-semibold">{pin.objective}</p>
-                  </div>
-                  <div>
-                    <span className="text-muted-foreground">Requirements:</span>
-                    <ul className="mt-1 space-y-1">
-                      {pin.requirements.map((req: string, idx: number) => (
-                        <li key={idx} className="flex items-start gap-2">
-                          <span className="text-[hsl(var(--nav-theme-light))]">•</span>
-                          <span>{req}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div>
-                    <span className="text-muted-foreground">Rewards:</span>
-                    <ul className="mt-1 space-y-1">
-                      {pin.rewards.map((reward: string, idx: number) => (
-                        <li key={idx} className="flex items-start gap-2">
-                          <Check className="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0" />
-                          <span>{reward}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Slayerbound Final Selection */}
-      <section id="final-selection" className="px-4 py-20 bg-white/[0.02]">
-        <div className="container mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="scroll-reveal text-4xl md:text-5xl font-bold mb-4">
-              {t.homepage.finalSelection.title} <span className="text-[hsl(var(--nav-theme-light))]">{t.homepage.finalSelection.titleHighlight}</span>
-            </h2>
-            <p className="scroll-reveal text-muted-foreground text-lg">
-              {t.homepage.finalSelection.subtitle}
-            </p>
-          </div>
-
-          <div className="scroll-reveal max-w-4xl mx-auto mb-8">
-            <div className="p-6 bg-white/5 border border-border rounded-xl">
-              <p className="text-muted-foreground">{t.homepage.finalSelection.overview}</p>
-            </div>
-          </div>
-
-          <div className="scroll-reveal max-w-5xl mx-auto mb-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-              <div className="p-6 bg-white/5 border border-border rounded-xl">
-                <div className="flex items-center gap-2 mb-2">
-                  <MapPin className="w-5 h-5 text-[hsl(var(--nav-theme-light))]" />
-                  <h3 className="font-bold">Location</h3>
-                </div>
-                <p className="text-sm text-muted-foreground">{t.homepage.finalSelection.details.location}</p>
-              </div>
-
-              <div className="p-6 bg-white/5 border border-border rounded-xl">
-                <div className="flex items-center gap-2 mb-2">
-                  <Clock className="w-5 h-5 text-[hsl(var(--nav-theme-light))]" />
-                  <h3 className="font-bold">Timing</h3>
-                </div>
-                <p className="text-sm text-muted-foreground">{t.homepage.finalSelection.details.timing}</p>
-              </div>
-
-              <div className="p-6 bg-white/5 border border-border rounded-xl">
-                <div className="flex items-center gap-2 mb-2">
-                  <Users className="w-5 h-5 text-[hsl(var(--nav-theme-light))]" />
-                  <h3 className="font-bold">Max Players</h3>
-                </div>
-                <p className="text-sm text-muted-foreground">{t.homepage.finalSelection.details.maxPlayers}</p>
-              </div>
-
-              <div className="p-6 bg-white/5 border border-border rounded-xl">
-                <div className="flex items-center gap-2 mb-2">
-                  <AlertTriangle className="w-5 h-5 text-[hsl(var(--nav-theme-light))]" />
-                  <h3 className="font-bold">Difficulty</h3>
-                </div>
-                <p className="text-sm text-muted-foreground">{t.homepage.finalSelection.details.difficulty}</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="scroll-reveal max-w-5xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="p-6 bg-white/5 border border-border rounded-xl">
-                <div className="flex items-center gap-3 mb-4">
-                  <Award className="w-6 h-6 text-[hsl(var(--nav-theme-light))]" />
-                  <h3 className="text-xl font-bold">{t.homepage.finalSelection.rewards.title}</h3>
-                </div>
-                <ul className="space-y-2">
-                  {t.homepage.finalSelection.rewards.items.map((item: string, index: number) => (
-                    <li key={index} className="flex items-start gap-2 text-sm">
-                      <Check className="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="p-6 bg-white/5 border border-border rounded-xl">
-                <div className="flex items-center gap-3 mb-4">
-                  <Target className="w-6 h-6 text-[hsl(var(--nav-theme-light))]" />
-                  <h3 className="text-xl font-bold">{t.homepage.finalSelection.tips.title}</h3>
-                </div>
-                <ul className="space-y-2">
-                  {t.homepage.finalSelection.tips.items.map((item: string, index: number) => (
-                    <li key={index} className="flex items-start gap-2 text-sm">
-                      <Sparkles className="w-4 h-4 text-[hsl(var(--nav-theme-light))] mt-0.5 flex-shrink-0" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Slayerbound Boss Drops */}
-      <section id="boss-drops" className="px-4 py-20">
-        <div className="container mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="scroll-reveal text-4xl md:text-5xl font-bold mb-4">
-              {t.homepage.bossDrops.title} <span className="text-[hsl(var(--nav-theme-light))]">{t.homepage.bossDrops.titleHighlight}</span>
-            </h2>
-            <p className="scroll-reveal text-muted-foreground text-lg">
-              {t.homepage.bossDrops.subtitle}
-            </p>
-          </div>
-
-          <div className="scroll-reveal max-w-5xl mx-auto mb-6">
-            <div className="p-4 bg-yellow-500/10 border border-yellow-500/30 rounded-xl flex items-start gap-3">
-              <AlertTriangle className="w-5 h-5 text-yellow-400 flex-shrink-0 mt-0.5" />
-              <p className="text-sm text-yellow-400">{t.homepage.bossDrops.riskNotice}</p>
-            </div>
-          </div>
-
-          <div className="scroll-reveal max-w-5xl mx-auto">
-            <div className="bg-white/5 border border-border rounded-xl overflow-hidden">
-              <div className="overflow-x-auto">
-                <table className="w-full">
-                  <thead>
-                    <tr className="border-b border-border bg-white/5">
-                      <th className="px-6 py-4 text-left font-semibold">{t.homepage.bossDrops.table.headers.drop}</th>
-                      <th className="px-6 py-4 text-left font-semibold">{t.homepage.bossDrops.table.headers.source}</th>
-                      <th className="px-6 py-4 text-left font-semibold">{t.homepage.bossDrops.table.headers.howToObtain}</th>
-                      <th className="px-6 py-4 text-left font-semibold">{t.homepage.bossDrops.table.headers.primaryUse}</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {t.homepage.bossDrops.table.items.map((item: any, index: number) => (
-                      <tr key={index} className="border-b border-border hover:bg-white/5 transition">
-                        <td className="px-6 py-4">
-                          <div className="flex items-center gap-2">
-                            <Crown className="w-5 h-5 text-[hsl(var(--nav-theme-light))]" />
-                            <span className="font-bold">{item.drop}</span>
-                          </div>
-                        </td>
-                        <td className="px-6 py-4 text-sm">{item.source}</td>
-                        <td className="px-6 py-4 text-sm text-muted-foreground">{item.howToObtain}</td>
-                        <td className="px-6 py-4 text-sm">{item.primaryUse}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Slayerbound Currency Farm */}
-      <section id="currency-farm" className="px-4 py-20 bg-white/[0.02]">
-        <div className="container mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="scroll-reveal text-4xl md:text-5xl font-bold mb-4">
-              {t.homepage.currencyFarm.title} <span className="text-[hsl(var(--nav-theme-light))]">{t.homepage.currencyFarm.titleHighlight}</span>
-            </h2>
-            <p className="scroll-reveal text-muted-foreground text-lg">
-              {t.homepage.currencyFarm.subtitle}
-            </p>
-          </div>
-
-          <div className="scroll-reveal max-w-5xl mx-auto mb-6">
-            <div className="p-4 bg-yellow-500/10 border border-yellow-500/30 rounded-xl text-center">
-              <p className="text-sm text-yellow-400">{t.homepage.currencyFarm.disclaimer}</p>
-            </div>
-          </div>
-
-          <div className="scroll-reveal max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
-            {t.homepage.currencyFarm.methods.map((method: any) => (
-              <div key={method.rank} className="p-6 bg-white/5 border border-border rounded-xl hover:border-[hsl(var(--nav-theme)/0.5)] transition">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 rounded-full bg-[hsl(var(--nav-theme)/0.2)] border border-[hsl(var(--nav-theme)/0.3)] flex items-center justify-center">
-                    <span className="font-bold text-[hsl(var(--nav-theme-light))]">#{method.rank}</span>
-                  </div>
-                  <Coins className="w-6 h-6 text-[hsl(var(--nav-theme-light))]" />
-                </div>
-
-                <h3 className="text-lg font-bold mb-3">{method.method}</h3>
-
-                <div className="space-y-2 text-sm mb-4">
-                  <div className="flex justify-between">
-                    <span className="text-muted-foreground">Expected Return:</span>
-                    <span className="font-semibold">{method.expectedReturn}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-muted-foreground">Time:</span>
-                    <span className="font-semibold">{method.timeToValue}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-muted-foreground">Risk:</span>
-                    <span className={`font-semibold ${
-                      method.riskLevel === 'Low' ? 'text-green-400' :
-                      method.riskLevel === 'Medium' ? 'text-yellow-400' : 'text-red-400'
-                    }`}>
-                      {method.riskLevel}
-                    </span>
-                  </div>
-                </div>
-
-                <div className="pt-4 border-t border-border">
-                  <p className="text-xs text-muted-foreground mb-2">How to:</p>
-                  <ul className="space-y-1">
-                    {method.howTo.map((step: string, idx: number) => (
-                      <li key={idx} className="flex items-start gap-2 text-xs">
-                        <span className="text-[hsl(var(--nav-theme-light))]">•</span>
-                        <span>{step}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Slayerbound Reset Planner */}
-      <section id="reset-planner" className="px-4 py-20">
-        <div className="container mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="scroll-reveal text-4xl md:text-5xl font-bold mb-4">
-              {t.homepage.resetPlanner.title} <span className="text-[hsl(var(--nav-theme-light))]">{t.homepage.resetPlanner.titleHighlight}</span>
-            </h2>
-            <p className="scroll-reveal text-muted-foreground text-lg">
-              {t.homepage.resetPlanner.subtitle}
-            </p>
-          </div>
-
-          <div className="scroll-reveal max-w-4xl mx-auto">
-            <div className="p-8 bg-white/5 border border-border rounded-xl">
-              <div className="text-center mb-8">
-                <RotateCcw className="w-12 h-12 text-[hsl(var(--nav-theme-light))] mx-auto mb-4" />
-                <h3 className="text-2xl font-bold mb-2">{t.homepage.resetPlanner.startQuestion}</h3>
-              </div>
-
-              <div className="space-y-6">
-                {t.homepage.resetPlanner.decisions.map((decision: any, index: number) => (
-                  <div key={index} className="p-6 bg-white/5 border border-border rounded-xl">
-                    <h4 className="font-bold mb-4 text-[hsl(var(--nav-theme-light))]">{decision.question}</h4>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div className="p-4 bg-green-500/10 border border-green-500/30 rounded-lg">
-                        <div className="flex items-center gap-2 mb-2">
-                          <Check className="w-4 h-4 text-green-400" />
-                          <span className="font-semibold text-green-400">Yes</span>
-                        </div>
-                        <p className="text-sm">{decision.yesAction}</p>
-                      </div>
-                      <div className="p-4 bg-red-500/10 border border-red-500/30 rounded-lg">
-                        <div className="flex items-center gap-2 mb-2">
-                          <AlertTriangle className="w-4 h-4 text-red-400" />
-                          <span className="font-semibold text-red-400">No</span>
-                        </div>
-                        <p className="text-sm">{decision.noAction}</p>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Slayerbound Build Planner */}
-      <section id="build-planner" className="px-4 py-20 bg-white/[0.02]">
-        <div className="container mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="scroll-reveal text-4xl md:text-5xl font-bold mb-4">
-              {t.homepage.buildPlanner.title} <span className="text-[hsl(var(--nav-theme-light))]">{t.homepage.buildPlanner.titleHighlight}</span>
-            </h2>
-            <p className="scroll-reveal text-muted-foreground text-lg">
-              {t.homepage.buildPlanner.subtitle}
-            </p>
-            <div className="scroll-reveal mt-4 inline-flex items-center gap-2 px-4 py-2 bg-[hsl(var(--nav-theme)/0.2)] border border-[hsl(var(--nav-theme)/0.3)] rounded-lg">
-              <Calculator className="w-4 h-4 text-[hsl(var(--nav-theme-light))]" />
-              <span className="text-sm">{t.homepage.buildPlanner.dataNote}</span>
-            </div>
-          </div>
-
-          <div className="scroll-reveal max-w-5xl mx-auto">
-            <div className="p-8 bg-white/5 border border-border rounded-xl mb-8">
-              <div className="flex items-center gap-3 mb-6">
-                <Calculator className="w-8 h-8 text-[hsl(var(--nav-theme-light))]" />
-                <h3 className="text-xl font-bold">Build Calculator Inputs</h3>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {t.homepage.buildPlanner.inputFields.map((field: any, index: number) => (
-                  <div key={index} className="p-4 bg-white/5 border border-border rounded-lg">
-                    <label className="block text-sm font-semibold mb-2 text-[hsl(var(--nav-theme-light))]">
-                      {field.label}
-                    </label>
-                    <div className="text-xs text-muted-foreground">
-                      Type: {field.type}
-                      {field.options && ` (${field.options.join(', ')})`}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {t.homepage.buildPlanner.presetExamples.map((example: any, index: number) => (
-                <div key={index} className="p-6 bg-white/5 border border-border rounded-xl">
-                  <h3 className="text-lg font-bold mb-4 text-[hsl(var(--nav-theme-light))]">{example.name}</h3>
-
-                  <div className="space-y-3 text-sm mb-4">
-                    <div className="flex justify-between">
-                      <span className="text-muted-foreground">Goal:</span>
-                      <span className="font-semibold">{example.goalMode}</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-muted-foreground">Route:</span>
-                      <span className="font-semibold">{example.route}</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-muted-foreground">Yen:</span>
-                      <span className="font-semibold">{example.yenBudget}</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-muted-foreground">Spins:</span>
-                      <span className="font-semibold">{example.spinsAvailable}</span>
-                    </div>
-                  </div>
-
-                  <div className="pt-4 border-t border-border space-y-2">
-                    <div>
-                      <span className="text-xs text-muted-foreground">Now:</span>
-                      <p className="text-sm mt-1">{example.output.now}</p>
-                    </div>
-                    <div>
-                      <span className="text-xs text-muted-foreground">Next:</span>
-                      <p className="text-sm mt-1">{example.output.next}</p>
-                    </div>
-                    <div>
-                      <span className="text-xs text-muted-foreground">After:</span>
-                      <p className="text-sm mt-1">{example.output.after}</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Slayerbound Clan System */}
-      <section id="clan-system" className="px-4 py-20 bg-white/[0.02]">
-        <div className="container mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="scroll-reveal text-4xl md:text-5xl font-bold mb-4">
-              {t.homepage.clanSystem.title} <span className="text-[hsl(var(--nav-theme-light))]">{t.homepage.clanSystem.titleHighlight}</span>
-            </h2>
-            <p className="scroll-reveal text-muted-foreground text-lg">
-              {t.homepage.clanSystem.subtitle}
-            </p>
-          </div>
-
-          <div className="scroll-reveal max-w-4xl mx-auto mb-8">
-            <div className="p-6 bg-white/5 border border-border rounded-xl">
-              <p className="text-muted-foreground">{t.homepage.clanSystem.overview}</p>
-            </div>
-          </div>
-
-          <div className="scroll-reveal max-w-5xl mx-auto mb-8">
-            <h3 className="text-2xl font-bold mb-6 text-center">Clan Tiers</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-              {t.homepage.clanSystem.tiers.map((tier: any, index: number) => (
-                <div key={index} className="p-6 bg-white/5 border border-border rounded-xl">
-                  <div className="flex items-center gap-2 mb-3">
-                    <Shield className={`w-6 h-6 ${
-                      tier.color === 'gold' ? 'text-yellow-400' :
-                      tier.color === 'purple' ? 'text-purple-400' :
-                      tier.color === 'blue' ? 'text-blue-400' :
-                      'text-gray-400'
-                    }`} />
-                    <h3 className="text-lg font-bold">{tier.tier}</h3>
-                  </div>
-                  <div className="space-y-2 text-sm">
-                    <div>
-                      <span className="text-muted-foreground">Drop Rate:</span>
-                      <p className="font-semibold">{tier.dropRate}</p>
-                    </div>
-                    <p className="text-muted-foreground">{tier.description}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="scroll-reveal max-w-5xl mx-auto mb-8">
-            <div className="p-6 bg-white/5 border border-border rounded-xl">
-              <div className="flex items-center gap-3 mb-6">
-                <Crown className="w-6 h-6 text-[hsl(var(--nav-theme-light))]" />
-                <h3 className="text-2xl font-bold">{t.homepage.clanSystem.notableClans.title}</h3>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                {t.homepage.clanSystem.notableClans.clans.map((clan: any, index: number) => (
-                  <div key={index} className="p-4 bg-white/5 border border-border rounded-xl">
-                    <h4 className="font-bold text-[hsl(var(--nav-theme-light))] mb-2">{clan.name}</h4>
-                    <div className="space-y-1 text-sm">
-                      <div>
-                        <span className="text-muted-foreground">Tier:</span>
-                        <span className={`ml-2 px-2 py-0.5 rounded text-xs font-semibold ${
-                          clan.tier === 'Legendary' ? 'bg-yellow-500/20 text-yellow-400' :
-                          clan.tier === 'Epic' ? 'bg-purple-500/20 text-purple-400' :
-                          'bg-blue-500/20 text-blue-400'
-                        }`}>
-                          {clan.tier}
-                        </span>
-                      </div>
-                      <p className="text-muted-foreground">{clan.benefit}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          <div className="scroll-reveal max-w-4xl mx-auto">
-            <div className="p-6 bg-white/5 border border-border rounded-xl">
-              <div className="flex items-center gap-3 mb-4">
-                <RotateCcw className="w-6 h-6 text-[hsl(var(--nav-theme-light))]" />
-                <h3 className="text-xl font-bold">{t.homepage.clanSystem.howToSpin.title}</h3>
-              </div>
-              <ol className="space-y-2">
-                {t.homepage.clanSystem.howToSpin.steps.map((step: string, index: number) => (
-                  <li key={index} className="flex items-start gap-3 text-sm">
-                    <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[hsl(var(--nav-theme)/0.2)] border border-[hsl(var(--nav-theme)/0.3)] flex items-center justify-center text-xs font-bold text-[hsl(var(--nav-theme-light))]">
+            <div className="scroll-reveal rounded-xl border border-border bg-white/5 p-6">
+              <h3 className="mb-4 text-xl font-bold">Redeem Steps</h3>
+              <ol className="space-y-3">
+                {redeemSteps.map((step, index) => (
+                  <li key={step} className="flex items-start gap-3 text-sm">
+                    <span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full border border-[hsl(var(--nav-theme)/0.3)] bg-[hsl(var(--nav-theme)/0.15)] text-xs font-bold text-[hsl(var(--nav-theme-light))]">
                       {index + 1}
                     </span>
-                    <span className="pt-0.5">{step}</span>
+                    <span>{step}</span>
                   </li>
                 ))}
               </ol>
@@ -1213,130 +631,541 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* What is Slayerbound */}
-      <section className="px-4 py-20">
-        <div className="container mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="scroll-reveal text-4xl md:text-5xl font-bold mb-4">
-              {t.whatIs.title} <span className="text-[hsl(var(--nav-theme-light))]">{t.whatIs.titleHighlight}</span>
+      <div className="py-8">
+        <AdBanner
+          type="banner-468x60"
+          adKey={process.env.NEXT_PUBLIC_AD_BANNER_468X60}
+        />
+      </div>
+
+      <section id="beginner" className="px-4 py-20">
+        <div className="container mx-auto max-w-6xl">
+          <div className="mb-12 text-center">
+            <h2 className="scroll-reveal mb-4 text-4xl font-bold md:text-5xl">
+              Be a Lucky Block{" "}
+              <span className="text-[hsl(var(--nav-theme-light))]">
+                Beginner Guide
+              </span>
             </h2>
-            <p className="scroll-reveal text-muted-foreground text-lg max-w-3xl mx-auto">
-              {t.whatIs.description}
+            <p className="scroll-reveal text-lg text-muted-foreground">
+              Secure a free Brainrot first, learn the shortest safe route, then
+              scale into better luck runs.
             </p>
           </div>
 
-          <div className="scroll-reveal grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {t.whatIs.features.map((feature: any, index: number) => (
-              <div key={index} className="p-6 bg-white/5 border border-border rounded-xl hover:border-[hsl(var(--nav-theme)/0.5)] transition">
-                <Zap className="w-12 h-12 text-[hsl(var(--nav-theme-light))] mb-4" />
-                <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
-                <p className="text-muted-foreground text-sm">{feature.description}</p>
+          <div className="mb-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+            {beginnerTimeline.map((item) => (
+              <div
+                key={item.step}
+                className="scroll-reveal rounded-xl border border-border bg-white/5 p-6"
+              >
+                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-[hsl(var(--nav-theme)/0.15)] text-xl font-bold text-[hsl(var(--nav-theme-light))]">
+                  {item.step}
+                </div>
+                <h3 className="mb-2 text-xl font-bold">{item.title}</h3>
+                <p className="text-sm text-muted-foreground">{item.text}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-2">
+            <div className="scroll-reveal rounded-xl border border-border bg-white/5 p-6">
+              <h3 className="mb-4 text-xl font-bold text-[hsl(var(--nav-theme-light))]">
+                Do
+              </h3>
+              <ul className="space-y-2">
+                {beginnerDo.map((item) => (
+                  <li key={item} className="flex items-start gap-2 text-sm">
+                    <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-green-400" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="scroll-reveal rounded-xl border border-border bg-white/5 p-6">
+              <h3 className="mb-4 text-xl font-bold text-[hsl(var(--nav-theme-light))]">
+                Avoid
+              </h3>
+              <ul className="space-y-2">
+                {beginnerDont.map((item) => (
+                  <li key={item} className="flex items-start gap-2 text-sm">
+                    <span className="mt-1 text-red-400">•</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="locations" className="px-4 py-20 bg-white/[0.02]">
+        <div className="container mx-auto max-w-6xl">
+          <div className="mb-12 text-center">
+            <h2 className="scroll-reveal mb-4 text-4xl font-bold md:text-5xl">
+              Be a Lucky Block{" "}
+              <span className="text-[hsl(var(--nav-theme-light))]">
+                Luck & Locations
+              </span>
+            </h2>
+            <p className="scroll-reveal text-lg text-muted-foreground">
+              Distance improves your luck, but every extra step also makes the
+              return home more dangerous.
+            </p>
+          </div>
+
+          <div className="mb-8 grid gap-6 md:grid-cols-3">
+            {locationTiers.map((tier) => (
+              <div
+                key={tier.tier}
+                className="scroll-reveal rounded-xl border border-border bg-white/5 p-6"
+              >
+                <h3 className="mb-3 text-2xl font-bold text-[hsl(var(--nav-theme-light))]">
+                  {tier.tier}
+                </h3>
+                <div className="mb-4 space-y-2 text-sm">
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Luck</span>
+                    <span>{tier.luck}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Risk</span>
+                    <span>{tier.risk}</span>
+                  </div>
+                </div>
+                <p className="mb-2 text-sm">{tier.bestFor}</p>
+                <p className="text-sm text-muted-foreground">
+                  {tier.playstyle}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <div className="scroll-reveal rounded-xl border border-border bg-white/5 p-6">
+            <h3 className="mb-4 text-xl font-bold">Route Notes</h3>
+            <ul className="grid gap-3 md:grid-cols-2">
+              {locationHighlights.map((item) => (
+                <li key={item} className="flex items-start gap-2 text-sm">
+                  <MapPin className="mt-0.5 h-4 w-4 flex-shrink-0 text-[hsl(var(--nav-theme-light))]" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="brainrots" className="px-4 py-20">
+        <div className="container mx-auto max-w-6xl">
+          <div className="mb-12 text-center">
+            <h2 className="scroll-reveal mb-4 text-4xl font-bold md:text-5xl">
+              Be a Lucky Block{" "}
+              <span className="text-[hsl(var(--nav-theme-light))]">
+                Brainrots
+              </span>
+            </h2>
+            <p className="scroll-reveal text-lg text-muted-foreground">
+              Brainrots are your core reward loop: unlock them, get them home,
+              and turn them into passive income.
+            </p>
+          </div>
+
+          <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
+            <div className="scroll-reveal rounded-xl border border-border bg-white/5 p-6">
+              <h3 className="mb-4 text-xl font-bold">Why Brainrots Matter</h3>
+              <ul className="space-y-3">
+                {brainrotHighlights.map((item) => (
+                  <li key={item} className="flex items-start gap-2 text-sm">
+                    <Coins className="mt-0.5 h-4 w-4 flex-shrink-0 text-[hsl(var(--nav-theme-light))]" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="scroll-reveal rounded-xl border border-border bg-white/5 p-6">
+              <h3 className="mb-4 text-xl font-bold">
+                Special Brainrot Watchlist
+              </h3>
+              <div className="grid gap-3">
+                {specialBrainrots.map((item) => (
+                  <div
+                    key={item}
+                    className="rounded-lg border border-[hsl(var(--nav-theme)/0.25)] bg-[hsl(var(--nav-theme)/0.08)] p-4"
+                  >
+                    <div className="flex items-center gap-2">
+                      <Star className="h-4 w-4 text-[hsl(var(--nav-theme-light))]" />
+                      <span className="font-semibold">{item}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="trading" className="px-4 py-20 bg-white/[0.02]">
+        <div className="container mx-auto max-w-5xl">
+          <div className="mb-12 text-center">
+            <h2 className="scroll-reveal mb-4 text-4xl font-bold md:text-5xl">
+              Be a Lucky Block{" "}
+              <span className="text-[hsl(var(--nav-theme-light))]">
+                Trading Guide
+              </span>
+            </h2>
+            <p className="scroll-reveal text-lg text-muted-foreground">
+              Trade when your base is already stable, not when your whole
+              progression still depends on one strong pull.
+            </p>
+          </div>
+
+          <div className="grid gap-4 md:grid-cols-2">
+            {tradingHighlights.map((item) => (
+              <div
+                key={item}
+                className="scroll-reveal rounded-xl border border-border bg-white/5 p-6"
+              >
+                <div className="mb-3 flex items-center gap-2 text-[hsl(var(--nav-theme-light))]">
+                  <Users className="h-5 w-5" />
+                  <span className="font-semibold">Trading Note</span>
+                </div>
+                <p className="text-sm text-muted-foreground">{item}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* FAQ Section */}
+      <section id="base" className="px-4 py-20">
+        <div className="container mx-auto max-w-6xl">
+          <div className="mb-12 text-center">
+            <h2 className="scroll-reveal mb-4 text-4xl font-bold md:text-5xl">
+              Be a Lucky Block{" "}
+              <span className="text-[hsl(var(--nav-theme-light))]">
+                Base & Offline Cash
+              </span>
+            </h2>
+            <p className="scroll-reveal text-lg text-muted-foreground">
+              Your base is where every run becomes real progress, because safe
+              deliveries turn into passive income.
+            </p>
+          </div>
+
+          <div className="mb-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+            {baseFlow.map((item) => (
+              <div
+                key={item.title}
+                className="scroll-reveal rounded-xl border border-border bg-white/5 p-6"
+              >
+                <h3 className="mb-3 text-xl font-bold">{item.title}</h3>
+                <p className="text-sm text-muted-foreground">
+                  {item.description}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <div className="scroll-reveal rounded-xl border border-border bg-white/5 p-6">
+            <h3 className="mb-4 text-xl font-bold">Offline Cash Priorities</h3>
+            <ul className="grid gap-3 md:grid-cols-2">
+              {offlineCash.map((item) => (
+                <li key={item} className="flex items-start gap-2 text-sm">
+                  <House className="mt-0.5 h-4 w-4 flex-shrink-0 text-[hsl(var(--nav-theme-light))]" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="upgrades" className="px-4 py-20 bg-white/[0.02]">
+        <div className="container mx-auto max-w-6xl">
+          <div className="mb-12 text-center">
+            <h2 className="scroll-reveal mb-4 text-4xl font-bold md:text-5xl">
+              Be a Lucky Block{" "}
+              <span className="text-[hsl(var(--nav-theme-light))]">
+                Upgrades & Escape Tips
+              </span>
+            </h2>
+            <p className="scroll-reveal text-lg text-muted-foreground">
+              Early progress is mostly about moving faster, banking cleaner
+              runs, and escaping with your best pulls.
+            </p>
+          </div>
+
+          <div className="mb-8 grid gap-4 md:grid-cols-3">
+            {upgradeLadder.map((item) => (
+              <div
+                key={item.stage}
+                className="scroll-reveal rounded-xl border border-border bg-white/5 p-6"
+              >
+                <p className="mb-2 text-sm text-[hsl(var(--nav-theme-light))]">
+                  {item.stage}
+                </p>
+                <h3 className="mb-3 text-xl font-bold">{item.focus}</h3>
+                <p className="text-sm text-muted-foreground">{item.reason}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="scroll-reveal rounded-xl border border-border bg-white/5 p-6">
+            <h3 className="mb-4 text-xl font-bold">Guard Escape Checklist</h3>
+            <ul className="grid gap-3 md:grid-cols-2">
+              {guardTips.map((item) => (
+                <li key={item} className="flex items-start gap-2 text-sm">
+                  <Shield className="mt-0.5 h-4 w-4 flex-shrink-0 text-[hsl(var(--nav-theme-light))]" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="events" className="px-4 py-20">
+        <div className="container mx-auto max-w-6xl">
+          <div className="mb-12 text-center">
+            <h2 className="scroll-reveal mb-4 text-4xl font-bold md:text-5xl">
+              Be a Lucky Block{" "}
+              <span className="text-[hsl(var(--nav-theme-light))]">
+                Weekly Updates & Events
+              </span>
+            </h2>
+            <p className="scroll-reveal text-lg text-muted-foreground">
+              Be a Lucky Block runs on a clear Saturday patch rhythm, with
+              Roblox event pages acting as the fastest public update tracker.
+            </p>
+          </div>
+
+          <div className="mb-8 grid gap-4 md:grid-cols-3">
+            {patchCards.map((card) => (
+              <a
+                key={card.title}
+                href={card.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="scroll-reveal block rounded-xl border border-border bg-white/5 p-6 transition hover:border-[hsl(var(--nav-theme)/0.5)] hover:bg-white/10"
+              >
+                <div className="mb-3 flex items-center justify-between gap-2">
+                  <span className="rounded-full border border-[hsl(var(--nav-theme)/0.25)] bg-[hsl(var(--nav-theme)/0.08)] px-3 py-1 text-xs font-semibold text-[hsl(var(--nav-theme-light))]">
+                    {card.tag}
+                  </span>
+                  <span className="text-xs text-muted-foreground">
+                    {card.date}
+                  </span>
+                </div>
+                <h3 className="mb-3 text-xl font-bold">{card.title}</h3>
+                <p className="text-sm text-muted-foreground">
+                  {card.description}
+                </p>
+              </a>
+            ))}
+          </div>
+
+          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+            {communityCards.map((card) => (
+              <a
+                key={card.title}
+                href={card.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="scroll-reveal rounded-xl border border-border bg-white/5 p-6 transition hover:border-[hsl(var(--nav-theme)/0.5)] hover:bg-white/10"
+              >
+                <h3 className="mb-2 text-lg font-bold">{card.title}</h3>
+                <p className="mb-4 text-sm text-muted-foreground">
+                  {card.subtitle}
+                </p>
+                <span className="inline-flex items-center gap-2 text-sm font-semibold text-[hsl(var(--nav-theme-light))]">
+                  {card.buttonLabel}
+                  <ArrowRight className="h-4 w-4" />
+                </span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="px-4 py-20 bg-white/[0.02]">
+        <div className="container mx-auto max-w-5xl">
+          <div className="mb-12 text-center">
+            <h2 className="scroll-reveal mb-4 text-4xl font-bold md:text-5xl">
+              {t.whatIs.title}{" "}
+              <span className="text-[hsl(var(--nav-theme-light))]">
+                {t.whatIs.titleHighlight}
+              </span>
+            </h2>
+            <p className="scroll-reveal mx-auto max-w-3xl text-lg text-muted-foreground">
+              {t.whatIs.description}
+            </p>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-3">
+            {t.whatIs.features.map((feature: any) => (
+              <div
+                key={feature.title}
+                className="scroll-reveal rounded-xl border border-border bg-white/5 p-6 transition hover:border-[hsl(var(--nav-theme)/0.5)]"
+              >
+                <Zap className="mb-4 h-12 w-12 text-[hsl(var(--nav-theme-light))]" />
+                <h3 className="mb-2 text-xl font-bold">{feature.title}</h3>
+                <p className="text-sm text-muted-foreground">
+                  {feature.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <Suspense fallback={<LoadingPlaceholder />}>
         <FAQSection
           title={t.faq.title}
           titleHighlight={t.faq.titleHighlight}
           subtitle={t.faq.subtitle}
-          questions={t.faq.questions}
+          questions={faqItems}
         />
       </Suspense>
 
-      {/* CTA Section */}
       <Suspense fallback={<LoadingPlaceholder />}>
         <CTASection
           title={t.cta.title}
           description={t.cta.description}
           joinCommunity={t.cta.joinCommunity}
           joinGame={t.cta.joinGame}
+          joinCommunityHref={OFFICIAL_LINKS.discord}
+          joinGameHref={OFFICIAL_LINKS.game}
         />
       </Suspense>
 
-      {/* Footer */}
-      <footer className="bg-white/[0.02] border-t border-border">
+      <footer className="border-t border-border bg-white/[0.02]">
         <div className="container mx-auto px-4 py-12">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-            {/* Brand */}
-            <div className="col-span-1 md:col-span-1">
-              <h3 className="text-xl font-bold mb-4 text-[hsl(var(--nav-theme-light))]">{t.footer.title}</h3>
-              <p className="text-sm text-muted-foreground mb-4">{t.footer.description}</p>
+          <div className="mb-8 grid grid-cols-1 gap-8 md:grid-cols-4">
+            <div>
+              <h3 className="mb-4 text-xl font-bold text-[hsl(var(--nav-theme-light))]">
+                {t.footer.title}
+              </h3>
+              <p className="text-sm text-muted-foreground">
+                {t.footer.description}
+              </p>
             </div>
 
-            {/* Resources */}
             <div>
-              <h4 className="font-semibold mb-4">{t.footer.resources}</h4>
+              <h4 className="mb-4 font-semibold">{t.footer.resources}</h4>
               <ul className="space-y-2 text-sm">
                 <li>
-                  <a href="#codes" className="text-muted-foreground hover:text-[hsl(var(--nav-theme-light))] transition">
+                  <a
+                    href="#codes"
+                    className="text-muted-foreground transition hover:text-[hsl(var(--nav-theme-light))]"
+                  >
                     {t.footer.activeCodes}
                   </a>
                 </li>
                 <li>
-                  <a href="#training-paths" className="text-muted-foreground hover:text-[hsl(var(--nav-theme-light))] transition">
+                  <a
+                    href="#beginner"
+                    className="text-muted-foreground transition hover:text-[hsl(var(--nav-theme-light))]"
+                  >
                     {t.footer.trainingGuides}
                   </a>
                 </li>
                 <li>
-                  <a href="#breathing-tier" className="text-muted-foreground hover:text-[hsl(var(--nav-theme-light))] transition">
+                  <a
+                    href="#locations"
+                    className="text-muted-foreground transition hover:text-[hsl(var(--nav-theme-light))]"
+                  >
                     {t.footer.breathingStyles}
                   </a>
                 </li>
                 <li>
-                  <a href="#oni-route" className="text-muted-foreground hover:text-[hsl(var(--nav-theme-light))] transition">
+                  <a
+                    href="#base"
+                    className="text-muted-foreground transition hover:text-[hsl(var(--nav-theme-light))]"
+                  >
                     {t.footer.clanGuides}
                   </a>
                 </li>
               </ul>
             </div>
 
-            {/* Community */}
             <div>
-              <h4 className="font-semibold mb-4">{t.footer.moreTools}</h4>
+              <h4 className="mb-4 font-semibold">{t.footer.moreTools}</h4>
               <ul className="space-y-2 text-sm">
                 <li>
-                  <a href="https://discord.com/invite/slayerbound" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-[hsl(var(--nav-theme-light))] transition">
+                  <a
+                    href={OFFICIAL_LINKS.discord}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-muted-foreground transition hover:text-[hsl(var(--nav-theme-light))]"
+                  >
                     {t.footer.discord}
                   </a>
                 </li>
                 <li>
-                  <a href="https://trello.com/b/7IS1N5PR/slayerbound-official-trello" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-[hsl(var(--nav-theme-light))] transition">
+                  <a
+                    href={OFFICIAL_LINKS.x}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-muted-foreground transition hover:text-[hsl(var(--nav-theme-light))]"
+                  >
                     {t.footer.trello}
                   </a>
                 </li>
                 <li>
-                  <a href="https://www.roblox.com/games/113829431520841/Slayerbound" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-[hsl(var(--nav-theme-light))] transition">
+                  <a
+                    href={OFFICIAL_LINKS.group}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-muted-foreground transition hover:text-[hsl(var(--nav-theme-light))]"
+                  >
+                    Official Roblox Group
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href={OFFICIAL_LINKS.game}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-muted-foreground transition hover:text-[hsl(var(--nav-theme-light))]"
+                  >
                     {t.footer.playNow}
                   </a>
                 </li>
               </ul>
             </div>
 
-            {/* Legal */}
             <div>
-              <h4 className="font-semibold mb-4">Legal</h4>
+              <h4 className="mb-4 font-semibold">Legal</h4>
               <ul className="space-y-2 text-sm">
                 <li>
-                  <Link href="/en/about" className="text-muted-foreground hover:text-[hsl(var(--nav-theme-light))] transition">
+                  <Link
+                    href="/about"
+                    className="text-muted-foreground transition hover:text-[hsl(var(--nav-theme-light))]"
+                  >
                     About
                   </Link>
                 </li>
                 <li>
-                  <Link href="/en/privacy-policy" className="text-muted-foreground hover:text-[hsl(var(--nav-theme-light))] transition">
+                  <Link
+                    href="/privacy-policy"
+                    className="text-muted-foreground transition hover:text-[hsl(var(--nav-theme-light))]"
+                  >
                     {t.footer.privacyPolicy}
                   </Link>
                 </li>
                 <li>
-                  <Link href="/en/terms-of-service" className="text-muted-foreground hover:text-[hsl(var(--nav-theme-light))] transition">
+                  <Link
+                    href="/terms-of-service"
+                    className="text-muted-foreground transition hover:text-[hsl(var(--nav-theme-light))]"
+                  >
                     {t.footer.termsOfService}
                   </Link>
                 </li>
                 <li>
-                  <Link href="/en/copyright" className="text-muted-foreground hover:text-[hsl(var(--nav-theme-light))] transition">
+                  <Link
+                    href="/copyright"
+                    className="text-muted-foreground transition hover:text-[hsl(var(--nav-theme-light))]"
+                  >
                     Copyright
                   </Link>
                 </li>
@@ -1344,12 +1173,11 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Copyright */}
-          <div className="pt-8 border-t border-border text-center text-sm text-muted-foreground">
+          <div className="border-t border-border pt-8 text-center text-sm text-muted-foreground">
             <p>{t.footer.copyright}</p>
           </div>
         </div>
       </footer>
     </div>
-  )
+  );
 }

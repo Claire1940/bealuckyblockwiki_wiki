@@ -1,13 +1,13 @@
 {
   "seo": {
     "home": {
-      "title": "Slayerbound Wiki - Codes, Tier List, Units & Guides | Slayerbound Roblox",
-      "description": "Complete Slayerbound Wiki resource hub! Get the latest working codes, tier lists, unit guides, action RPG strategies, and wiki for Slayerbound Roblox game. Master every wave with our comprehensive guides.",
-      "keywords": "Slayerbound Wiki, Slayerbound, Slayerbound codes, Slayerbound tier list, Slayerbound units, Slayerbound guide, Roblox action RPG, anime action RPG, Roblox codes, action RPG game, anime game codes",
-      "ogTitle": "Slayerbound Wiki - Codes, Tier List, Units & Guides",
-      "ogDescription": "Complete Slayerbound Wiki resource hub! Get the latest working codes, tier lists, unit guides, action RPG strategies, and wiki for Slayerbound Roblox game.",
-      "twitterTitle": "Slayerbound Wiki - Codes, Tier List, Units & Guides",
-      "twitterDescription": "Complete Slayerbound Wiki resource hub! Get the latest working codes, tier lists, unit guides, and action RPG strategies."
+      "title": "Be A Lucky Block Wiki - Codes, Brainrots & Tips",
+      "description": "Be A Lucky Block Wiki with active codes, brainrot guides, locations, trading tips, upgrades, and weekly update coverage for Roblox players today.",
+      "keywords": "Be A Lucky Block Wiki, Be a Lucky Block, Be a Lucky Block codes, brainrots, locations, trading, upgrades, Roblox",
+      "ogTitle": "Be A Lucky Block Wiki - Codes, Brainrots & Tips",
+      "ogDescription": "Track Be a Lucky Block codes, routes, brainrots, trading tips, upgrades, and weekly Roblox updates in one fan-made hub.",
+      "twitterTitle": "Be A Lucky Block Wiki - Codes, Brainrots & Tips",
+      "twitterDescription": "Track Be a Lucky Block codes, routes, brainrots, trading tips, upgrades, and weekly Roblox updates."
     }
   },
   "nav": {},
@@ -26,38 +26,38 @@
     "readMore": "Read More"
   },
   "hero": {
-    "badge": "Master Demon Slayer Combat in the Ultimate Roblox RPG Experience",
-    "title": "Slayerbound Wiki",
-    "description": "Your ultimate hub for Slayerbound! Master breathing styles, unlock powerful clans, and dominate demon battles. Get working codes, clan tier lists, training guides, and boss strategies to become the ultimate demon slayer!",
-    "getFreeCodesCTA": "Get Free Codes",
-    "playOnRobloxCTA": "Play on Roblox",
+    "badge": "Rainbow Brainrot Steal-and-Run Tycoon",
+    "title": "Be A Lucky Block Wiki",
+    "description": "Master Be a Lucky Block with fresh codes, brainrot guides, luck routes, trading tips, upgrade advice, and weekly update coverage for Roblox players.",
+    "getFreeCodesCTA": "Get Be a Lucky Block Codes",
+    "playOnRobloxCTA": "Play Be a Lucky Block on Roblox",
     "stats": {
       "stat1": {
-        "value": "300K+",
-        "label": "Total Visits"
+        "value": "62K+",
+        "label": "Players Online"
       },
       "stat2": {
-        "value": "1.2K",
-        "label": "Discord Members"
+        "value": "34M+",
+        "label": "Total Visits"
       },
       "stat3": {
-        "value": "10+",
+        "value": "1",
         "label": "Active Codes"
       },
       "stat4": {
-        "value": "Daily",
-        "label": "Updates"
+        "value": "Weekly",
+        "label": "Update Schedule"
       }
     }
   },
   "gameFeature": {
-    "title": "Slayerbound Trailer",
-    "description": "Master breathing styles, unlock powerful clans, and dominate demon battles in this action-packed Demon Slayer RPG experience on Roblox!"
+    "title": "Be a Lucky Block Gameplay",
+    "description": "Watch a current high-interest Be a Lucky Block video focused on better luck routes, standout pulls, and the late-game special brainrot chase."
   },
   "tools": {
-    "title": "Slayerbound",
+    "title": "Be A Lucky Block",
     "titleHighlight": "Resources",
-    "subtitle": "Jump to any section below",
+    "subtitle": "Jump straight to codes, routes, brainrots, trading, and update coverage",
     "codes": {
       "title": "Codes",
       "description": "Get free rewards"
@@ -125,135 +125,83 @@
   },
   "whatIs": {
     "title": "What is",
-    "titleHighlight": "Slayerbound?",
-    "description": "Slayerbound is a Demon Slayer-themed action RPG on Roblox. Master breathing styles, unlock powerful clans, and battle demons in intense combat.",
+    "titleHighlight": "Be a Lucky Block?",
+    "description": "Be a Lucky Block is a Roblox simulator where you travel farther for better luck, survive the trip home, and convert Brainrots into passive cash for your base.",
     "features": [
       {
-        "title": "Breathing Styles",
-        "description": "Master powerful breathing techniques like Flame, Wind, and Water"
+        "title": "Distance-Based Luck",
+        "description": "Farther destinations improve your odds, but every extra step makes the return more dangerous."
       },
       {
-        "title": "Clan System",
-        "description": "Unlock and upgrade powerful clans with unique abilities"
+        "title": "Brainrot Economy",
+        "description": "Bring Brainrots home to build passive income that keeps running even while you are offline."
       },
       {
-        "title": "Demon Battles",
-        "description": "Fight challenging demons and bosses to earn rewards"
+        "title": "Steal, Escape, Upgrade",
+        "description": "Each run is a loop of chasing higher luck, escaping guards, and reinvesting into better routes."
       }
     ]
   },
   "faq": {
     "title": "Frequently Asked",
     "titleHighlight": "Questions",
-    "subtitle": "Everything you need to know about Slayerbound",
+    "subtitle": "Quick answers for new and returning Be a Lucky Block players",
     "questions": [
       {
-        "question": "How do I attack and block in Slayerbound?",
-        "answer": "LMB = Attack, RMB = Heavy Attack, F = Block."
+        "question": "How often does Be a Lucky Block update?",
+        "answer": "The game advertises a weekly Saturday update schedule."
       },
       {
-        "question": "How do I run in Slayerbound?",
-        "answer": "Double-tap W (W+W) to run."
+        "question": "What do farther destinations do?",
+        "answer": "Farther destinations give you better luck, which means stronger pull potential if you can make it back home."
       },
       {
-        "question": "How do I open menu and breathing in Slayerbound?",
-        "answer": "M = Menu, G = Breathing."
+        "question": "Why do Brainrots matter?",
+        "answer": "Brainrots are your base economy. Once secured at home, they keep earning cash for you, including while you are offline."
       },
       {
-        "question": "How do I use skill keys in Slayerbound?",
-        "answer": "Use 1-9 for skills."
+        "question": "How do I redeem codes?",
+        "answer": "Open the Shop menu, go to the Codes section, enter the code, and press Verify."
       },
       {
-        "question": "How do I redeem Slayerbound codes?",
-        "answer": "Open the Codes button/menu, input code, then redeem/enter."
+        "question": "What happens after the guards roll the Lucky Block?",
+        "answer": "Once the Lucky Block is rolled, you need to escape back to base before the guards catch you."
       },
       {
-        "question": "Why does a Slayerbound code not work?",
-        "answer": "Most common reasons: expired, typo, already used."
+        "question": "Where should I track new codes and updates first?",
+        "answer": "Watch the Saturday patch cycle, Roblox event pages, and the official Discord for the fastest announcement flow."
       },
       {
-        "question": "Are Slayerbound codes case-sensitive?",
-        "answer": "Treat them as case-sensitive and paste exactly as listed."
-      },
-      {
-        "question": "What rewards do Slayerbound codes usually give?",
-        "answer": "Common rewards include Spins, Yen, and specific reset effects."
-      },
-      {
-        "question": "Where should I track new Slayerbound codes first?",
-        "answer": "Official Discord, Roblox game page/community posts, and active guide trackers."
-      },
-      {
-        "question": "Is there an official Slayerbound Trello?",
-        "answer": "Yes, an official Slayerbound Trello link is publicly shared."
-      },
-      {
-        "question": "What training paths are available in Slayerbound?",
-        "answer": "Flame, Wind, and Water are the main training paths."
-      },
-      {
-        "question": "What does Slayerbound Flame training require?",
-        "answer": "Collect 40 Oni Horns and defeat strong Oni enemies."
-      },
-      {
-        "question": "What does Slayerbound Wind training require?",
-        "answer": "Fight Giga Horn boss in Demon Camp until the horn drops."
-      },
-      {
-        "question": "What does Slayerbound Water training require?",
-        "answer": "Complete parkour challenge and break the rock. Final step costs 2,000 Yen per attempt."
-      },
-      {
-        "question": "Which Slayerbound code can reset breathing/demon art?",
-        "answer": "Example: 1KLIKES resets breathing/demon art and may also reset race."
-      },
-      {
-        "question": "Are there stats-reset codes in Slayerbound?",
-        "answer": "Yes, milestone codes include stats reset entries."
-      },
-      {
-        "question": "Do Slayerbound code pools change often?",
-        "answer": "Yes, lists update frequently around milestones and bug-fix windows."
-      },
-      {
-        "question": "Are exact boss drop rates known in Slayerbound?",
-        "answer": "Drop rates are not publicly confirmed by developers."
-      },
-      {
-        "question": "What is the best Yen farming route in Slayerbound?",
-        "answer": "Redeem active codes first, then follow progression routes while managing costs."
-      },
-      {
-        "question": "Should I commit to one build early in Slayerbound?",
-        "answer": "Not recommended—test routes and controls first, then use resets strategically."
+        "question": "What code should I use first?",
+        "answer": "The current starter code covered on the homepage is RELEASE, which gives Brr Brr Patapim."
       }
     ]
   },
   "cta": {
-    "title": "Ready to Master Slayerbound?",
-    "description": "Join the Slayerbound community on Discord to share strategies, find teammates, and get the latest codes!",
-    "joinCommunity": "Join Discord",
-    "joinGame": "Play on Roblox"
+    "title": "Ready to Build Your Be a Lucky Block Route?",
+    "description": "Join the official Be a Lucky Block Discord for update alerts, then jump back into Roblox to test new routes, brainrots, and event drops.",
+    "joinCommunity": "Join Be a Lucky Block Discord",
+    "joinGame": "Play Be a Lucky Block on Roblox"
   },
   "footer": {
-    "title": "Slayerbound",
-    "description": "Your complete resource hub for Slayerbound. Find codes, guides, training paths, and strategies to master breathing styles and dominate demon battles.",
+    "title": "Be A Lucky Block Wiki",
+    "description": "Your fan-made hub for Be a Lucky Block codes, routes, brainrots, trading notes, base growth, and weekly update tracking.",
     "resources": "Resources",
     "activeCodes": "Active Codes",
-    "trainingGuides": "Training Guides",
-    "breathingStyles": "Breathing Styles",
-    "clanGuides": "Clan Guides",
+    "trainingGuides": "Beginner Routes",
+    "breathingStyles": "Luck & Locations",
+    "clanGuides": "Base & Upgrades",
     "moreTools": "Community",
     "discord": "Official Discord",
-    "trello": "Official Trello",
-    "playNow": "Play on Roblox",
-    "copyright": "© 2026 Slayerbound Wiki. Not affiliated with Roblox Corporation or the developers of Slayerbound.",
+    "trello": "Official X",
+    "playNow": "Play Be a Lucky Block on Roblox",
+    "copyright": "© 2026 Be A Lucky Block Wiki. Not affiliated with Roblox Corporation or the developers of Be a Lucky Block.",
     "privacyPolicy": "Privacy Policy",
     "termsOfService": "Terms of Service"
   },
   "homepage": {
     "codes": {
-      "title": "Slayerbound",
+      "title": "Be a Lucky Block",
       "titleHighlight": "Codes",
       "subtitle": "Get free spins, yen, and resets to boost your progression",
       "cta": "View All Codes & Redemption Guide",
@@ -273,14 +221,14 @@
       }
     },
     "redeemGuide": {
-      "title": "Slayerbound",
+      "title": "Be a Lucky Block",
       "titleHighlight": "Redeem Guide",
       "subtitle": "Follow these steps to redeem codes successfully",
       "steps": [
         {
           "step": 1,
           "title": "Launch Game",
-          "detail": "Open Slayerbound in Roblox"
+          "detail": "Open Be a Lucky Block in Roblox"
         },
         {
           "step": 2,
@@ -300,7 +248,7 @@
       ]
     },
     "trainingPaths": {
-      "title": "Slayerbound",
+      "title": "Be a Lucky Block",
       "titleHighlight": "Training Paths",
       "subtitle": "Choose your training path: Flame, Wind, or Water",
       "paths": [
@@ -328,7 +276,7 @@
       ]
     },
     "breathingTier": {
-      "title": "Slayerbound",
+      "title": "Be a Lucky Block",
       "titleHighlight": "Breathing Tier List",
       "subtitle": "Compare breathing styles by PvE/PvP performance and difficulty",
       "dataNote": "Community testing data - rankings updated regularly",
@@ -373,7 +321,7 @@
       }
     },
     "demonArtTier": {
-      "title": "Slayerbound",
+      "title": "Be a Lucky Block",
       "titleHighlight": "Demon Art Tier List",
       "subtitle": "Demon Art power rankings and difficulty matrix",
       "statusBadge": "Coming Soon",
@@ -391,7 +339,7 @@
       "ctaText": "Track updates on Trello/Discord"
     },
     "oniRoute": {
-      "title": "Slayerbound",
+      "title": "Be a Lucky Block",
       "titleHighlight": "Oni Route",
       "subtitle": "Transform to Oni and unlock Demon Arts",
       "statusBadge": "Guide Available",
@@ -430,7 +378,7 @@
       ]
     },
     "controls": {
-      "title": "Slayerbound",
+      "title": "Be a Lucky Block",
       "titleHighlight": "Controls",
       "subtitle": "Master the keyboard controls for combat",
       "keys": [
@@ -444,7 +392,7 @@
       ]
     },
     "questMap": {
-      "title": "Slayerbound",
+      "title": "Be a Lucky Block",
       "titleHighlight": "Quest Map",
       "subtitle": "Find quest NPCs and training locations",
       "recommendedSequence": "Recommended order: Flame → Water → Wind",
@@ -476,7 +424,7 @@
       ]
     },
     "bossDrops": {
-      "title": "Slayerbound",
+      "title": "Be a Lucky Block",
       "titleHighlight": "Boss Drops",
       "subtitle": "Boss loot and drop requirements",
       "riskNotice": "Boss drops are based on RNG. Keep farming until you get the items you need!",
@@ -510,10 +458,10 @@
       }
     },
     "currencyFarm": {
-      "title": "Slayerbound",
+      "title": "Be a Lucky Block",
       "titleHighlight": "Currency Farm",
       "subtitle": "Best methods to earn Yen efficiently",
-      "disclaimer": "Use these proven methods to maximize your Yen earnings in Slayerbound.",
+      "disclaimer": "Use these proven methods to maximize your Yen earnings in Be a Lucky Block.",
       "methods": [
         {
           "rank": 1,
@@ -542,7 +490,7 @@
       ]
     },
     "resetPlanner": {
-      "title": "Slayerbound",
+      "title": "Be a Lucky Block",
       "titleHighlight": "Reset Planner",
       "subtitle": "Plan your resets strategically - never reset blindly",
       "startQuestion": "What is your current bottleneck?",
@@ -570,7 +518,7 @@
       ]
     },
     "buildPlanner": {
-      "title": "Slayerbound",
+      "title": "Be a Lucky Block",
       "titleHighlight": "Build Planner",
       "subtitle": "Optimize your character build with goal-based planning",
       "dataNote": "Plan your build based on your playstyle and goals",
@@ -636,7 +584,7 @@
       ]
     },
     "thunderBreathing": {
-      "title": "Slayerbound",
+      "title": "Be a Lucky Block",
       "titleHighlight": "Thunder Breathing",
       "subtitle": "Complete guide to unlock Thunder Breathing style",
       "steps": [
@@ -669,9 +617,9 @@
       "location": "Mountain near Snow Village"
     },
     "fastLeveling": {
-      "title": "Slayerbound",
+      "title": "Be a Lucky Block",
       "titleHighlight": "Fast Leveling",
-      "subtitle": "Efficient methods to level up quickly in Slayerbound",
+      "subtitle": "Efficient methods to level up quickly in Be a Lucky Block",
       "methods": [
         {
           "title": "Quest Types",
@@ -706,7 +654,7 @@
       ]
     },
     "finalSelection": {
-      "title": "Slayerbound",
+      "title": "Be a Lucky Block",
       "titleHighlight": "Final Selection",
       "subtitle": "Complete the Final Selection to become an official Slayer",
       "overview": "The Final Selection is a crucial milestone where you prove your worth as a demon slayer. Complete this parkour challenge to earn your Slayer uniform and official status.",
@@ -736,7 +684,7 @@
       }
     },
     "clanSystem": {
-      "title": "Slayerbound",
+      "title": "Be a Lucky Block",
       "titleHighlight": "Clan System",
       "subtitle": "Clan tiers, buffs, and how to reroll your clan",
       "overview": "Clans provide unique buffs and abilities that enhance your character. Each clan has different rarities and special benefits.",

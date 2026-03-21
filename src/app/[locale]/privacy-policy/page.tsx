@@ -1,252 +1,215 @@
-import Link from 'next/link'
-import type { Metadata } from 'next'
-import { buildLanguageAlternates } from '@/lib/i18n-utils'
-import { type Locale } from '@/i18n/routing'
+import type { Metadata } from "next";
+import { Link } from "@/i18n/navigation";
+import { type Locale } from "@/i18n/routing";
+import { buildLanguageAlternates } from "@/lib/i18n-utils";
+import {
+  CONTACT_EMAILS,
+  GAME_NAME,
+  HERO_IMAGE_ALT,
+  HERO_IMAGE_URL,
+  LAST_UPDATED,
+  SITE_NAME,
+  SITE_URL,
+} from "@/lib/site";
 
 interface Props {
-  params: Promise<{ locale: string }>
+  params: Promise<{ locale: string }>;
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { locale } = await params
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.slayerbound.wiki'
-  const path = '/privacy-policy'
+  const { locale } = await params;
+  const path = "/privacy-policy";
 
   return {
-    title: 'Privacy Policy - Slayerbound Wiki',
-    description: 'Slayerbound Wiki Privacy Policy. Learn how we collect, use, and protect your data when you use our Roblox game resource platform. Your privacy matters to us.',
+    title: `Privacy Policy | ${SITE_NAME}`,
+    description: `Read the ${SITE_NAME} Privacy Policy to understand how we handle analytics, cookies, and contact requests for our ${GAME_NAME} fan site.`,
     keywords: [
-      'privacy policy',
-      'Slayerbound Wiki privacy',
-      'data protection',
-      'user privacy',
-      'GDPR compliance',
+      "privacy policy",
+      `${SITE_NAME} privacy`,
+      `${GAME_NAME} privacy`,
+      "cookies policy",
+      "analytics disclosure",
     ],
-    robots: {
-      index: true,
-      follow: true,
-      googleBot: {
-        index: true,
-        follow: true,
-        'max-video-preview': -1,
-        'max-image-preview': 'large',
-        'max-snippet': -1,
-      },
-    },
     openGraph: {
-      type: 'website',
-      locale: locale,
-      url: locale === 'en' ? `${siteUrl}${path}` : `${siteUrl}/${locale}${path}`,
-      siteName: 'Slayerbound Wiki',
-      title: 'Privacy Policy - Slayerbound Wiki',
-      description: 'Learn how we protect your privacy and handle your data.',
+      type: "website",
+      locale,
+      url:
+        locale === "en" ? `${SITE_URL}${path}` : `${SITE_URL}/${locale}${path}`,
+      siteName: SITE_NAME,
+      title: `Privacy Policy | ${SITE_NAME}`,
+      description: `Learn how ${SITE_NAME} collects limited technical data and protects visitor privacy.`,
       images: [
         {
-          url: `${siteUrl}/og-image.jpg`,
-          width: 1200,
-          height: 630,
-          alt: 'Slayerbound Wiki',
+          url: HERO_IMAGE_URL,
+          width: 768,
+          height: 432,
+          alt: HERO_IMAGE_ALT,
         },
       ],
     },
     twitter: {
-      card: 'summary_large_image',
-      title: 'Privacy Policy - Slayerbound Wiki',
-      description: 'Learn how we protect your privacy and handle your data.',
-      images: [`${siteUrl}/og-image.jpg`],
+      card: "summary_large_image",
+      title: `Privacy Policy | ${SITE_NAME}`,
+      description: `Learn how ${SITE_NAME} collects limited technical data and protects visitor privacy.`,
+      images: [HERO_IMAGE_URL],
     },
-    alternates: buildLanguageAlternates(path, locale as Locale, siteUrl),
-  }
+    alternates: buildLanguageAlternates(path, locale as Locale, SITE_URL),
+  };
 }
 
 export default function PrivacyPolicy() {
   return (
     <div className="min-h-screen bg-background">
-      {/* Hero Section */}
-      <section className="relative py-20 px-4 border-b border-border">
+      <section className="border-b border-border px-4 py-20">
         <div className="container mx-auto max-w-4xl text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+          <h1 className="mb-4 text-4xl font-bold text-white md:text-5xl">
             Privacy Policy
           </h1>
-          <p className="text-slate-300 text-lg mb-2">
-            How we collect, use, and protect your information
+          <p className="mb-2 text-lg text-slate-300">
+            How {SITE_NAME} handles analytics, cookies, and contact requests.
           </p>
-          <p className="text-slate-400 text-sm">
-            Last Updated: January 27, 2026
-          </p>
+          <p className="text-sm text-slate-400">Last Updated: {LAST_UPDATED}</p>
         </div>
       </section>
 
-      {/* Content Section */}
-      <section className="py-12 px-4">
+      <section className="px-4 py-12">
         <div className="container mx-auto max-w-4xl">
           <div className="prose prose-invert prose-slate max-w-none">
-            <h2>1. Information Collection</h2>
+            <h2>1. Scope</h2>
             <p>
-              Slayerbound Wiki ("we", "our", or "us") collects minimal information to provide and improve our services.
-              We collect information in the following ways:
+              {SITE_NAME} is an unofficial fan-made resource site for{" "}
+              {GAME_NAME}. This Privacy Policy explains what limited information
+              we may collect when you browse the site and how we use it.
             </p>
+
+            <h2>2. Information We Collect</h2>
             <ul>
-              <li><strong>Automatically Collected Data:</strong> When you visit our website, we automatically collect certain information about your device, including your IP address, browser type, operating system, and browsing behavior through analytics tools.</li>
-              <li><strong>Language Preferences:</strong> We store your language preference in your browser's local storage to enhance your experience.</li>
-              <li><strong>Cookies:</strong> We use cookies and similar tracking technologies to track activity on our website and store certain information.</li>
+              <li>
+                <strong>Technical usage data:</strong> IP address, browser type,
+                device type, page views, referrer data, and approximate location
+                derived from analytics tools.
+              </li>
+              <li>
+                <strong>Preference data:</strong> Theme and language preferences
+                stored locally in your browser so the site remembers your
+                settings.
+              </li>
+              <li>
+                <strong>Contact information:</strong> If you email us, we
+                receive the address and message you choose to send.
+              </li>
             </ul>
 
-            <h2>2. Use of Data</h2>
-            <p>We use the collected information for the following purposes:</p>
+            <h2>3. How We Use Data</h2>
             <ul>
-              <li>To provide, maintain, and improve our website and services</li>
-              <li>To understand how users interact with our content</li>
-              <li>To analyze website traffic and user behavior</li>
-              <li>To detect, prevent, and address technical issues</li>
-              <li>To optimize website performance and user experience</li>
+              <li>Operate, secure, and improve the website.</li>
+              <li>
+                Measure which guides and pages are most useful to visitors.
+              </li>
+              <li>Diagnose bugs, performance problems, and abuse.</li>
+              <li>Respond to support, privacy, or copyright requests.</li>
             </ul>
 
-            <h2>3. Cookies and Analytics</h2>
-            <h3>Google Analytics</h3>
+            <h2>4. Cookies, Analytics, and Advertising</h2>
             <p>
-              We use Google Analytics (GA4) to collect and analyze information about how visitors use our website.
-              Google Analytics collects anonymous information such as:
+              We may use cookies or similar browser storage for site
+              preferences, analytics, and advertising integrations. These tools
+              help us understand traffic patterns and keep the site free to use.
             </p>
             <ul>
-              <li>Pages viewed and time spent on each page</li>
-              <li>Browser type and device information</li>
-              <li>Geographic location (country/city level)</li>
-              <li>Referral sources (how you found our website)</li>
+              <li>
+                Analytics may include page view, click, and device-level
+                behavior reporting.
+              </li>
+              <li>
+                Advertising partners may use cookies subject to their own
+                privacy policies.
+              </li>
+              <li>
+                You can clear or block cookies in your browser settings, though
+                some site preferences may no longer persist.
+              </li>
             </ul>
+
+            <h2>5. Third-Party Services</h2>
             <p>
-              This data is used solely to improve our website experience. You can opt-out of Google Analytics by
-              installing the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" className="text-[hsl(var(--nav-theme-light))] hover:underline">Google Analytics Opt-out Browser Add-on</a>.
+              {SITE_NAME} links to third-party sites such as Roblox, Discord, X,
+              YouTube, and other external resources. Those services operate
+              under their own policies, and we are not responsible for their
+              content or privacy practices.
             </p>
 
-            <h3>Microsoft Clarity</h3>
+            <h2>6. Children&apos;s Privacy</h2>
             <p>
-              We use Microsoft Clarity to understand how users interact with our website through session recordings
-              and heatmaps. Clarity collects:
+              The site is intended for a general audience. We do not knowingly
+              collect personal information from children under 13, except for
+              passive technical data that may be gathered automatically by
+              analytics or advertising tools. If you believe a child has
+              provided us with personal information, email us and we will review
+              the request promptly.
             </p>
+
+            <h2>7. Data Retention and Security</h2>
+            <p>
+              We retain analytics and operational records only as long as
+              reasonably necessary for site operation, troubleshooting, legal
+              compliance, and abuse prevention. No internet service is perfectly
+              secure, but we use reasonable safeguards appropriate for a small
+              informational site.
+            </p>
+
+            <h2>8. Your Choices</h2>
             <ul>
-              <li>Mouse movements, clicks, and scroll behavior</li>
-              <li>Page navigation patterns</li>
-              <li>Device and browser information</li>
-            </ul>
-            <p>
-              All data collected is anonymized and does not include personally identifiable information.
-              Learn more about <a href="https://privacy.microsoft.com/en-us/privacystatement" target="_blank" rel="noopener noreferrer" className="text-[hsl(var(--nav-theme-light))] hover:underline">Microsoft's privacy practices</a>.
-            </p>
-
-            <h3>Managing Cookies</h3>
-            <p>
-              You can control and manage cookies through your browser settings. Please note that disabling cookies
-              may affect your experience on our website. Most browsers allow you to:
-            </p>
-            <ul>
-              <li>View what cookies are stored and delete them individually</li>
-              <li>Block third-party cookies</li>
-              <li>Block all cookies</li>
-              <li>Delete all cookies when you close your browser</li>
+              <li>Block or clear cookies through your browser settings.</li>
+              <li>
+                Use privacy tools or browser extensions to limit analytics
+                tracking.
+              </li>
+              <li>
+                Contact us to request deletion of email correspondence you sent
+                directly to us.
+              </li>
             </ul>
 
-            <h2>4. Third-Party Services</h2>
+            <h2>9. Changes to This Policy</h2>
             <p>
-              Our website may contain links to external websites, including Roblox.com and social media platforms.
-              We are not responsible for the privacy practices or content of these third-party sites. We encourage
-              you to review their privacy policies before providing any personal information.
-            </p>
-            <p>
-              Third-party services we use include:
-            </p>
-            <ul>
-              <li><strong>Google Analytics:</strong> Web analytics service</li>
-              <li><strong>Microsoft Clarity:</strong> Behavioral analytics service</li>
-              <li><strong>Netlify:</strong> Hosting and CDN provider</li>
-            </ul>
-
-            <h2>5. Children's Privacy</h2>
-            <p>
-              Our website is intended for a general audience and does not knowingly collect personal information
-              from children under the age of 13. If you are a parent or guardian and believe your child has
-              provided us with personal information, please contact us immediately, and we will take steps to
-              remove such information.
-            </p>
-            <p>
-              We comply with the Children's Online Privacy Protection Act (COPPA) and do not knowingly collect,
-              use, or disclose personal information from children.
+              We may update this Privacy Policy from time to time. Material
+              changes will be reflected by a new &quot;Last Updated&quot; date
+              on this page.
             </p>
 
-            <h2>6. Data Security</h2>
+            <h2>10. Unofficial Fan Site Notice</h2>
             <p>
-              We implement reasonable security measures to protect the information collected through our website.
-              However, please be aware that no method of transmission over the internet or electronic storage is
-              100% secure. While we strive to protect your information, we cannot guarantee absolute security.
+              {SITE_NAME} is an unofficial fan project. We are not affiliated
+              with Roblox Corporation, xFrozen x Dudes, xFrozenStudios, or the
+              developers/publishers of {GAME_NAME}.
             </p>
 
-            <h2>7. Data Retention</h2>
+            <h2>11. Contact</h2>
             <p>
-              We retain analytics data for as long as necessary to fulfill the purposes outlined in this Privacy Policy,
-              unless a longer retention period is required by law. Analytics data is typically retained for 26 months
-              in Google Analytics.
-            </p>
-
-            <h2>8. Your Rights</h2>
-            <p>
-              Depending on your location, you may have the following rights regarding your information:
-            </p>
-            <ul>
-              <li>The right to access the information we have about you</li>
-              <li>The right to request correction of inaccurate data</li>
-              <li>The right to request deletion of your data</li>
-              <li>The right to opt-out of analytics tracking</li>
-              <li>The right to withdraw consent at any time</li>
-            </ul>
-
-            <h2>9. International Users</h2>
-            <p>
-              Our website is hosted in the United States. If you are accessing our website from outside the United States,
-              please be aware that your information may be transferred to, stored, and processed in the United States or
-              other countries where our service providers operate.
-            </p>
-
-            <h2>10. Changes to Privacy Policy</h2>
-            <p>
-              We reserve the right to update or modify this Privacy Policy at any time. When we make changes, we will
-              update the "Last Updated" date at the top of this page. We encourage you to review this Privacy Policy
-              periodically to stay informed about how we protect your information.
-            </p>
-            <p>
-              Significant changes to this Privacy Policy will be communicated through a notice on our homepage or
-              via other appropriate channels.
-            </p>
-
-            <h2>11. Disclaimer</h2>
-            <p>
-              Slayerbound Wiki is an unofficial fan-made website and is not affiliated with, endorsed by, or associated
-              with Roblox Corporation or the developers of Slayerbound. All game content, trademarks, and assets are
-              the property of their respective owners.
-            </p>
-
-            <h2>12. Contact Information</h2>
-            <p>
-              If you have any questions, concerns, or requests regarding this Privacy Policy or our data practices,
-              please contact us at:
-            </p>
-            <p>
-              <strong>Email:</strong> <a href="mailto:privacy@slayerbound.wiki" className="text-[hsl(var(--nav-theme-light))] hover:underline">privacy@slayerbound.wiki</a>
-            </p>
-            <p>
-              We will respond to all legitimate requests within 30 days.
+              For privacy questions or requests, contact{" "}
+              <a
+                href={`mailto:${CONTACT_EMAILS.privacy}`}
+                className="text-[hsl(var(--nav-theme-light))] hover:underline"
+              >
+                {CONTACT_EMAILS.privacy}
+              </a>
+              .
             </p>
           </div>
         </div>
       </section>
 
-      {/* Back to Home */}
-      <section className="py-8 px-4 border-t border-border">
+      <section className="border-t border-border px-4 py-8">
         <div className="container mx-auto max-w-4xl text-center">
-          <Link href="/" className="text-[hsl(var(--nav-theme-light))] hover:underline">
+          <Link
+            href="/"
+            className="text-[hsl(var(--nav-theme-light))] hover:underline"
+          >
             ← Back to Home
           </Link>
         </div>
       </section>
     </div>
-  )
+  );
 }

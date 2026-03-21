@@ -1,13 +1,13 @@
 {
   "seo": {
     "home": {
-      "title": "Slayerbound Wiki - Codes, Liste de Niveaux, Unités et Guides | Slayerbound Roblox",
-      "description": "Centre de ressources complet Slayerbound Wiki ! Obtenez les derniers codes fonctionnels, listes de niveaux, guides d'unités, stratégies RPG d'action et wiki pour le jeu Slayerbound Roblox. Maîtrisez chaque vague avec nos guides complets !",
-      "keywords": "Slayerbound Wiki, Slayerbound, codes Slayerbound, liste de niveaux Slayerbound, unités Slayerbound, guide Slayerbound, RPG d'action Roblox, RPG d'action anime, codes Roblox, jeu RPG d'action, codes de jeux anime",
-      "ogTitle": "Slayerbound Wiki - Codes, Liste de Niveaux, Unités et Guides",
-      "ogDescription": "Centre de ressources complet Slayerbound Wiki ! Obtenez les derniers codes fonctionnels, listes de niveaux, guides d'unités, stratégies RPG d'action et wiki pour le jeu Slayerbound Roblox.",
-      "twitterTitle": "Slayerbound Wiki - Codes, Liste de Niveaux, Unités et Guides",
-      "twitterDescription": "Centre de ressources complet Slayerbound Wiki ! Obtenez les derniers codes fonctionnels, listes de niveaux, guides d'unités et stratégies RPG d'action."
+      "title": "Be A Lucky Block Wiki - Codes, Liste de Niveaux, Unités et Guides | Be a Lucky Block Roblox",
+      "description": "Centre de ressources complet Be A Lucky Block Wiki ! Obtenez les derniers codes fonctionnels, listes de niveaux, guides d'unités, stratégies RPG d'action et wiki pour le jeu Be a Lucky Block Roblox. Maîtrisez chaque vague avec nos guides complets !",
+      "keywords": "Be A Lucky Block Wiki, Be a Lucky Block, codes Be a Lucky Block, liste de niveaux Be a Lucky Block, unités Be a Lucky Block, guide Be a Lucky Block, RPG d'action Roblox, RPG d'action anime, codes Roblox, jeu RPG d'action, codes de jeux anime",
+      "ogTitle": "Be A Lucky Block Wiki - Codes, Liste de Niveaux, Unités et Guides",
+      "ogDescription": "Centre de ressources complet Be A Lucky Block Wiki ! Obtenez les derniers codes fonctionnels, listes de niveaux, guides d'unités, stratégies RPG d'action et wiki pour le jeu Be a Lucky Block Roblox.",
+      "twitterTitle": "Be A Lucky Block Wiki - Codes, Liste de Niveaux, Unités et Guides",
+      "twitterDescription": "Centre de ressources complet Be A Lucky Block Wiki ! Obtenez les derniers codes fonctionnels, listes de niveaux, guides d'unités et stratégies RPG d'action."
     }
   },
   "nav": {},
@@ -27,8 +27,8 @@
   },
   "hero": {
     "badge": "Maîtrisez le Combat de Pourfendeur de Démons dans l'Expérience RPG Roblox Ultime",
-    "title": "Slayerbound Wiki",
-    "description": "Votre centre ultime pour Slayerbound ! Maîtrisez les styles de respiration, débloquez des clans puissants et dominez les combats de démons. Obtenez des codes fonctionnels, des listes de niveaux de clans, des guides d'entraînement et des stratégies de boss pour devenir le pourfendeur de démons ultime !",
+    "title": "Be A Lucky Block Wiki",
+    "description": "Votre centre ultime pour Be a Lucky Block ! Maîtrisez les styles de respiration, débloquez des clans puissants et dominez les combats de démons. Obtenez des codes fonctionnels, des listes de niveaux de clans, des guides d'entraînement et des stratégies de boss pour devenir le pourfendeur de démons ultime !",
     "getFreeCodesCTA": "Obtenir des Codes Gratuits",
     "playOnRobloxCTA": "Jouer sur Roblox",
     "stats": {
@@ -51,11 +51,11 @@
     }
   },
   "gameFeature": {
-    "title": "Bande-annonce de Slayerbound",
+    "title": "Bande-annonce de Be a Lucky Block",
     "description": "Maîtrisez les styles de respiration, débloquez des clans puissants et dominez les combats de démons dans cette expérience RPG Demon Slayer bourrée d'action sur Roblox !"
   },
   "tools": {
-    "title": "Slayerbound",
+    "title": "Be a Lucky Block",
     "titleHighlight": "Ressources",
     "subtitle": "Accéder à n'importe quelle section ci-dessous",
     "codes": {
@@ -125,8 +125,8 @@
   },
   "whatIs": {
     "title": "Qu'est-ce que",
-    "titleHighlight": "Slayerbound ?",
-    "description": "Slayerbound est un RPG d'action sur Roblox sur le thème de Demon Slayer. Maîtrisez les styles de respiration, débloquez des clans puissants et combattez des démons dans des combats intenses.",
+    "titleHighlight": "Be a Lucky Block ?",
+    "description": "Be a Lucky Block est un RPG d'action sur Roblox sur le thème de Demon Slayer. Maîtrisez les styles de respiration, débloquez des clans puissants et combattez des démons dans des combats intenses.",
     "features": [
       {
         "title": "Styles de Respiration",
@@ -145,99 +145,99 @@
   "faq": {
     "title": "Foire Aux",
     "titleHighlight": "Questions",
-    "subtitle": "Tout ce que vous devez savoir sur Slayerbound",
+    "subtitle": "Tout ce que vous devez savoir sur Be a Lucky Block",
     "questions": [
       {
-        "question": "Comment attaquer et bloquer dans Slayerbound ?",
+        "question": "Comment attaquer et bloquer dans Be a Lucky Block ?",
         "answer": "Clic gauche = Attaque, Clic droit = Attaque lourde, F = Bloquer."
       },
       {
-        "question": "Comment courir dans Slayerbound ?",
+        "question": "Comment courir dans Be a Lucky Block ?",
         "answer": "Appuyez deux fois sur W (W+W) pour courir."
       },
       {
-        "question": "Comment ouvrir le menu et la respiration dans Slayerbound ?",
+        "question": "Comment ouvrir le menu et la respiration dans Be a Lucky Block ?",
         "answer": "M = Menu, G = Respiration."
       },
       {
-        "question": "Comment utiliser les touches de compétence dans Slayerbound ?",
+        "question": "Comment utiliser les touches de compétence dans Be a Lucky Block ?",
         "answer": "Utilisez 1 à 9 pour les compétences."
       },
       {
-        "question": "Comment utiliser les codes Slayerbound ?",
+        "question": "Comment utiliser les codes Be a Lucky Block ?",
         "answer": "Ouvrez le bouton/menu Codes, entrez le code, puis utilisez/entrez."
       },
       {
-        "question": "Pourquoi un code Slayerbound ne fonctionne-t-il pas ?",
+        "question": "Pourquoi un code Be a Lucky Block ne fonctionne-t-il pas ?",
         "answer": "Raisons les plus courantes : expiré, faute de frappe, déjà utilisé."
       },
       {
-        "question": "Les codes Slayerbound sont-ils sensibles à la casse ?",
+        "question": "Les codes Be a Lucky Block sont-ils sensibles à la casse ?",
         "answer": "Considérez-les comme sensibles à la casse et collez-les exactement comme indiqué."
       },
       {
-        "question": "Quelles récompenses les codes Slayerbound donnent-ils généralement ?",
+        "question": "Quelles récompenses les codes Be a Lucky Block donnent-ils généralement ?",
         "answer": "Les récompenses courantes incluent des Tours, des Yen et des effets de réinitialisation spécifiques."
       },
       {
-        "question": "Où dois-je suivre en premier les nouveaux codes Slayerbound ?",
+        "question": "Où dois-je suivre en premier les nouveaux codes Be a Lucky Block ?",
         "answer": "Discord officiel, page de jeu Roblox/publications de la communauté et traqueurs de guides actifs."
       },
       {
-        "question": "Existe-t-il un Trello officiel de Slayerbound ?",
-        "answer": "Oui, un lien Trello officiel de Slayerbound est partagé publiquement."
+        "question": "Existe-t-il un Trello officiel de Be a Lucky Block ?",
+        "answer": "Oui, un lien Trello officiel de Be a Lucky Block est partagé publiquement."
       },
       {
-        "question": "Quels chemins d'entraînement sont disponibles dans Slayerbound ?",
+        "question": "Quels chemins d'entraînement sont disponibles dans Be a Lucky Block ?",
         "answer": "La Flamme, le Vent et l'Eau sont les principaux chemins d'entraînement."
       },
       {
-        "question": "Que nécessite l'entraînement à la Flamme de Slayerbound ?",
+        "question": "Que nécessite l'entraînement à la Flamme de Be a Lucky Block ?",
         "answer": "Collectez 40 Cornes d'Oni et battez de puissants ennemis Oni."
       },
       {
-        "question": "Que nécessite l'entraînement au Vent de Slayerbound ?",
+        "question": "Que nécessite l'entraînement au Vent de Be a Lucky Block ?",
         "answer": "Combattez le boss Giga Corne dans le Camp de Démons jusqu'à ce que la corne tombe."
       },
       {
-        "question": "Que nécessite l'entraînement à l'Eau de Slayerbound ?",
+        "question": "Que nécessite l'entraînement à l'Eau de Be a Lucky Block ?",
         "answer": "Terminez le défi de parkour et brisez le rocher. L'étape finale coûte 2 000 Yen par tentative."
       },
       {
-        "question": "Quel code Slayerbound peut réinitialiser la respiration/l'art démoniaque ?",
+        "question": "Quel code Be a Lucky Block peut réinitialiser la respiration/l'art démoniaque ?",
         "answer": "Exemple : 1KLIKES réinitialise la respiration/l'art démoniaque et peut également réinitialiser la race."
       },
       {
-        "question": "Existe-t-il des codes de réinitialisation des statistiques dans Slayerbound ?",
+        "question": "Existe-t-il des codes de réinitialisation des statistiques dans Be a Lucky Block ?",
         "answer": "Oui, les codes jalons incluent des entrées de réinitialisation des statistiques."
       },
       {
-        "question": "Les pools de codes Slayerbound changent-ils souvent ?",
+        "question": "Les pools de codes Be a Lucky Block changent-ils souvent ?",
         "answer": "Oui, les listes sont mises à jour fréquemment autour des jalons et des fenêtres de correction de bugs."
       },
       {
-        "question": "Les taux de chute exacts des boss sont-ils connus dans Slayerbound ?",
+        "question": "Les taux de chute exacts des boss sont-ils connus dans Be a Lucky Block ?",
         "answer": "Les taux de chute ne sont pas confirmés publiquement par les développeurs."
       },
       {
-        "question": "Quel est le meilleur itinéraire de farm de Yen dans Slayerbound ?",
+        "question": "Quel est le meilleur itinéraire de farm de Yen dans Be a Lucky Block ?",
         "answer": "Utilisez d'abord les codes actifs, puis suivez les itinéraires de progression tout en gérant les coûts."
       },
       {
-        "question": "Dois-je m'engager dans une seule construction au début de Slayerbound ?",
+        "question": "Dois-je m'engager dans une seule construction au début de Be a Lucky Block ?",
         "answer": "Déconseillé - testez d'abord les itinéraires et les commandes, puis utilisez les réinitialisations de manière stratégique."
       }
     ]
   },
   "cta": {
-    "title": "Prêt à maîtriser Slayerbound ?",
-    "description": "Rejoignez la communauté Slayerbound sur Discord pour partager des stratégies, trouver des coéquipiers et obtenir les derniers codes !",
+    "title": "Prêt à maîtriser Be a Lucky Block ?",
+    "description": "Rejoignez la communauté Be a Lucky Block sur Discord pour partager des stratégies, trouver des coéquipiers et obtenir les derniers codes !",
     "joinCommunity": "Rejoindre Discord",
     "joinGame": "Jouer sur Roblox"
   },
   "footer": {
-    "title": "Slayerbound",
-    "description": "Votre centre de ressources complet pour Slayerbound. Trouvez des codes, des guides, des chemins d'entraînement et des stratégies pour maîtriser les styles de respiration et dominer les combats de démons.",
+    "title": "Be a Lucky Block",
+    "description": "Votre centre de ressources complet pour Be a Lucky Block. Trouvez des codes, des guides, des chemins d'entraînement et des stratégies pour maîtriser les styles de respiration et dominer les combats de démons.",
     "resources": "Ressources",
     "activeCodes": "Codes Actifs",
     "trainingGuides": "Guides d'Entraînement",
@@ -247,13 +247,13 @@
     "discord": "Discord Officiel",
     "trello": "Trello Officiel",
     "playNow": "Jouer sur Roblox",
-    "copyright": "© 2026 Slayerbound Wiki. Non affilié à Roblox Corporation ou aux développeurs de Slayerbound.",
+    "copyright": "© 2026 Be A Lucky Block Wiki. Non affilié à Roblox Corporation ou aux développeurs de Be a Lucky Block.",
     "privacyPolicy": "Politique de Confidentialité",
     "termsOfService": "Conditions d'Utilisation"
   },
   "homepage": {
     "codes": {
-      "title": "Slayerbound",
+      "title": "Be a Lucky Block",
       "titleHighlight": "Codes",
       "subtitle": "Obtenez des tours, des yen et des réinitialisations gratuits pour booster votre progression",
       "cta": "Voir Tous les Codes et le Guide d'Utilisation",
@@ -293,14 +293,14 @@
       }
     },
     "redeemGuide": {
-      "title": "Slayerbound",
+      "title": "Be a Lucky Block",
       "titleHighlight": "Guide d'Utilisation",
       "subtitle": "Suivez ces étapes pour utiliser les codes avec succès",
       "steps": [
         {
           "step": 1,
           "title": "Lancer le Jeu",
-          "detail": "Ouvrez Slayerbound dans Roblox"
+          "detail": "Ouvrez Be a Lucky Block dans Roblox"
         },
         {
           "step": 2,
@@ -320,7 +320,7 @@
       ]
     },
     "trainingPaths": {
-      "title": "Slayerbound",
+      "title": "Be a Lucky Block",
       "titleHighlight": "Chemins d'Entraînement",
       "subtitle": "Choisissez votre chemin d'entraînement : Flamme, Vent ou Eau",
       "paths": [
@@ -348,7 +348,7 @@
       ]
     },
     "breathingTier": {
-      "title": "Slayerbound",
+      "title": "Be a Lucky Block",
       "titleHighlight": "Liste des Niveaux de Respiration",
       "subtitle": "Comparez les styles de respiration par performances PvE/PvP et difficulté",
       "dataNote": "Données de test de la communauté - classements mis à jour régulièrement",
@@ -393,7 +393,7 @@
       }
     },
     "demonArtTier": {
-      "title": "Slayerbound",
+      "title": "Be a Lucky Block",
       "titleHighlight": "Liste des Niveaux d'Art Démoniaque",
       "subtitle": "Classement de puissance et matrice de difficulté de l'Art Démoniaque",
       "statusBadge": "Bientôt Disponible",
@@ -411,7 +411,7 @@
       "ctaText": "Suivez les mises à jour sur Trello/Discord"
     },
     "oniRoute": {
-      "title": "Slayerbound",
+      "title": "Be a Lucky Block",
       "titleHighlight": "Voie Oni",
       "subtitle": "Transformez-vous en Oni et débloquez des Arts Démoniaques",
       "statusBadge": "Guide Disponible",
@@ -450,7 +450,7 @@
       ]
     },
     "controls": {
-      "title": "Slayerbound",
+      "title": "Be a Lucky Block",
       "titleHighlight": "Contrôles",
       "subtitle": "Maîtrisez les commandes du clavier pour le combat",
       "keys": [
@@ -485,7 +485,7 @@
       ]
     },
     "questMap": {
-      "title": "Slayerbound",
+      "title": "Be a Lucky Block",
       "titleHighlight": "Carte des Quêtes",
       "subtitle": "Trouvez des PNJ de quête et des lieux d'entraînement",
       "recommendedSequence": "Ordre recommandé : Flamme → Eau → Vent",
@@ -531,7 +531,7 @@
       ]
     },
     "bossDrops": {
-      "title": "Slayerbound",
+      "title": "Be a Lucky Block",
       "titleHighlight": "Butin des Boss",
       "subtitle": "Butin des boss et exigences de chute",
       "riskNotice": "Les butins des boss sont basés sur le RNG. Continuez à farmer jusqu'à ce que vous obteniez les objets dont vous avez besoin !",
@@ -565,10 +565,10 @@
       }
     },
     "currencyFarm": {
-      "title": "Slayerbound",
+      "title": "Be a Lucky Block",
       "titleHighlight": "Ferme de Devises",
       "subtitle": "Meilleures méthodes pour gagner des Yen efficacement",
-      "disclaimer": "Utilisez ces méthodes éprouvées pour maximiser vos gains de Yen dans Slayerbound.",
+      "disclaimer": "Utilisez ces méthodes éprouvées pour maximiser vos gains de Yen dans Be a Lucky Block.",
       "methods": [
         {
           "rank": 1,
@@ -606,7 +606,7 @@
       ]
     },
     "resetPlanner": {
-      "title": "Slayerbound",
+      "title": "Be a Lucky Block",
       "titleHighlight": "Planificateur de Réinitialisation",
       "subtitle": "Planifiez vos réinitialisations de manière stratégique - ne réinitialisez jamais à l'aveugle",
       "startQuestion": "Quel est votre goulot d'étranglement actuel ?",
@@ -634,7 +634,7 @@
       ]
     },
     "buildPlanner": {
-      "title": "Slayerbound",
+      "title": "Be a Lucky Block",
       "titleHighlight": "Planificateur de Construction",
       "subtitle": "Optimisez la construction de votre personnage avec une planification basée sur les objectifs",
       "dataNote": "Planifiez votre construction en fonction de votre style de jeu et de vos objectifs",
@@ -708,7 +708,7 @@
       ]
     },
     "thunderBreathing": {
-      "title": "Slayerbound",
+      "title": "Be a Lucky Block",
       "titleHighlight": "Respiration de la Foudre",
       "subtitle": "Guide complet pour débloquer le style de Respiration de la Foudre",
       "steps": [
@@ -745,9 +745,9 @@
       "location": "Montagne près du Village de Neige"
     },
     "fastLeveling": {
-      "title": "Slayerbound",
+      "title": "Be a Lucky Block",
       "titleHighlight": "Nivellement Rapide",
-      "subtitle": "Méthodes efficaces pour monter de niveau rapidement dans Slayerbound",
+      "subtitle": "Méthodes efficaces pour monter de niveau rapidement dans Be a Lucky Block",
       "methods": [
         {
           "title": "Types de Quêtes",
@@ -782,7 +782,7 @@
       ]
     },
     "finalSelection": {
-      "title": "Slayerbound",
+      "title": "Be a Lucky Block",
       "titleHighlight": "Sélection Finale",
       "subtitle": "Terminez la Sélection Finale pour devenir un Pourfendeur officiel",
       "overview": "La Sélection Finale est une étape cruciale où vous prouvez votre valeur en tant que pourfendeur de démons. Terminez ce défi de parkour pour gagner votre uniforme de Pourfendeur et votre statut officiel.",
@@ -812,7 +812,7 @@
       }
     },
     "clanSystem": {
-      "title": "Slayerbound",
+      "title": "Be a Lucky Block",
       "titleHighlight": "Système de Clan",
       "subtitle": "Niveaux de clan, buffs et comment relancer votre clan",
       "overview": "Les clans offrent des buffs et des capacités uniques qui améliorent votre personnage. Chaque clan a des raretés et des avantages spéciaux différents.",
