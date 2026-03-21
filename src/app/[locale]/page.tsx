@@ -1,27 +1,38 @@
 "use client";
 
-import { Suspense, lazy, useEffect, useState } from "react";
-import { Link } from "@/i18n/navigation";
+import { Suspense, lazy, useState } from "react";
 import {
   ArrowRight,
+  BookOpen,
+  CalendarDays,
   Check,
-  Clock,
+  CircleHelp,
+  Clock3,
   Coins,
+  Compass,
   Copy,
   Gift,
+  Handshake,
   House,
-  MapPin,
+  Layers3,
+  MapPinned,
   MessageCircle,
   Package,
+  PartyPopper,
+  PiggyBank,
+  PlayCircle,
+  Rocket,
   Shield,
   Sparkles,
   Star,
   TrendingUp,
+  TriangleAlert,
+  Trophy,
   Users,
   Zap,
 } from "lucide-react";
 import { useMessages } from "next-intl";
-import { NativeBannerAd, AdBanner } from "@/components/ads";
+import { AdBanner, NativeBannerAd } from "@/components/ads";
 import { VideoFeature } from "@/components/home/VideoFeature";
 import {
   HERO_IMAGE_URL,
@@ -37,11 +48,65 @@ const CTASection = lazy(() => import("@/components/home/CTASection"));
 
 const LoadingPlaceholder = ({ height = "h-64" }: { height?: string }) => (
   <div
-    className={`${height} flex items-center justify-center rounded-xl border border-border bg-white/5 animate-pulse`}
+    className={`${height} flex items-center justify-center rounded-3xl border border-border bg-white/5`}
   >
     <div className="text-muted-foreground">Loading...</div>
   </div>
 );
+
+const sectionTitleClass = "scroll-reveal mb-4 text-4xl font-bold md:text-5xl";
+const panelClass =
+  "scroll-reveal rounded-3xl border border-border bg-white/5 p-6 backdrop-blur-sm";
+const accentPanelClass =
+  "scroll-reveal rounded-3xl border border-[hsl(var(--nav-theme)/0.28)] bg-[linear-gradient(135deg,hsl(var(--nav-theme)/0.14),hsl(var(--nav-theme-light)/0.08))] p-6 backdrop-blur-sm";
+
+function SectionHeading({
+  eyebrow,
+  title,
+  highlight,
+  description,
+}: {
+  eyebrow?: string;
+  title: string;
+  highlight?: string;
+  description: string;
+}) {
+  return (
+    <div className="mb-12 text-center">
+      {eyebrow ? (
+        <p className="scroll-reveal mb-3 text-sm font-semibold uppercase tracking-[0.24em] text-[hsl(var(--nav-theme-light))]">
+          {eyebrow}
+        </p>
+      ) : null}
+      <h2 className={sectionTitleClass}>
+        {title}{" "}
+        {highlight ? (
+          <span className="text-[hsl(var(--nav-theme-light))]">{highlight}</span>
+        ) : null}
+      </h2>
+      <p className="scroll-reveal mx-auto max-w-3xl text-lg text-muted-foreground">
+        {description}
+      </p>
+    </div>
+  );
+}
+
+function MetricCard({
+  label,
+  value,
+}: {
+  label: string;
+  value: string;
+}) {
+  return (
+    <div className={panelClass}>
+      <div className="mb-2 text-2xl font-bold text-[hsl(var(--nav-theme-light))]">
+        {value}
+      </div>
+      <div className="text-sm text-muted-foreground">{label}</div>
+    </div>
+  );
+}
 
 export default function HomePage() {
   const t = useMessages() as any;
@@ -50,54 +115,99 @@ export default function HomePage() {
   const resourceCards = [
     {
       icon: Gift,
-      title: "Codes",
-      description: "Track RELEASE, redeem steps, and new drops first.",
+      title: t.tools.codes.title,
+      description: t.tools.codes.description,
       href: "#codes",
     },
     {
-      icon: TrendingUp,
-      title: "Beginner",
-      description:
-        "Start with short safe routes before you push deeper luck runs.",
-      href: "#beginner",
+      icon: BookOpen,
+      title: t.tools.redeemGuide.title,
+      description: t.tools.redeemGuide.description,
+      href: "#wiki",
     },
     {
-      icon: Package,
-      title: "Brainrots",
-      description: "Learn how pulls, specials, and offline cash fit together.",
-      href: "#brainrots",
+      icon: Compass,
+      title: t.tools.trainingPaths.title,
+      description: t.tools.trainingPaths.description,
+      href: "#beginner-guide",
     },
     {
-      icon: MapPin,
-      title: "Locations",
-      description: "Compare near, mid, and far routes by risk and return.",
+      icon: Sparkles,
+      title: t.tools.breathingTier.title,
+      description: t.tools.breathingTier.description,
+      href: "#luck-guide",
+    },
+    {
+      icon: MapPinned,
+      title: t.tools.demonArtTier.title,
+      description: t.tools.demonArtTier.description,
       href: "#locations",
     },
     {
-      icon: Users,
-      title: "Trading",
-      description:
-        "Trade around duplicates and specials without breaking income.",
-      href: "#trading",
+      icon: Package,
+      title: t.tools.oniRoute.title,
+      description: t.tools.oniRoute.description,
+      href: "#brainrots",
+    },
+    {
+      icon: Handshake,
+      title: t.tools.controls.title,
+      description: t.tools.controls.description,
+      href: "#trading-guide",
     },
     {
       icon: House,
-      title: "Base",
-      description: "Turn safe returns into stronger passive income loops.",
-      href: "#base",
+      title: t.tools.questMap.title,
+      description: t.tools.questMap.description,
+      href: "#base-guide",
     },
     {
-      icon: Zap,
-      title: "Upgrades",
-      description: "Prioritize speed, cash growth, and better route control.",
-      href: "#upgrades",
+      icon: PiggyBank,
+      title: t.tools.bossDrops.title,
+      description: t.tools.bossDrops.description,
+      href: "#offline-cash",
     },
     {
-      icon: Clock,
-      title: "Events",
-      description:
-        "Watch Saturday patches, live events, and official reminders.",
+      icon: Rocket,
+      title: t.tools.currencyFarm.title,
+      description: t.tools.currencyFarm.description,
+      href: "#upgrades-guide",
+    },
+    {
+      icon: Shield,
+      title: t.tools.resetPlanner.title,
+      description: t.tools.resetPlanner.description,
+      href: "#guard-escape",
+    },
+    {
+      icon: CalendarDays,
+      title: t.tools.buildPlanner.title,
+      description: t.tools.buildPlanner.description,
+      href: "#weekly-updates",
+    },
+    {
+      icon: PartyPopper,
+      title: t.tools.thunderBreathing.title,
+      description: t.tools.thunderBreathing.description,
       href: "#events",
+    },
+    {
+      icon: MessageCircle,
+      title: t.tools.fastLeveling.title,
+      description: t.tools.fastLeveling.description,
+      href: "#community",
+    },
+    {
+      icon: CircleHelp,
+      title: t.tools.finalSelection.title,
+      description: t.tools.finalSelection.description,
+      href: "#faq",
+    },
+    {
+      icon: PlayCircle,
+      title: t.tools.clanSystem.title,
+      description: t.tools.clanSystem.description,
+      href: "#video",
     },
   ];
 
@@ -123,6 +233,57 @@ export default function HomePage() {
     "Place your new Brainrot at base to start earning.",
   ];
 
+  const codeInfoChips = [
+    "Free Brainrots speed up early cash generation.",
+    "A fresh server can help if a newly added code does not verify.",
+    "Discord is the fastest place to watch for new drops.",
+  ];
+
+  const wikiStats = [
+    { label: "Developer", value: "xFrozen x Dudes" },
+    { label: "Release Date", value: "2026-02-24" },
+    { label: "Latest Update", value: "2026-03-21" },
+    { label: "Rating", value: "96%" },
+  ];
+
+  const overviewCards = [
+    {
+      title: "What You Are",
+      text: "You play as the Lucky Block itself instead of opening one, which flips the usual Roblox reward loop on its head.",
+    },
+    {
+      title: "Why Distance Matters",
+      text: "Further destinations improve your luck, but each extra step makes the return harder and more expensive to fumble.",
+    },
+    {
+      title: "Why Brainrots Matter",
+      text: "Brainrots are both collection pieces and the base economy that keeps generating cash while you are offline.",
+    },
+  ];
+
+  const coreLoopTimeline = [
+    {
+      step: "1",
+      title: "Head Out",
+      text: "Travel away from base to reach a better luck zone.",
+    },
+    {
+      step: "2",
+      title: "Wait for the Roll",
+      text: "Let the guards roll the Lucky Block and see what you get.",
+    },
+    {
+      step: "3",
+      title: "Escape Back",
+      text: "Run home before greed or guard pressure ruins the pull.",
+    },
+    {
+      step: "4",
+      title: "Build Income",
+      text: "Bring Brainrots home and let them keep paying even when you log off.",
+    },
+  ];
+
   const beginnerTimeline = [
     {
       step: "1",
@@ -136,31 +297,36 @@ export default function HomePage() {
     },
     {
       step: "3",
-      title: "Bank Your First Pulls",
-      text: "Bring early Brainrots home quickly instead of gambling on longer detours.",
+      title: "Bank the First Good Pull",
+      text: "Bring early Brainrots home quickly instead of gambling everything on one extra detour.",
     },
     {
       step: "4",
       title: "Start Passive Income",
-      text: "Place Brainrots at base so your economy keeps moving even when you log off.",
+      text: "Place Brainrots at base so your economy keeps moving even when you are offline.",
+    },
+    {
+      step: "5",
+      title: "Scale Gradually",
+      text: "Push into farther routes only after your early base income already feels reliable.",
     },
   ];
 
   const beginnerDo = [
-    "Redeem the starter code as soon as you enter the game.",
+    "Redeem the starter code as soon as you load into Be a Lucky Block.",
     "Practice short, repeatable runs before testing far routes.",
-    "Turn your first Brainrots into base income immediately.",
+    "Turn early Brainrots into base income immediately.",
     "Rejoin if a fresh code does not work on your current server.",
   ];
 
   const beginnerDont = [
     "Do not force long routes with no safety net.",
     "Do not hold a strong pull too long while guards are nearby.",
-    "Do not ignore passive income while chasing a lucky high roll.",
+    "Do not ignore passive income while chasing one lucky spike.",
     "Do not waste time typing codes manually if you can paste them.",
   ];
 
-  const locationTiers = [
+  const riskRewardCards = [
     {
       tier: "Near Route",
       luck: "Low",
@@ -173,79 +339,211 @@ export default function HomePage() {
       luck: "Medium",
       risk: "Medium",
       bestFor: "Balanced farming after your base is running",
-      playstyle: "Solid value without the longest return path",
+      playstyle: "Solid value without overcommitting",
     },
     {
       tier: "Far Route",
       luck: "High",
       risk: "High",
-      bestFor: "Chasing premium pulls and stronger specials",
-      playstyle: "Big reward ceiling with a much harder escape",
+      bestFor: "Pushing for stronger rolls and standout pulls",
+      playstyle: "Big ceiling with a much harder return",
     },
   ];
 
-  const locationHighlights = [
-    "Near Route: safest first farm for quick cash-ins and early upgrades.",
-    "Mid Route: better luck than spawn-side farming without the longest return path.",
-    "Far Route: strongest normal-route luck and the best place to chase premium pulls.",
-    "Guard Pressure: long return paths make movement speed and clean routes much more important.",
-    "Best Progression: move up one distance tier at a time instead of forcing deep runs too early.",
+  const routeLadder = [
+    "Start with the closest route until you can return cleanly almost every time.",
+    "Move up one layer when your base can absorb a failed run without stalling progress.",
+    "Use far routes when you want ceiling, not when you need guaranteed money.",
   ];
 
-  const brainrotHighlights = [
-    "Current Free Pull: RELEASE gives Brr Brr Patapim.",
-    "Base Economy: Brainrots are your main source of steady income once they are secured at home.",
-    "Offline Earnings: your Brainrots continue generating cash while you are away.",
-    "Core Loop: roll blocks, secure the pull, return to base, and reinvest into better odds.",
-    "Visible Public Lines: recent runs already show Strawberry-themed pulls and multiple higher-tier block lines.",
+  const tipCallouts = [
+    "Distance improves luck, but survival decides whether the run pays.",
+    "The return path matters as much as the roll itself.",
+    "A smaller reward delivered safely beats a bigger reward lost on the way home.",
+    "Passive cash from Brainrots lets you take smarter risks later.",
+  ];
+
+  const locationCards = [
+    {
+      title: "Near Routes",
+      description:
+        "Best for learning timing, understanding guard pressure, and getting stable early deliveries.",
+      range: "Closest band",
+    },
+    {
+      title: "Mid Routes",
+      description:
+        "The balanced layer for players who already have income but still want repeatable returns.",
+      range: "Middle band",
+    },
+    {
+      title: "Far Routes",
+      description:
+        "The highest public luck band, ideal for ceiling runs after your base is already protecting you.",
+      range: "Longest band",
+    },
+  ];
+
+  const routeComparison = [
+    {
+      label: "Reset Speed",
+      near: "Fast",
+      mid: "Balanced",
+      far: "Slowest",
+    },
+    {
+      label: "Luck Ceiling",
+      near: "Starter",
+      mid: "Strong",
+      far: "Best",
+    },
+    {
+      label: "Return Pressure",
+      near: "Forgiving",
+      mid: "Noticeable",
+      far: "Punishing",
+    },
+  ];
+
+  const rarityCards = [
+    {
+      title: "Starter Brainrots",
+      description:
+        "Useful for building your first layer of passive income and stabilizing the base.",
+    },
+    {
+      title: "Standout Brainrots",
+      description:
+        "The pieces that make mid-route farming feel worthwhile and create obvious upgrade momentum.",
+    },
+    {
+      title: "Premium Brainrots",
+      description:
+        "High-interest pulls that drive trade attention, collection status, and event chatter.",
+    },
+  ];
+
+  const brainrotExplainers = [
+    "Brainrots are the main economy piece because they keep generating cash after a run is finished.",
+    "A free Brainrot from RELEASE speeds up the first offline cash loop.",
+    "Collectors care about standout pulls because they double as trading assets and flex pieces.",
+    "The entire homepage works better when players understand that a pull has no value until it reaches base.",
+  ];
+
+  const brainrotFilters = [
+    "Starter Income",
+    "Stable Earner",
+    "Trade Piece",
+    "Special Chase",
   ];
 
   const specialBrainrots = [
-    "Inferno Secret Block",
-    "Divine Block",
-    "Void Special",
-    "Cyborg Block",
-    "Mogging Block Secret",
+    {
+      name: "Inferno Secret Block",
+      note: "Secret-tier chase piece with strong visual recognition.",
+    },
+    {
+      name: "Divine Block",
+      note: "High-attention special that fits premium route runs.",
+    },
+    {
+      name: "Void Special",
+      note: "Good wishlist anchor for players tracking rare pulls.",
+    },
   ];
 
-  const tradingHighlights = [
-    "Best Time to Trade: start after your base income feels stable, not during your first upgrade squeeze.",
-    "Best Pieces to Move: duplicates, event pulls, and spare specials are easier to trade than core earners.",
-    "Trading Hub: one of the main ways players target secrets they missed on normal rolls.",
-    "Community Watchlist: Discord, the Roblox group, X, and YouTube are the fastest places to spot fresh demand.",
+  const raritySpotlight = [
+    "Special Brainrots are natural click magnets because they compress rarity, trade value, and social proof into one card.",
+    "Keep them separated from the general Brainrot section so the homepage supports both broad and high-intent searches.",
+    "Use the community module to validate which special pieces are getting repeated attention this week.",
+  ];
+
+  const wishlistPanel = [
+    "Track secret pieces mentioned in videos and Discord.",
+    "Keep duplicates separate from your long-term keepers.",
+    "Only trade a spotlight piece if your base already feels stable.",
+  ];
+
+  const tradeTips = [
+    "Start trading after your base income feels stable, not during your first upgrade squeeze.",
+    "Move duplicates, event pulls, and spare specials before core earners.",
+    "Use Discord, the Roblox Group, and X to see which pieces suddenly gain attention.",
+  ];
+
+  const valueNotes = [
+    {
+      title: "Best Time to Trade",
+      text: "Trade after a good return, not while you are tilted from a failed run.",
+    },
+    {
+      title: "Best Pieces to Move",
+      text: "Duplicates and extra specials are easier to price than the Brainrots your base depends on.",
+    },
+    {
+      title: "Best Use of Community",
+      text: "Official channels are the fastest way to see when a specific event or special is creating fresh demand.",
+    },
   ];
 
   const baseFlow = [
     {
       title: "Start at Base",
       description:
-        "Load into your base first so you can prepare, check your cash, and open the shop before the first run.",
+        "Load in, check your cash, verify your current route plan, and prepare before you sprint out.",
     },
     {
       title: "Claim the Free Boost",
       description:
-        "Use RELEASE in Shop > Codes to get Brr Brr Patapim and give your base an early income push.",
+        "Use RELEASE in Shop > Codes so your base begins with immediate earning power.",
     },
     {
       title: "Run Short Before Long",
       description:
-        "Use the closest destination first to learn timing, return routes, and guard pressure.",
+        "Use the closest destination first to learn timing, guard pressure, and how much risk feels manageable.",
     },
     {
-      title: "Bank Every Good Haul",
+      title: "Bank Every Worthwhile Haul",
       description:
-        "Once you get a worthwhile Brainrot, head home and secure it instead of risking everything for one extra roll.",
+        "Head home when a pull is already good enough instead of trying to stack one more risky moment.",
     },
   ];
 
-  const offlineCash = [
-    "Claim RELEASE for an immediate starter Brainrot.",
-    "Lock in safe Brainrots at base before ending a session.",
-    "Upgrade enough to reach better luck routes consistently.",
-    "Log off after a productive return, not after an empty run.",
+  const basePriorities = [
+    "Protect the return trip before chasing better ceiling.",
+    "Turn successful runs into dependable passive cash.",
+    "Let base income fund your next route upgrade.",
+    "Use stable earnings to absorb the occasional failed run.",
   ];
 
-  const upgradeLadder = [
+  const baseTips = [
+    "A base with real income changes how aggressively you can route.",
+    "Every safe delivery is more important than one flashy almost-run.",
+    "Your home economy is what turns the homepage advice into repeatable progress.",
+  ];
+
+  const offlineCashSteps = [
+    {
+      title: "End Sessions Smart",
+      text: "Log off after a successful delivery so your Brainrots keep working from a position of strength.",
+    },
+    {
+      title: "Stack Safe Earners",
+      text: "A few reliable Brainrots are better than one volatile chase piece for offline progress.",
+    },
+    {
+      title: "Use Cash for Better Routes",
+      text: "Passive earnings should make the next run cleaner, not just make you greedier.",
+    },
+  ];
+
+  const stackPriorities = [
+    "Starter code first",
+    "Safe route second",
+    "Placed Brainrots third",
+    "Far-route ambition last",
+  ];
+
+  const upgrades = [
     {
       stage: "Early Game",
       focus: "Movement speed",
@@ -253,24 +551,81 @@ export default function HomePage() {
         "More speed makes short runs safer and opens the path to farther destinations with better luck.",
     },
     {
-      stage: "After Stable Income",
-      focus: "Cash growth",
+      stage: "Mid Progression",
+      focus: "Cash efficiency",
       reason:
         "Once you can return home reliably, stronger income lets every farming loop scale faster.",
     },
     {
-      stage: "Mid Progression",
-      focus: "Luck-related value",
+      stage: "After Stability",
+      focus: "Higher-ceiling farming",
       reason:
-        "Better luck matters more once you can survive the longer routes where stronger drops show up.",
+        "Better route value matters most after your base can already absorb the occasional failure.",
     },
   ];
 
-  const guardTips = [
+  const upgradeChips = [
+    "Movement first",
+    "Consistency second",
+    "Income third",
+    "Ceiling last",
+  ];
+
+  const beforeAfterCards = [
+    {
+      title: "Before Stable Upgrades",
+      text: "Far runs feel thrilling but inconsistent, and one miss can undo a long stretch of progress.",
+    },
+    {
+      title: "After Stable Upgrades",
+      text: "Return windows feel cleaner, route choices become deliberate, and premium attempts stop being desperation plays.",
+    },
+  ];
+
+  const escapeChecklist = [
     "Use the closest destination until the route feels automatic.",
-    "Wait for the guards to roll the Lucky Block before you commit.",
-    "Grab the drop quickly and turn back with a plan.",
+    "Wait for the guards to roll the Lucky Block before you commit to the pickup.",
+    "Grab the drop quickly and turn back with a route already in mind.",
     "Choose survival over greed when the return window gets tight.",
+  ];
+
+  const routeTips = [
+    "A shorter route completed cleanly is better than a far route abandoned halfway.",
+    "Turnaround timing matters more than bravado once guard pressure rises.",
+    "The right escape line is the one that preserves your existing economy.",
+  ];
+
+  const failStateCards = [
+    {
+      title: "Late Turnaround",
+      text: "Waiting too long after a good pull is the easiest way to turn a win into a wipe.",
+    },
+    {
+      title: "Route Mismatch",
+      text: "If a route tier feels harder than your current base can support, you moved up too early.",
+    },
+    {
+      title: "Emotion Trading",
+      text: "Trying to make up for a failed run with a reckless next attempt usually compounds the loss.",
+    },
+  ];
+
+  const updateFeed = [
+    {
+      day: "Saturday cadence",
+      title: "Be a Lucky Block Weekly Updates",
+      text: "Use Saturday as the public-facing anchor for codes, route shifts, and fresh event attention.",
+    },
+    {
+      day: "Live event pages",
+      title: "Roblox Event Tracking",
+      text: "Event pages are the quickest way to see what hook the game is surfacing right now.",
+    },
+    {
+      day: "Community chatter",
+      title: "Discord & X Follow-up",
+      text: "Official channels add the context behind the visible event card and code flow.",
+    },
   ];
 
   const patchCards = [
@@ -279,7 +634,7 @@ export default function HomePage() {
       title: "COSMIC EVENT - Pull Lucky Blocks",
       tag: "New Drop",
       description:
-        "A fresh event built around brand-new Lucky Blocks and new secret events.",
+        "A fresh event centered on new Lucky Blocks, secret events, and another reason to track the homepage update flow.",
       href: OFFICIAL_LINKS.liveEvent,
     },
     {
@@ -287,7 +642,7 @@ export default function HomePage() {
       title: "NEXT UPDATE?!",
       tag: "Follow Event",
       description:
-        "A live follow page for players who want the next update reminder as soon as it goes up.",
+        "A live Roblox event page that acts as the fastest public reminder for the next update hook.",
       href: OFFICIAL_LINKS.updateEvent,
     },
     {
@@ -295,65 +650,48 @@ export default function HomePage() {
       title: "ADMIN ABUSE - Break a Lucky Block!",
       tag: "Recent Event",
       description:
-        "A short-run special event centered on a Lucky Block gimmick and a one-week event window.",
+        "A recent short-window event that shows how quickly the game can pivot the homepage conversation.",
       href: OFFICIAL_LINKS.recentEvent,
     },
+  ];
+
+  const eventHighlights = [
+    "Current events are the best place to pair curiosity with action on the homepage.",
+    "Recent event names help players recognize which patches actually changed the conversation.",
+    "Use event cards alongside code coverage instead of separating them into isolated silos.",
   ];
 
   const communityCards = [
     {
       title: "Official Roblox Game",
-      subtitle: "Launch the experience and check the latest page updates.",
+      subtitle: "Launch the experience and check the current public game snapshot.",
       buttonLabel: "Play Now",
       href: OFFICIAL_LINKS.game,
     },
     {
       title: "Official Roblox Group",
-      subtitle: "Watch the broader community activity around the game.",
+      subtitle: "Watch broader community activity and public group-side momentum.",
       buttonLabel: "Open Group",
       href: OFFICIAL_LINKS.group,
     },
     {
       title: "Official Discord",
-      subtitle:
-        "Best place for announcements, update chatter, and community discussion.",
+      subtitle: "Best place for update chatter, code drops, and active player discussion.",
       buttonLabel: "Join Discord",
       href: OFFICIAL_LINKS.discord,
     },
     {
       title: "Official X",
-      subtitle: "Follow xFrozenStudios for studio posts and patch teases.",
+      subtitle: "Follow studio posts and fast public-facing update signals.",
       buttonLabel: "Follow on X",
       href: OFFICIAL_LINKS.x,
     },
   ];
 
-  const faqItems = [
-    {
-      question: "How often does Be a Lucky Block update?",
-      answer: "The game advertises a weekly Saturday update schedule.",
-    },
-    {
-      question: "What do farther destinations do?",
-      answer:
-        "Going farther improves your luck, which increases the chance of better pulls if you can survive the trip home.",
-    },
-    {
-      question: "Why do Brainrots matter?",
-      answer:
-        "Brainrots are the core of your base economy because they keep earning cash for you, including while you are offline.",
-    },
-    {
-      question: "How do I redeem codes?",
-      answer:
-        "Open the Shop menu, go to the Codes section, paste the code, and press Verify.",
-    },
-    {
-      question: "Where should I check for new updates and codes first?",
-      answer:
-        "Watch the Saturday patch cycle, Roblox event pages, and the official Discord for the fastest update flow.",
-    },
-  ];
+  const faqItems = t.faq.questions as Array<{
+    question: string;
+    answer: string;
+  }>;
 
   const structuredData = {
     "@context": "https://schema.org",
@@ -365,7 +703,7 @@ export default function HomePage() {
         name: SITE_NAME,
         description:
           t.seo?.home?.description ||
-          "Be A Lucky Block Wiki with active codes, routes, brainrots, and weekly update coverage.",
+          "Be A Lucky Block Wiki with codes, routes, Brainrots, and update coverage.",
         image: HERO_IMAGE_URL,
       },
       {
@@ -384,30 +722,11 @@ export default function HomePage() {
     try {
       await navigator.clipboard.writeText(code);
       setCopiedCode(code);
-      setTimeout(() => setCopiedCode(null), 2000);
+      setTimeout(() => setCopiedCode(null), 1800);
     } catch (error) {
       console.error("Copy failed:", error);
     }
   };
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("scroll-reveal-visible");
-          }
-        });
-      },
-      { threshold: 0.1 },
-    );
-
-    document
-      .querySelectorAll(".scroll-reveal")
-      .forEach((element) => observer.observe(element));
-
-    return () => observer.disconnect();
-  }, []);
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -416,14 +735,13 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
 
-      <section className="relative px-4 pb-20 pt-12">
-        <div className="absolute inset-0 bg-gradient-to-b from-[hsl(var(--nav-theme)/0.1)] to-transparent" />
+      <section className="relative overflow-hidden px-4 pb-20 pt-12">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,hsl(var(--nav-theme-light)/0.18),transparent_30%),radial-gradient(circle_at_20%_30%,hsl(var(--nav-theme)/0.15),transparent_22%),linear-gradient(180deg,hsl(var(--background)),transparent)]" />
+        <div className="absolute left-1/2 top-10 h-72 w-72 -translate-x-1/2 rounded-full bg-[hsl(var(--nav-theme)/0.08)] blur-3xl" />
         <div className="container relative z-10 mx-auto text-center">
           <div className="scroll-reveal mb-8 inline-flex items-center gap-2 rounded-full border border-[hsl(var(--nav-theme)/0.3)] bg-[hsl(var(--nav-theme)/0.12)] px-4 py-2">
             <Sparkles className="h-4 w-4 text-[hsl(var(--nav-theme-light))]" />
-            <span className="text-sm text-muted-foreground">
-              {t.hero.badge}
-            </span>
+            <span className="text-sm text-muted-foreground">{t.hero.badge}</span>
           </div>
 
           <h1 className="scroll-reveal mb-6 text-5xl font-bold md:text-7xl">
@@ -436,7 +754,7 @@ export default function HomePage() {
           <div className="scroll-reveal mb-16 flex flex-col justify-center gap-4 sm:flex-row">
             <a
               href="#codes"
-              className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md bg-[hsl(var(--nav-theme))] px-8 py-6 text-lg font-medium text-slate-950 transition-colors hover:bg-[hsl(var(--nav-theme)/0.9)]"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-[hsl(var(--nav-theme))] px-8 py-4 text-base font-semibold text-slate-950 transition hover:brightness-95"
             >
               <Gift className="h-5 w-5" />
               {t.hero.getFreeCodesCTA}
@@ -445,8 +763,9 @@ export default function HomePage() {
               href={OFFICIAL_LINKS.game}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md border border-border px-8 py-6 text-lg font-medium transition-colors hover:bg-white/10"
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-[hsl(var(--nav-theme-light)/0.32)] bg-white/5 px-8 py-4 text-base font-semibold transition hover:bg-white/10"
             >
+              <PlayCircle className="h-5 w-5 text-[hsl(var(--nav-theme-light))]" />
               {t.hero.playOnRobloxCTA}
             </a>
           </div>
@@ -478,19 +797,19 @@ export default function HomePage() {
 
       <NativeBannerAd adKey={process.env.NEXT_PUBLIC_AD_NATIVE_BANNER || ""} />
 
-      <section className="px-4 py-12">
+      <section id="video" className="scroll-mt-28 px-4 py-12">
         <div className="container mx-auto">
-          <div className="relative overflow-hidden rounded-2xl">
+          <div className="relative overflow-hidden rounded-[2rem] border border-[hsl(var(--nav-theme-light)/0.2)]">
             <VideoFeature
               videoId="90yMVIeJI2k"
               title="Be a Lucky Block brainrot gameplay"
               posterImage="/images/hero.webp"
             />
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-8">
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 to-transparent p-8">
               <h2 className="mb-4 text-3xl font-bold md:text-4xl">
                 {t.gameFeature.title}
               </h2>
-              <p className="max-w-2xl text-muted-foreground">
+              <p className="max-w-2xl text-sm text-slate-200 md:text-base">
                 {t.gameFeature.description}
               </p>
             </div>
@@ -507,89 +826,68 @@ export default function HomePage() {
 
       <section className="px-4 py-20">
         <div className="container mx-auto">
-          <div className="mb-12 text-center">
-            <h2 className="scroll-reveal mb-4 text-4xl font-bold md:text-5xl">
-              {t.tools.title}{" "}
-              <span className="text-[hsl(var(--nav-theme-light))]">
-                {t.tools.titleHighlight}
-              </span>
-            </h2>
-            <p className="scroll-reveal text-lg text-muted-foreground">
-              {t.tools.subtitle}
-            </p>
-          </div>
+          <SectionHeading
+            eyebrow="Scroll Navigator"
+            title={t.tools.title}
+            highlight={t.tools.titleHighlight}
+            description={t.tools.subtitle}
+          />
 
-          <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4">
             {resourceCards.map((card) => (
               <a
                 key={card.href}
                 href={card.href}
-                className="scroll-reveal block rounded-xl border border-border bg-white/5 p-6 transition hover:border-[hsl(var(--nav-theme)/0.5)] hover:bg-white/10"
+                className="scroll-reveal group rounded-3xl border border-border bg-white/5 p-6 transition hover:border-[hsl(var(--nav-theme)/0.45)] hover:bg-white/10"
               >
-                <card.icon className="mb-4 h-12 w-12 text-[hsl(var(--nav-theme-light))]" />
-                <h3 className="mb-2 text-xl font-bold">{card.title}</h3>
-                <p className="text-sm text-muted-foreground">
-                  {card.description}
-                </p>
+                <card.icon className="mb-5 h-10 w-10 text-[hsl(var(--nav-theme-light))]" />
+                <h3 className="mb-2 text-lg font-bold">{card.title}</h3>
+                <p className="text-sm text-muted-foreground">{card.description}</p>
               </a>
             ))}
           </div>
         </div>
       </section>
 
-      <section id="codes" className="px-4 py-20 bg-white/[0.02]">
+      <section id="codes" className="scroll-mt-28 px-4 py-20">
         <div className="container mx-auto max-w-6xl">
-          <div className="mb-12 text-center">
-            <h2 className="scroll-reveal mb-4 text-4xl font-bold md:text-5xl">
-              Be a Lucky Block{" "}
-              <span className="text-[hsl(var(--nav-theme-light))]">Codes</span>
-            </h2>
-            <p className="scroll-reveal text-lg text-muted-foreground">
-              Redeem the current starter code for a free Brainrot and a faster
-              first base loop.
-            </p>
-          </div>
+          <SectionHeading
+            eyebrow="Module 01"
+            title="Be a Lucky Block"
+            highlight="Codes"
+            description="Redeem the current starter code for a free Brainrot, then use the homepage modules to build a safer first income loop."
+          />
 
-          <div className="scroll-reveal mb-8 grid grid-cols-2 gap-4 md:grid-cols-4">
+          <div className="mb-8 grid grid-cols-2 gap-4 md:grid-cols-4">
             {codeStats.map((item) => (
-              <div
-                key={item.label}
-                className="rounded-xl border border-border bg-white/5 p-5"
-              >
-                <div className="mb-1 text-2xl font-bold text-[hsl(var(--nav-theme-light))]">
-                  {item.value}
-                </div>
-                <div className="text-sm text-muted-foreground">
-                  {item.label}
-                </div>
-              </div>
+              <MetricCard key={item.label} label={item.label} value={item.value} />
             ))}
           </div>
 
-          <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
-            <div className="scroll-reveal rounded-xl border border-border bg-white/5 p-6">
-              <div className="mb-4 flex items-center justify-between gap-4">
+          <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+            <div className={accentPanelClass}>
+              <div className="mb-5 flex flex-wrap items-start justify-between gap-4">
                 <div>
-                  <p className="text-sm text-[hsl(var(--nav-theme-light))]">
+                  <p className="mb-2 text-sm font-semibold text-[hsl(var(--nav-theme-light))]">
                     1 active code • 0 expired
                   </p>
-                  <h3 className="text-2xl font-bold">{codeCard.code}</h3>
+                  <h3 className="text-3xl font-bold">{codeCard.code}</h3>
+                  <p className="mt-2 text-muted-foreground">
+                    Reward: {codeCard.reward}
+                  </p>
                 </div>
-                <span className="rounded-full border border-green-500/30 bg-green-500/10 px-3 py-1 text-xs font-semibold text-green-400">
+                <span className="rounded-full border border-[hsl(var(--nav-theme)/0.32)] bg-[hsl(var(--nav-theme)/0.16)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-[hsl(var(--nav-theme-light))]">
                   {codeCard.status}
                 </span>
               </div>
-              <p className="mb-2 text-muted-foreground">
-                Reward: {codeCard.reward}
-              </p>
-              <p className="mb-6 text-sm text-muted-foreground">
-                {codeCard.tag}
-              </p>
-              <div className="flex flex-col gap-3 sm:flex-row">
+
+              <p className="mb-6 text-sm text-muted-foreground">{codeCard.tag}</p>
+
+              <div className="mb-6 flex flex-col gap-3 sm:flex-row">
                 <button
                   type="button"
                   onClick={() => copyCode(codeCard.code)}
-                  className="inline-flex items-center justify-center gap-2 rounded-md bg-[hsl(var(--nav-theme))] px-6 py-3 font-medium text-slate-950 transition hover:bg-[hsl(var(--nav-theme)/0.9)]"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-[hsl(var(--nav-theme))] px-6 py-3 font-semibold text-slate-950 transition hover:brightness-95"
                 >
                   {copiedCode === codeCard.code ? (
                     <>
@@ -607,19 +905,31 @@ export default function HomePage() {
                   href={OFFICIAL_LINKS.discord}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-md border border-border px-6 py-3 font-medium transition hover:bg-white/10"
+                  className="inline-flex items-center justify-center gap-2 rounded-full border border-[hsl(var(--nav-theme-light)/0.32)] bg-white/5 px-6 py-3 font-semibold transition hover:bg-white/10"
                 >
+                  <MessageCircle className="h-4 w-4 text-[hsl(var(--nav-theme-light))]" />
                   Watch Discord for Updates
                 </a>
               </div>
+
+              <div className="flex flex-wrap gap-2">
+                {codeInfoChips.map((chip) => (
+                  <span
+                    key={chip}
+                    className="rounded-full border border-border bg-background/40 px-3 py-2 text-xs text-muted-foreground"
+                  >
+                    {chip}
+                  </span>
+                ))}
+              </div>
             </div>
 
-            <div className="scroll-reveal rounded-xl border border-border bg-white/5 p-6">
+            <div className={panelClass}>
               <h3 className="mb-4 text-xl font-bold">Redeem Steps</h3>
               <ol className="space-y-3">
                 {redeemSteps.map((step, index) => (
                   <li key={step} className="flex items-start gap-3 text-sm">
-                    <span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full border border-[hsl(var(--nav-theme)/0.3)] bg-[hsl(var(--nav-theme)/0.15)] text-xs font-bold text-[hsl(var(--nav-theme-light))]">
+                    <span className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full border border-[hsl(var(--nav-theme)/0.32)] bg-[hsl(var(--nav-theme)/0.15)] text-xs font-bold text-[hsl(var(--nav-theme-light))]">
                       {index + 1}
                     </span>
                     <span>{step}</span>
@@ -638,28 +948,67 @@ export default function HomePage() {
         />
       </div>
 
-      <section id="beginner" className="px-4 py-20">
+      <section id="wiki" className="scroll-mt-28 px-4 py-20 bg-white/[0.02]">
         <div className="container mx-auto max-w-6xl">
-          <div className="mb-12 text-center">
-            <h2 className="scroll-reveal mb-4 text-4xl font-bold md:text-5xl">
-              Be a Lucky Block{" "}
-              <span className="text-[hsl(var(--nav-theme-light))]">
-                Beginner Guide
-              </span>
-            </h2>
-            <p className="scroll-reveal text-lg text-muted-foreground">
-              Secure a free Brainrot first, learn the shortest safe route, then
-              scale into better luck runs.
-            </p>
+          <SectionHeading
+            eyebrow="Module 02"
+            title="Be a Lucky Block"
+            highlight="Wiki"
+            description="Use this module as the homepage overview for the game loop, the public update snapshot, and the reason distance, Brainrots, and base security all matter together."
+          />
+
+          <div className="mb-8 grid grid-cols-2 gap-4 md:grid-cols-4">
+            {wikiStats.map((item) => (
+              <MetricCard key={item.label} label={item.label} value={item.value} />
+            ))}
           </div>
 
-          <div className="mb-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          <div className="mb-8 grid gap-6 md:grid-cols-3">
+            {overviewCards.map((card) => (
+              <div key={card.title} className={panelClass}>
+                <BookOpen className="mb-4 h-8 w-8 text-[hsl(var(--nav-theme-light))]" />
+                <h3 className="mb-2 text-xl font-bold">{card.title}</h3>
+                <p className="text-sm text-muted-foreground">{card.text}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className={panelClass}>
+            <div className="mb-6 flex items-center gap-3">
+              <Layers3 className="h-6 w-6 text-[hsl(var(--nav-theme-light))]" />
+              <h3 className="text-2xl font-bold">Core Loop Timeline</h3>
+            </div>
+            <div className="grid gap-4 md:grid-cols-4">
+              {coreLoopTimeline.map((item) => (
+                <div
+                  key={item.step}
+                  className="rounded-2xl border border-[hsl(var(--nav-theme)/0.2)] bg-background/40 p-5"
+                >
+                  <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-[hsl(var(--nav-theme)/0.16)] font-bold text-[hsl(var(--nav-theme-light))]">
+                    {item.step}
+                  </div>
+                  <h4 className="mb-2 text-lg font-bold">{item.title}</h4>
+                  <p className="text-sm text-muted-foreground">{item.text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="beginner-guide" className="scroll-mt-28 px-4 py-20">
+        <div className="container mx-auto max-w-6xl">
+          <SectionHeading
+            eyebrow="Module 03"
+            title="Be a Lucky Block"
+            highlight="Beginner Guide"
+            description="New players should secure a free Brainrot first, learn the shortest safe route, and build a small base economy before chasing high-risk runs."
+          />
+
+          <div className="mb-8 grid gap-4 md:grid-cols-2 xl:grid-cols-5">
             {beginnerTimeline.map((item) => (
-              <div
-                key={item.step}
-                className="scroll-reveal rounded-xl border border-border bg-white/5 p-6"
-              >
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-[hsl(var(--nav-theme)/0.15)] text-xl font-bold text-[hsl(var(--nav-theme-light))]">
+              <div key={item.step} className={panelClass}>
+                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-[hsl(var(--nav-theme)/0.16)] text-xl font-bold text-[hsl(var(--nav-theme-light))]">
                   {item.step}
                 </div>
                 <h3 className="mb-2 text-xl font-bold">{item.title}</h3>
@@ -669,27 +1018,29 @@ export default function HomePage() {
           </div>
 
           <div className="grid gap-6 md:grid-cols-2">
-            <div className="scroll-reveal rounded-xl border border-border bg-white/5 p-6">
-              <h3 className="mb-4 text-xl font-bold text-[hsl(var(--nav-theme-light))]">
-                Do
-              </h3>
-              <ul className="space-y-2">
+            <div className={panelClass}>
+              <div className="mb-4 flex items-center gap-2">
+                <Check className="h-5 w-5 text-[hsl(var(--nav-theme-light))]" />
+                <h3 className="text-xl font-bold">Do</h3>
+              </div>
+              <ul className="space-y-3">
                 {beginnerDo.map((item) => (
                   <li key={item} className="flex items-start gap-2 text-sm">
-                    <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-green-400" />
+                    <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-[hsl(var(--nav-theme-light))]" />
                     <span>{item}</span>
                   </li>
                 ))}
               </ul>
             </div>
-            <div className="scroll-reveal rounded-xl border border-border bg-white/5 p-6">
-              <h3 className="mb-4 text-xl font-bold text-[hsl(var(--nav-theme-light))]">
-                Avoid
-              </h3>
-              <ul className="space-y-2">
+            <div className={panelClass}>
+              <div className="mb-4 flex items-center gap-2">
+                <TriangleAlert className="h-5 w-5 text-[hsl(var(--nav-theme-light))]" />
+                <h3 className="text-xl font-bold">Avoid</h3>
+              </div>
+              <ul className="space-y-3">
                 {beginnerDont.map((item) => (
                   <li key={item} className="flex items-start gap-2 text-sm">
-                    <span className="mt-1 text-red-400">•</span>
+                    <TriangleAlert className="mt-0.5 h-4 w-4 flex-shrink-0 text-[hsl(var(--nav-theme-light))]" />
                     <span>{item}</span>
                   </li>
                 ))}
@@ -699,104 +1050,67 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="locations" className="px-4 py-20 bg-white/[0.02]">
+      <section
+        id="luck-guide"
+        className="scroll-mt-28 px-4 py-20 bg-white/[0.02]"
+      >
         <div className="container mx-auto max-w-6xl">
-          <div className="mb-12 text-center">
-            <h2 className="scroll-reveal mb-4 text-4xl font-bold md:text-5xl">
-              Be a Lucky Block{" "}
-              <span className="text-[hsl(var(--nav-theme-light))]">
-                Luck & Locations
-              </span>
-            </h2>
-            <p className="scroll-reveal text-lg text-muted-foreground">
-              Distance improves your luck, but every extra step also makes the
-              return home more dangerous.
-            </p>
-          </div>
+          <SectionHeading
+            eyebrow="Module 04"
+            title="Be a Lucky Block"
+            highlight="Luck Guide"
+            description="Luck scales with distance, but the trip home gets more dangerous, so the best route is the one you can finish consistently."
+          />
 
           <div className="mb-8 grid gap-6 md:grid-cols-3">
-            {locationTiers.map((tier) => (
-              <div
-                key={tier.tier}
-                className="scroll-reveal rounded-xl border border-border bg-white/5 p-6"
-              >
-                <h3 className="mb-3 text-2xl font-bold text-[hsl(var(--nav-theme-light))]">
-                  {tier.tier}
+            {riskRewardCards.map((card) => (
+              <div key={card.tier} className={panelClass}>
+                <h3 className="mb-4 text-2xl font-bold text-[hsl(var(--nav-theme-light))]">
+                  {card.tier}
                 </h3>
                 <div className="mb-4 space-y-2 text-sm">
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Luck</span>
-                    <span>{tier.luck}</span>
+                    <span>{card.luck}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Risk</span>
-                    <span>{tier.risk}</span>
+                    <span>{card.risk}</span>
                   </div>
                 </div>
-                <p className="mb-2 text-sm">{tier.bestFor}</p>
-                <p className="text-sm text-muted-foreground">
-                  {tier.playstyle}
-                </p>
+                <p className="mb-2 text-sm">{card.bestFor}</p>
+                <p className="text-sm text-muted-foreground">{card.playstyle}</p>
               </div>
             ))}
           </div>
 
-          <div className="scroll-reveal rounded-xl border border-border bg-white/5 p-6">
-            <h3 className="mb-4 text-xl font-bold">Route Notes</h3>
-            <ul className="grid gap-3 md:grid-cols-2">
-              {locationHighlights.map((item) => (
-                <li key={item} className="flex items-start gap-2 text-sm">
-                  <MapPin className="mt-0.5 h-4 w-4 flex-shrink-0 text-[hsl(var(--nav-theme-light))]" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <section id="brainrots" className="px-4 py-20">
-        <div className="container mx-auto max-w-6xl">
-          <div className="mb-12 text-center">
-            <h2 className="scroll-reveal mb-4 text-4xl font-bold md:text-5xl">
-              Be a Lucky Block{" "}
-              <span className="text-[hsl(var(--nav-theme-light))]">
-                Brainrots
-              </span>
-            </h2>
-            <p className="scroll-reveal text-lg text-muted-foreground">
-              Brainrots are your core reward loop: unlock them, get them home,
-              and turn them into passive income.
-            </p>
-          </div>
-
-          <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
-            <div className="scroll-reveal rounded-xl border border-border bg-white/5 p-6">
-              <h3 className="mb-4 text-xl font-bold">Why Brainrots Matter</h3>
+          <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
+            <div className={accentPanelClass}>
+              <div className="mb-4 flex items-center gap-3">
+                <TrendingUp className="h-6 w-6 text-[hsl(var(--nav-theme-light))]" />
+                <h3 className="text-2xl font-bold">Route Ladder</h3>
+              </div>
               <ul className="space-y-3">
-                {brainrotHighlights.map((item) => (
-                  <li key={item} className="flex items-start gap-2 text-sm">
-                    <Coins className="mt-0.5 h-4 w-4 flex-shrink-0 text-[hsl(var(--nav-theme-light))]" />
+                {routeLadder.map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-sm">
+                    <ArrowRight className="mt-0.5 h-4 w-4 flex-shrink-0 text-[hsl(var(--nav-theme-light))]" />
                     <span>{item}</span>
                   </li>
                 ))}
               </ul>
             </div>
-
-            <div className="scroll-reveal rounded-xl border border-border bg-white/5 p-6">
-              <h3 className="mb-4 text-xl font-bold">
-                Special Brainrot Watchlist
-              </h3>
-              <div className="grid gap-3">
-                {specialBrainrots.map((item) => (
+            <div className={panelClass}>
+              <div className="mb-4 flex items-center gap-3">
+                <Sparkles className="h-6 w-6 text-[hsl(var(--nav-theme-light))]" />
+                <h3 className="text-2xl font-bold">Tip Callouts</h3>
+              </div>
+              <div className="grid gap-3 md:grid-cols-2">
+                {tipCallouts.map((item) => (
                   <div
                     key={item}
-                    className="rounded-lg border border-[hsl(var(--nav-theme)/0.25)] bg-[hsl(var(--nav-theme)/0.08)] p-4"
+                    className="rounded-2xl border border-[hsl(var(--nav-theme)/0.2)] bg-background/40 p-4 text-sm text-muted-foreground"
                   >
-                    <div className="flex items-center gap-2">
-                      <Star className="h-4 w-4 text-[hsl(var(--nav-theme-light))]" />
-                      <span className="font-semibold">{item}</span>
-                    </div>
+                    {item}
                   </div>
                 ))}
               </div>
@@ -805,103 +1119,301 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="trading" className="px-4 py-20 bg-white/[0.02]">
-        <div className="container mx-auto max-w-5xl">
-          <div className="mb-12 text-center">
-            <h2 className="scroll-reveal mb-4 text-4xl font-bold md:text-5xl">
-              Be a Lucky Block{" "}
-              <span className="text-[hsl(var(--nav-theme-light))]">
-                Trading Guide
-              </span>
-            </h2>
-            <p className="scroll-reveal text-lg text-muted-foreground">
-              Trade when your base is already stable, not when your whole
-              progression still depends on one strong pull.
-            </p>
+      <section id="locations" className="scroll-mt-28 px-4 py-20">
+        <div className="container mx-auto max-w-6xl">
+          <SectionHeading
+            eyebrow="Module 05"
+            title="Be a Lucky Block"
+            highlight="Locations"
+            description="Split routes into understandable bands so players know when to stay near, when to scale into balance, and when to push for high-luck runs."
+          />
+
+          <div className="mb-8 grid gap-6 md:grid-cols-3">
+            {locationCards.map((card) => (
+              <div key={card.title} className={panelClass}>
+                <MapPinned className="mb-4 h-8 w-8 text-[hsl(var(--nav-theme-light))]" />
+                <p className="mb-2 text-sm font-semibold uppercase tracking-[0.18em] text-[hsl(var(--nav-theme-light))]">
+                  {card.range}
+                </p>
+                <h3 className="mb-2 text-xl font-bold">{card.title}</h3>
+                <p className="text-sm text-muted-foreground">{card.description}</p>
+              </div>
+            ))}
           </div>
 
-          <div className="grid gap-4 md:grid-cols-2">
-            {tradingHighlights.map((item) => (
-              <div
-                key={item}
-                className="scroll-reveal rounded-xl border border-border bg-white/5 p-6"
-              >
+          <div className={panelClass}>
+            <div className="mb-4 flex items-center gap-3">
+              <Compass className="h-6 w-6 text-[hsl(var(--nav-theme-light))]" />
+              <h3 className="text-2xl font-bold">Route Comparison</h3>
+            </div>
+            <div className="overflow-x-auto">
+              <table className="w-full min-w-[520px] text-left text-sm">
+                <thead>
+                  <tr className="border-b border-border">
+                    <th className="pb-3 font-semibold text-muted-foreground">Metric</th>
+                    <th className="pb-3 font-semibold">Near</th>
+                    <th className="pb-3 font-semibold">Mid</th>
+                    <th className="pb-3 font-semibold">Far</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {routeComparison.map((row) => (
+                    <tr key={row.label} className="border-b border-border/60">
+                      <td className="py-4 text-muted-foreground">{row.label}</td>
+                      <td className="py-4">{row.near}</td>
+                      <td className="py-4">{row.mid}</td>
+                      <td className="py-4">{row.far}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="brainrots" className="scroll-mt-28 px-4 py-20 bg-white/[0.02]">
+        <div className="container mx-auto max-w-6xl">
+          <SectionHeading
+            eyebrow="Module 06"
+            title="Be a Lucky Block"
+            highlight="Brainrots"
+            description="Brainrots are the homepage economy anchor: they are the reward you chase, the income you bank, and the asset class that powers trade interest."
+          />
+
+          <div className="mb-8 grid gap-6 md:grid-cols-3">
+            {rarityCards.map((card) => (
+              <div key={card.title} className={panelClass}>
+                <Star className="mb-4 h-8 w-8 text-[hsl(var(--nav-theme-light))]" />
+                <h3 className="mb-2 text-xl font-bold">{card.title}</h3>
+                <p className="text-sm text-muted-foreground">{card.description}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+            <div className={panelClass}>
+              <div className="mb-4 flex items-center gap-3">
+                <Coins className="h-6 w-6 text-[hsl(var(--nav-theme-light))]" />
+                <h3 className="text-2xl font-bold">Earnings Explainer</h3>
+              </div>
+              <ul className="space-y-3">
+                {brainrotExplainers.map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-sm">
+                    <ArrowRight className="mt-0.5 h-4 w-4 flex-shrink-0 text-[hsl(var(--nav-theme-light))]" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className={accentPanelClass}>
+              <div className="mb-4 flex items-center gap-3">
+                <Package className="h-6 w-6 text-[hsl(var(--nav-theme-light))]" />
+                <h3 className="text-2xl font-bold">Quick Filters</h3>
+              </div>
+              <div className="flex flex-wrap gap-3">
+                {brainrotFilters.map((filter) => (
+                  <span
+                    key={filter}
+                    className="rounded-full border border-[hsl(var(--nav-theme)/0.25)] bg-background/45 px-4 py-2 text-sm"
+                  >
+                    {filter}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="special-brainrots"
+        className="scroll-mt-28 px-4 py-20"
+      >
+        <div className="container mx-auto max-w-6xl">
+          <SectionHeading
+            eyebrow="Module 07"
+            title="Be a Lucky Block"
+            highlight="Special Brainrots"
+            description="Separate special and secret pulls from the wider Brainrot section so the homepage supports both broad discovery and high-intent rarity clicks."
+          />
+
+          <div className="mb-8 grid gap-6 md:grid-cols-3">
+            {specialBrainrots.map((item) => (
+              <div key={item.name} className={accentPanelClass}>
+                <div className="mb-4 flex items-center gap-3">
+                  <Trophy className="h-7 w-7 text-[hsl(var(--nav-theme-light))]" />
+                  <h3 className="text-xl font-bold">{item.name}</h3>
+                </div>
+                <p className="text-sm text-muted-foreground">{item.note}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+            <div className={panelClass}>
+              <h3 className="mb-4 text-2xl font-bold">Rarity Spotlight</h3>
+              <ul className="space-y-3">
+                {raritySpotlight.map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-sm">
+                    <Sparkles className="mt-0.5 h-4 w-4 flex-shrink-0 text-[hsl(var(--nav-theme-light))]" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className={panelClass}>
+              <h3 className="mb-4 text-2xl font-bold">Wishlist Panel</h3>
+              <ul className="space-y-3">
+                {wishlistPanel.map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-sm">
+                    <Star className="mt-0.5 h-4 w-4 flex-shrink-0 text-[hsl(var(--nav-theme-light))]" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="trading-guide"
+        className="scroll-mt-28 px-4 py-20 bg-white/[0.02]"
+      >
+        <div className="container mx-auto max-w-6xl">
+          <SectionHeading
+            eyebrow="Module 08"
+            title="Be a Lucky Block"
+            highlight="Trading Guide"
+            description="Trading works best after your economy is already protected, because duplicates and specials are easier to move than the Brainrots your base depends on."
+          />
+
+          <div className="mb-8 grid gap-4 md:grid-cols-3">
+            {tradeTips.map((item) => (
+              <div key={item} className={panelClass}>
                 <div className="mb-3 flex items-center gap-2 text-[hsl(var(--nav-theme-light))]">
-                  <Users className="h-5 w-5" />
-                  <span className="font-semibold">Trading Note</span>
+                  <Handshake className="h-5 w-5" />
+                  <span className="font-semibold">Trade Tip</span>
                 </div>
                 <p className="text-sm text-muted-foreground">{item}</p>
               </div>
             ))}
           </div>
+
+          <div className="grid gap-6 md:grid-cols-3">
+            {valueNotes.map((item) => (
+              <div key={item.title} className={accentPanelClass}>
+                <h3 className="mb-3 text-xl font-bold">{item.title}</h3>
+                <p className="text-sm text-muted-foreground">{item.text}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section id="base" className="px-4 py-20">
+      <section id="base-guide" className="scroll-mt-28 px-4 py-20">
         <div className="container mx-auto max-w-6xl">
-          <div className="mb-12 text-center">
-            <h2 className="scroll-reveal mb-4 text-4xl font-bold md:text-5xl">
-              Be a Lucky Block{" "}
-              <span className="text-[hsl(var(--nav-theme-light))]">
-                Base & Offline Cash
-              </span>
-            </h2>
-            <p className="scroll-reveal text-lg text-muted-foreground">
-              Your base is where every run becomes real progress, because safe
-              deliveries turn into passive income.
-            </p>
-          </div>
+          <SectionHeading
+            eyebrow="Module 09"
+            title="Be a Lucky Block"
+            highlight="Base Guide"
+            description="Your base is where every successful return becomes permanent progress, because safe deliveries turn into passive income and sharper decision making."
+          />
 
           <div className="mb-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
             {baseFlow.map((item) => (
-              <div
-                key={item.title}
-                className="scroll-reveal rounded-xl border border-border bg-white/5 p-6"
-              >
+              <div key={item.title} className={panelClass}>
+                <House className="mb-4 h-8 w-8 text-[hsl(var(--nav-theme-light))]" />
                 <h3 className="mb-3 text-xl font-bold">{item.title}</h3>
-                <p className="text-sm text-muted-foreground">
-                  {item.description}
-                </p>
+                <p className="text-sm text-muted-foreground">{item.description}</p>
               </div>
             ))}
           </div>
 
-          <div className="scroll-reveal rounded-xl border border-border bg-white/5 p-6">
-            <h3 className="mb-4 text-xl font-bold">Offline Cash Priorities</h3>
-            <ul className="grid gap-3 md:grid-cols-2">
-              {offlineCash.map((item) => (
-                <li key={item} className="flex items-start gap-2 text-sm">
-                  <House className="mt-0.5 h-4 w-4 flex-shrink-0 text-[hsl(var(--nav-theme-light))]" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
+          <div className="grid gap-6 lg:grid-cols-[1fr_1fr]">
+            <div className={panelClass}>
+              <h3 className="mb-4 text-2xl font-bold">Priority Board</h3>
+              <ul className="space-y-3">
+                {basePriorities.map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-sm">
+                    <ArrowRight className="mt-0.5 h-4 w-4 flex-shrink-0 text-[hsl(var(--nav-theme-light))]" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className={accentPanelClass}>
+              <h3 className="mb-4 text-2xl font-bold">Compact Tips Grid</h3>
+              <div className="grid gap-3">
+                {baseTips.map((item) => (
+                  <div
+                    key={item}
+                    className="rounded-2xl border border-[hsl(var(--nav-theme)/0.22)] bg-background/45 p-4 text-sm text-muted-foreground"
+                  >
+                    {item}
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <section id="upgrades" className="px-4 py-20 bg-white/[0.02]">
+      <section
+        id="offline-cash"
+        className="scroll-mt-28 px-4 py-20 bg-white/[0.02]"
+      >
         <div className="container mx-auto max-w-6xl">
-          <div className="mb-12 text-center">
-            <h2 className="scroll-reveal mb-4 text-4xl font-bold md:text-5xl">
-              Be a Lucky Block{" "}
-              <span className="text-[hsl(var(--nav-theme-light))]">
-                Upgrades & Escape Tips
-              </span>
-            </h2>
-            <p className="scroll-reveal text-lg text-muted-foreground">
-              Early progress is mostly about moving faster, banking cleaner
-              runs, and escaping with your best pulls.
-            </p>
+          <SectionHeading
+            eyebrow="Module 10"
+            title="Be a Lucky Block"
+            highlight="Offline Cash"
+            description="Offline cash is easiest to understand when players see it as the reward for ending sessions after secure deliveries, not as a passive system detached from route quality."
+          />
+
+          <div className="mb-8 grid gap-6 md:grid-cols-3">
+            {offlineCashSteps.map((item) => (
+              <div key={item.title} className={panelClass}>
+                <PiggyBank className="mb-4 h-8 w-8 text-[hsl(var(--nav-theme-light))]" />
+                <h3 className="mb-2 text-xl font-bold">{item.title}</h3>
+                <p className="text-sm text-muted-foreground">{item.text}</p>
+              </div>
+            ))}
           </div>
 
+          <div className={accentPanelClass}>
+            <div className="mb-4 flex items-center gap-3">
+              <Coins className="h-6 w-6 text-[hsl(var(--nav-theme-light))]" />
+              <h3 className="text-2xl font-bold">Stack Priorities</h3>
+            </div>
+            <div className="flex flex-wrap gap-3">
+              {stackPriorities.map((item) => (
+                <span
+                  key={item}
+                  className="rounded-full border border-[hsl(var(--nav-theme)/0.22)] bg-background/45 px-4 py-2 text-sm"
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="upgrades-guide" className="scroll-mt-28 px-4 py-20">
+        <div className="container mx-auto max-w-6xl">
+          <SectionHeading
+            eyebrow="Module 11"
+            title="Be a Lucky Block"
+            highlight="Upgrades Guide"
+            description="Early upgrades should make successful returns easier before they chase ceiling, because consistency is the base of every better farming route."
+          />
+
           <div className="mb-8 grid gap-4 md:grid-cols-3">
-            {upgradeLadder.map((item) => (
-              <div
-                key={item.stage}
-                className="scroll-reveal rounded-xl border border-border bg-white/5 p-6"
-              >
-                <p className="mb-2 text-sm text-[hsl(var(--nav-theme-light))]">
+            {upgrades.map((item) => (
+              <div key={item.stage} className={panelClass}>
+                <p className="mb-2 text-sm font-semibold uppercase tracking-[0.16em] text-[hsl(var(--nav-theme-light))]">
                   {item.stage}
                 </p>
                 <h3 className="mb-3 text-xl font-bold">{item.focus}</h3>
@@ -910,59 +1422,184 @@ export default function HomePage() {
             ))}
           </div>
 
-          <div className="scroll-reveal rounded-xl border border-border bg-white/5 p-6">
-            <h3 className="mb-4 text-xl font-bold">Guard Escape Checklist</h3>
-            <ul className="grid gap-3 md:grid-cols-2">
-              {guardTips.map((item) => (
-                <li key={item} className="flex items-start gap-2 text-sm">
-                  <Shield className="mt-0.5 h-4 w-4 flex-shrink-0 text-[hsl(var(--nav-theme-light))]" />
-                  <span>{item}</span>
-                </li>
+          <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
+            <div className={accentPanelClass}>
+              <h3 className="mb-4 text-2xl font-bold">Priority Chips</h3>
+              <div className="flex flex-wrap gap-3">
+                {upgradeChips.map((item) => (
+                  <span
+                    key={item}
+                    className="rounded-full border border-[hsl(var(--nav-theme)/0.22)] bg-background/45 px-4 py-2 text-sm"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </div>
+            <div className="grid gap-4 md:grid-cols-2">
+              {beforeAfterCards.map((item) => (
+                <div key={item.title} className={panelClass}>
+                  <Zap className="mb-4 h-8 w-8 text-[hsl(var(--nav-theme-light))]" />
+                  <h3 className="mb-2 text-xl font-bold">{item.title}</h3>
+                  <p className="text-sm text-muted-foreground">{item.text}</p>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
         </div>
       </section>
 
-      <section id="events" className="px-4 py-20">
+      <section
+        id="guard-escape"
+        className="scroll-mt-28 px-4 py-20 bg-white/[0.02]"
+      >
         <div className="container mx-auto max-w-6xl">
-          <div className="mb-12 text-center">
-            <h2 className="scroll-reveal mb-4 text-4xl font-bold md:text-5xl">
-              Be a Lucky Block{" "}
-              <span className="text-[hsl(var(--nav-theme-light))]">
-                Weekly Updates & Events
-              </span>
-            </h2>
-            <p className="scroll-reveal text-lg text-muted-foreground">
-              Be a Lucky Block runs on a clear Saturday patch rhythm, with
-              Roblox event pages acting as the fastest public update tracker.
-            </p>
+          <SectionHeading
+            eyebrow="Module 12"
+            title="Be a Lucky Block"
+            highlight="Guard Escape Tips"
+            description="The return trip decides whether luck becomes progress or disappears, so escape advice belongs on the homepage alongside routes and upgrades."
+          />
+
+          <div className="mb-8 grid gap-6 lg:grid-cols-[1fr_1fr]">
+            <div className={panelClass}>
+              <div className="mb-4 flex items-center gap-3">
+                <Shield className="h-6 w-6 text-[hsl(var(--nav-theme-light))]" />
+                <h3 className="text-2xl font-bold">Escape Checklist</h3>
+              </div>
+              <ul className="space-y-3">
+                {escapeChecklist.map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-sm">
+                    <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-[hsl(var(--nav-theme-light))]" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className={accentPanelClass}>
+              <div className="mb-4 flex items-center gap-3">
+                <Compass className="h-6 w-6 text-[hsl(var(--nav-theme-light))]" />
+                <h3 className="text-2xl font-bold">Route Tips</h3>
+              </div>
+              <ul className="space-y-3">
+                {routeTips.map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-sm">
+                    <ArrowRight className="mt-0.5 h-4 w-4 flex-shrink-0 text-[hsl(var(--nav-theme-light))]" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <div className="grid gap-4 md:grid-cols-3">
+            {failStateCards.map((card) => (
+              <div key={card.title} className={panelClass}>
+                <TriangleAlert className="mb-4 h-8 w-8 text-[hsl(var(--nav-theme-light))]" />
+                <h3 className="mb-2 text-xl font-bold">{card.title}</h3>
+                <p className="text-sm text-muted-foreground">{card.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="weekly-updates" className="scroll-mt-28 px-4 py-20">
+        <div className="container mx-auto max-w-6xl">
+          <SectionHeading
+            eyebrow="Module 13"
+            title="Be a Lucky Block"
+            highlight="Weekly Updates"
+            description="Saturday is the public update anchor for Be a Lucky Block, so this module connects the patch rhythm, live event pages, and community follow-up in one place."
+          />
+
+          <div className="mb-8 flex justify-center">
+            <div className="rounded-full border border-[hsl(var(--nav-theme)/0.3)] bg-[hsl(var(--nav-theme)/0.12)] px-5 py-3 text-sm font-semibold text-[hsl(var(--nav-theme-light))]">
+              Weekly Badge: UPDATES EVERY SATURDAY
+            </div>
           </div>
 
           <div className="mb-8 grid gap-4 md:grid-cols-3">
+            {updateFeed.map((item) => (
+              <div key={item.title} className={panelClass}>
+                <p className="mb-2 text-sm font-semibold uppercase tracking-[0.16em] text-[hsl(var(--nav-theme-light))]">
+                  {item.day}
+                </p>
+                <h3 className="mb-2 text-xl font-bold">{item.title}</h3>
+                <p className="text-sm text-muted-foreground">{item.text}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="grid gap-4 md:grid-cols-3">
             {patchCards.map((card) => (
               <a
                 key={card.title}
                 href={card.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="scroll-reveal block rounded-xl border border-border bg-white/5 p-6 transition hover:border-[hsl(var(--nav-theme)/0.5)] hover:bg-white/10"
+                className="scroll-reveal rounded-3xl border border-border bg-white/5 p-6 transition hover:border-[hsl(var(--nav-theme)/0.45)] hover:bg-white/10"
               >
                 <div className="mb-3 flex items-center justify-between gap-2">
-                  <span className="rounded-full border border-[hsl(var(--nav-theme)/0.25)] bg-[hsl(var(--nav-theme)/0.08)] px-3 py-1 text-xs font-semibold text-[hsl(var(--nav-theme-light))]">
+                  <span className="rounded-full border border-[hsl(var(--nav-theme)/0.25)] bg-[hsl(var(--nav-theme)/0.12)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-[hsl(var(--nav-theme-light))]">
                     {card.tag}
                   </span>
-                  <span className="text-xs text-muted-foreground">
-                    {card.date}
-                  </span>
+                  <span className="text-xs text-muted-foreground">{card.date}</span>
                 </div>
                 <h3 className="mb-3 text-xl font-bold">{card.title}</h3>
-                <p className="text-sm text-muted-foreground">
-                  {card.description}
-                </p>
+                <p className="text-sm text-muted-foreground">{card.description}</p>
               </a>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section id="events" className="scroll-mt-28 px-4 py-20 bg-white/[0.02]">
+        <div className="container mx-auto max-w-6xl">
+          <SectionHeading
+            eyebrow="Module 14"
+            title="Be a Lucky Block"
+            highlight="Events"
+            description="Events are where new homepage curiosity usually starts, so this section pairs current event cards with clear reasons to keep watching official channels."
+          />
+
+          <div className="mb-8 flex justify-center">
+            <div className="rounded-full border border-[hsl(var(--nav-theme-light)/0.32)] bg-white/5 px-5 py-3 text-sm font-semibold">
+              Countdown Chip: Watch current Roblox event pages for the next visible hook
+            </div>
+          </div>
+
+          <div className="mb-8 grid gap-4 md:grid-cols-3">
+            {eventHighlights.map((item) => (
+              <div key={item} className={accentPanelClass}>
+                <PartyPopper className="mb-4 h-8 w-8 text-[hsl(var(--nav-theme-light))]" />
+                <p className="text-sm text-muted-foreground">{item}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="flex justify-center">
+            <a
+              href={OFFICIAL_LINKS.updateEvent}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--nav-theme))] px-6 py-3 font-semibold text-slate-950 transition hover:brightness-95"
+            >
+              <Clock3 className="h-4 w-4" />
+              Notify Me Through the Official Event Page
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section id="community" className="scroll-mt-28 px-4 py-20">
+        <div className="container mx-auto max-w-6xl">
+          <SectionHeading
+            eyebrow="Module 15"
+            title="Be a Lucky Block"
+            highlight="Discord & Community"
+            description="Keep the official Roblox game page, Roblox Group, Discord, and X visible on the homepage so players can verify new drops, events, and community signals quickly."
+          />
 
           <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
             {communityCards.map((card) => (
@@ -971,48 +1608,15 @@ export default function HomePage() {
                 href={card.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="scroll-reveal rounded-xl border border-border bg-white/5 p-6 transition hover:border-[hsl(var(--nav-theme)/0.5)] hover:bg-white/10"
+                className="scroll-reveal rounded-3xl border border-border bg-white/5 p-6 transition hover:border-[hsl(var(--nav-theme)/0.45)] hover:bg-white/10"
               >
                 <h3 className="mb-2 text-lg font-bold">{card.title}</h3>
-                <p className="mb-4 text-sm text-muted-foreground">
-                  {card.subtitle}
-                </p>
+                <p className="mb-4 text-sm text-muted-foreground">{card.subtitle}</p>
                 <span className="inline-flex items-center gap-2 text-sm font-semibold text-[hsl(var(--nav-theme-light))]">
                   {card.buttonLabel}
                   <ArrowRight className="h-4 w-4" />
                 </span>
               </a>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="px-4 py-20 bg-white/[0.02]">
-        <div className="container mx-auto max-w-5xl">
-          <div className="mb-12 text-center">
-            <h2 className="scroll-reveal mb-4 text-4xl font-bold md:text-5xl">
-              {t.whatIs.title}{" "}
-              <span className="text-[hsl(var(--nav-theme-light))]">
-                {t.whatIs.titleHighlight}
-              </span>
-            </h2>
-            <p className="scroll-reveal mx-auto max-w-3xl text-lg text-muted-foreground">
-              {t.whatIs.description}
-            </p>
-          </div>
-
-          <div className="grid gap-6 md:grid-cols-3">
-            {t.whatIs.features.map((feature: any) => (
-              <div
-                key={feature.title}
-                className="scroll-reveal rounded-xl border border-border bg-white/5 p-6 transition hover:border-[hsl(var(--nav-theme)/0.5)]"
-              >
-                <Zap className="mb-4 h-12 w-12 text-[hsl(var(--nav-theme-light))]" />
-                <h3 className="mb-2 text-xl font-bold">{feature.title}</h3>
-                <p className="text-sm text-muted-foreground">
-                  {feature.description}
-                </p>
-              </div>
             ))}
           </div>
         </div>
@@ -1045,9 +1649,7 @@ export default function HomePage() {
               <h3 className="mb-4 text-xl font-bold text-[hsl(var(--nav-theme-light))]">
                 {t.footer.title}
               </h3>
-              <p className="text-sm text-muted-foreground">
-                {t.footer.description}
-              </p>
+              <p className="text-sm text-muted-foreground">{t.footer.description}</p>
             </div>
 
             <div>
@@ -1063,7 +1665,7 @@ export default function HomePage() {
                 </li>
                 <li>
                   <a
-                    href="#beginner"
+                    href="#beginner-guide"
                     className="text-muted-foreground transition hover:text-[hsl(var(--nav-theme-light))]"
                   >
                     {t.footer.trainingGuides}
@@ -1079,7 +1681,7 @@ export default function HomePage() {
                 </li>
                 <li>
                   <a
-                    href="#base"
+                    href="#upgrades-guide"
                     className="text-muted-foreground transition hover:text-[hsl(var(--nav-theme-light))]"
                   >
                     {t.footer.clanGuides}
@@ -1135,39 +1737,47 @@ export default function HomePage() {
             </div>
 
             <div>
-              <h4 className="mb-4 font-semibold">Legal</h4>
+              <h4 className="mb-4 font-semibold">Official Updates</h4>
               <ul className="space-y-2 text-sm">
                 <li>
-                  <Link
-                    href="/about"
+                  <a
+                    href={OFFICIAL_LINKS.updateEvent}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="text-muted-foreground transition hover:text-[hsl(var(--nav-theme-light))]"
                   >
-                    About
-                  </Link>
+                    Next Update Event
+                  </a>
                 </li>
                 <li>
-                  <Link
-                    href="/privacy-policy"
+                  <a
+                    href={OFFICIAL_LINKS.liveEvent}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="text-muted-foreground transition hover:text-[hsl(var(--nav-theme-light))]"
                   >
-                    {t.footer.privacyPolicy}
-                  </Link>
+                    Live Event Page
+                  </a>
                 </li>
                 <li>
-                  <Link
-                    href="/terms-of-service"
+                  <a
+                    href={OFFICIAL_LINKS.recentEvent}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="text-muted-foreground transition hover:text-[hsl(var(--nav-theme-light))]"
                   >
-                    {t.footer.termsOfService}
-                  </Link>
+                    Recent Event Archive
+                  </a>
                 </li>
                 <li>
-                  <Link
-                    href="/copyright"
+                  <a
+                    href={OFFICIAL_LINKS.youtube}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="text-muted-foreground transition hover:text-[hsl(var(--nav-theme-light))]"
                   >
-                    Copyright
-                  </Link>
+                    Featured YouTube Video
+                  </a>
                 </li>
               </ul>
             </div>
