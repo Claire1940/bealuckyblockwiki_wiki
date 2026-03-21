@@ -521,130 +521,220 @@ export default function HomePage() {
     "Only move pieces that will not break your current income loop.",
   ];
 
-  const baseFlow = [
+  const baseFlowCards = [
     {
+      icon: House,
       title: "Start at Base",
       description:
-        "Load in, check your cash, verify your current route plan, and prepare before you sprint out.",
+        "Load into your base first so you can prepare, check your cash, and open the shop before the first run.",
     },
     {
+      icon: Gift,
       title: "Claim the Free Boost",
       description:
-        "Use RELEASE in Shop > Codes so your base begins with immediate earning power.",
+        "Use the active code RELEASE in Shop > Codes to get Brr Brr Patapim and give your base an early income push.",
     },
     {
+      icon: Compass,
       title: "Run Short Before Long",
       description:
-        "Use the closest destination first to learn timing, guard pressure, and how much risk feels manageable.",
+        "Use the closest destination first to learn the timing, the route back, and how quickly guards become a problem.",
     },
     {
-      title: "Bank Every Worthwhile Haul",
+      icon: PiggyBank,
+      title: "Bank Every Good Haul",
       description:
-        "Head home when a pull is already good enough instead of trying to stack one more risky moment.",
+        "Once you get a worthwhile Brainrot, head home and secure it instead of risking everything for one extra roll.",
     },
   ];
 
-  const basePriorities = [
-    "Protect the return trip before chasing better ceiling.",
-    "Turn successful runs into dependable passive cash.",
-    "Let base income fund your next route upgrade.",
-    "Use stable earnings to absorb the occasional failed run.",
+  const basePriorityBoard = [
+    "Redeem RELEASE before your first serious farming loop.",
+    "Learn the nearest route before pushing into longer luck runs.",
+    "Turn safe returns into steady base income.",
+    "Upgrade after banking cash, then move farther out.",
   ];
 
-  const baseTips = [
-    "A base with real income changes how aggressively you can route.",
-    "Every safe delivery is more important than one flashy almost-run.",
-    "Your home economy is what turns the homepage advice into repeatable progress.",
-  ];
-
-  const offlineCashSteps = [
+  const baseTipsGrid = [
     {
-      title: "End Sessions Smart",
-      text: "Log off after a successful delivery so your Brainrots keep working from a position of strength.",
+      icon: Shield,
+      text: "Closer runs are the safest way to build your first income loop.",
     },
     {
-      title: "Stack Safe Earners",
-      text: "A few reliable Brainrots are better than one volatile chase piece for offline progress.",
+      icon: MapPinned,
+      text: "Farther destinations offer better luck, but the return trip is more dangerous.",
     },
     {
-      title: "Use Cash for Better Routes",
-      text: "Passive earnings should make the next run cleaner, not just make you greedier.",
+      icon: TrendingUp,
+      text: "A base that keeps growing is better than a flashy run that never makes it home.",
+    },
+    {
+      icon: CalendarDays,
+      text: "Check Saturday updates for new reasons to revisit your route plan.",
     },
   ];
 
-  const stackPriorities = [
-    "Starter code first",
-    "Safe route second",
-    "Placed Brainrots third",
-    "Far-route ambition last",
+  const baseGuideCta = {
+    label: "Build a Better Base Loop",
+    href: "/base-guide",
+  };
+
+  const offlineEarningsExplainer = [
+    {
+      icon: Coins,
+      title: "What Generates Offline Cash",
+      description:
+        "Brainrots collected and secured at your base keep your income loop working even when you are not actively farming.",
+    },
+    {
+      icon: Gift,
+      title: "Why Early Brainrots Matter",
+      description:
+        "The RELEASE code reward is useful because it gives you one more income source right away instead of making you wait for pure RNG.",
+    },
+    {
+      icon: MapPinned,
+      title: "Why Route Choice Matters",
+      description:
+        "Pushing farther destinations can improve your luck, which helps you bring home better Brainrots and strengthen your idle gains.",
+    },
   ];
 
-  const upgrades = [
+  const offlineStackPriorities = [
+    "Claim RELEASE for an immediate starter Brainrot.",
+    "Lock in safe Brainrots at base before ending a session.",
+    "Upgrade enough to reach better luck routes consistently.",
+    "Log off after a productive return, not after an empty run.",
+  ];
+
+  const offlineReminderStrip = [
+    { icon: Gift, text: "Free reward first." },
+    { icon: House, text: "Safe delivery second." },
+    { icon: Coins, text: "Offline income keeps working after you leave." },
+    { icon: CalendarDays, text: "Saturday updates can change the best farming rhythm." },
+  ];
+
+  const offlineCashCta = {
+    label: "Boost Your Offline Earnings",
+    href: "/offline-cash",
+  };
+
+  const upgradeLadder = [
     {
+      icon: Rocket,
       stage: "Early Game",
       focus: "Movement speed",
       reason:
         "More speed makes short runs safer and opens the path to farther destinations with better luck.",
     },
     {
-      stage: "Mid Progression",
-      focus: "Cash efficiency",
+      icon: Coins,
+      stage: "After Your First Stable Income",
+      focus: "Cash growth",
       reason:
         "Once you can return home reliably, stronger income lets every farming loop scale faster.",
     },
     {
-      stage: "After Stability",
-      focus: "Higher-ceiling farming",
+      icon: Star,
+      stage: "Mid Progression",
+      focus: "Luck-related value",
       reason:
-        "Better route value matters most after your base can already absorb the occasional failure.",
+        "Better luck matters more once you can actually survive the longer routes where stronger drops show up.",
+    },
+    {
+      icon: CalendarDays,
+      stage: "Update Windows",
+      focus: "Event-ready flexibility",
+      reason:
+        "Weekly Saturday updates can shift what feels worth farming, so staying flexible beats overspending too early.",
     },
   ];
 
-  const upgradeChips = [
-    "Movement first",
-    "Consistency second",
-    "Income third",
-    "Ceiling last",
+  const upgradePriorityChips = [
+    "Early Priority: Speed",
+    "Stability Priority: Income",
+    "Push Priority: Better Luck",
+    "Always Useful: Weekly Update Awareness",
   ];
 
   const beforeAfterCards = [
     {
-      title: "Before Stable Upgrades",
-      text: "Far runs feel thrilling but inconsistent, and one miss can undo a long stretch of progress.",
+      icon: Zap,
+      title: "Before Speed",
+      before: "Short range, slower escapes, lower confidence on return trips.",
+      after: "Cleaner farming loops, safer escapes, better access to farther destinations.",
     },
     {
-      title: "After Stable Upgrades",
-      text: "Return windows feel cleaner, route choices become deliberate, and premium attempts stop being desperation plays.",
+      icon: PiggyBank,
+      title: "Before Stronger Income",
+      before: "Every mistake feels expensive and progress slows down fast.",
+      after: "Your base recovers faster and upgrades stop feeling delayed.",
+    },
+    {
+      icon: Sparkles,
+      title: "Before Better Luck Runs",
+      before: "Mostly starter-value drops and limited upside.",
+      after: "A better shot at stronger Brainrots when your route can support the risk.",
     },
   ];
 
+  const upgradesGuideCta = {
+    label: "Choose the Next Upgrade",
+    href: "/upgrades-guide",
+  };
+
   const escapeChecklist = [
     "Use the closest destination until the route feels automatic.",
-    "Wait for the guards to roll the Lucky Block before you commit to the pickup.",
-    "Grab the drop quickly and turn back with a route already in mind.",
+    "Wait for the guards to roll the Lucky Block before you commit.",
+    "Grab the drop quickly and turn back with a plan.",
     "Choose survival over greed when the return window gets tight.",
   ];
 
   const routeTips = [
-    "A shorter route completed cleanly is better than a far route abandoned halfway.",
-    "Turnaround timing matters more than bravado once guard pressure rises.",
-    "The right escape line is the one that preserves your existing economy.",
+    {
+      icon: MapPinned,
+      title: "Learn One Safe Path First",
+      description:
+        "A repeatable route beats a random long run, especially when you are still building base income.",
+    },
+    {
+      icon: TrendingUp,
+      title: "Respect the Risk Curve",
+      description:
+        "Farther destinations can improve luck, but they also stretch the time you need to survive on the way back.",
+    },
+    {
+      icon: Zap,
+      title: "Escape Speed Matters",
+      description:
+        "Movement upgrades make guard-heavy runs more forgiving and help you convert risky drops into real progress.",
+    },
   ];
 
   const failStateCards = [
     {
-      title: "Late Turnaround",
-      text: "Waiting too long after a good pull is the easiest way to turn a win into a wipe.",
+      icon: TriangleAlert,
+      title: "Overcommitting",
+      description:
+        "Going one area farther than your movement can handle usually turns a good run into a lost one.",
     },
     {
-      title: "Route Mismatch",
-      text: "If a route tier feels harder than your current base can support, you moved up too early.",
+      icon: CircleHelp,
+      title: "Greedy Last-Second Farming",
+      description:
+        "Trying to squeeze in one more pickup is often worse than banking the Brainrots you already secured.",
     },
     {
-      title: "Emotion Trading",
-      text: "Trying to make up for a failed run with a reckless next attempt usually compounds the loss.",
+      icon: Shield,
+      title: "Ignoring the Return Trip",
+      description: "The drop is only valuable if you actually get it back to base.",
     },
   ];
+
+  const guardEscapeCta = {
+    label: "Master the Escape Route",
+    href: "/guard-escape-tips",
+  };
 
   const updateFeed = [
     {
@@ -1400,13 +1490,13 @@ export default function HomePage() {
             eyebrow="Module 09"
             title="Be a Lucky Block"
             highlight="Base Guide"
-            description="Your base is where every successful return becomes permanent progress, because safe deliveries turn into passive income and sharper decision making."
+            description="Your base is the center of every run: load in, claim the free reward, head to a destination, wait for the guards to roll the Lucky Block, carry Brainrots home, and turn each safe return into stronger passive income."
           />
 
           <div className="mb-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-            {baseFlow.map((item) => (
+            {baseFlowCards.map((item) => (
               <div key={item.title} className={panelClass}>
-                <House className="mb-4 h-8 w-8 text-[hsl(var(--nav-theme-light))]" />
+                <item.icon className="mb-4 h-8 w-8 text-[hsl(var(--nav-theme-light))]" />
                 <h3 className="mb-3 text-xl font-bold">{item.title}</h3>
                 <p className="text-sm text-muted-foreground">{item.description}</p>
               </div>
@@ -1417,7 +1507,7 @@ export default function HomePage() {
             <div className={panelClass}>
               <h3 className="mb-4 text-2xl font-bold">Priority Board</h3>
               <ul className="space-y-3">
-                {basePriorities.map((item) => (
+                {basePriorityBoard.map((item) => (
                   <li key={item} className="flex items-start gap-3 text-sm">
                     <ArrowRight className="mt-0.5 h-4 w-4 flex-shrink-0 text-[hsl(var(--nav-theme-light))]" />
                     <span>{item}</span>
@@ -1427,17 +1517,28 @@ export default function HomePage() {
             </div>
             <div className={accentPanelClass}>
               <h3 className="mb-4 text-2xl font-bold">Compact Tips Grid</h3>
-              <div className="grid gap-3">
-                {baseTips.map((item) => (
+              <div className="grid gap-3 sm:grid-cols-2">
+                {baseTipsGrid.map((item) => (
                   <div
-                    key={item}
+                    key={item.text}
                     className="rounded-2xl border border-[hsl(var(--nav-theme)/0.22)] bg-background/45 p-4 text-sm text-muted-foreground"
                   >
-                    {item}
+                    <item.icon className="mb-3 h-4 w-4 text-[hsl(var(--nav-theme-light))]" />
+                    {item.text}
                   </div>
                 ))}
               </div>
             </div>
+          </div>
+
+          <div className="mt-8 flex justify-center">
+            <a
+              href={baseGuideCta.href}
+              className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--nav-theme))] px-6 py-3 font-semibold text-slate-950 transition hover:brightness-95"
+            >
+              <House className="h-4 w-4" />
+              {baseGuideCta.label}
+            </a>
           </div>
         </div>
       </section>
@@ -1451,34 +1552,63 @@ export default function HomePage() {
             eyebrow="Module 10"
             title="Be a Lucky Block"
             highlight="Offline Cash"
-            description="Offline cash is easiest to understand when players see it as the reward for ending sessions after secure deliveries, not as a passive system detached from route quality."
+            description="Offline cash is one of the biggest progression engines in Be a Lucky Block. The stronger your base is before you log off, the more value you create while you are away."
           />
 
           <div className="mb-8 grid gap-6 md:grid-cols-3">
-            {offlineCashSteps.map((item) => (
+            {offlineEarningsExplainer.map((item) => (
               <div key={item.title} className={panelClass}>
-                <PiggyBank className="mb-4 h-8 w-8 text-[hsl(var(--nav-theme-light))]" />
+                <item.icon className="mb-4 h-8 w-8 text-[hsl(var(--nav-theme-light))]" />
                 <h3 className="mb-2 text-xl font-bold">{item.title}</h3>
-                <p className="text-sm text-muted-foreground">{item.text}</p>
+                <p className="text-sm text-muted-foreground">{item.description}</p>
               </div>
             ))}
           </div>
 
-          <div className={accentPanelClass}>
-            <div className="mb-4 flex items-center gap-3">
-              <Coins className="h-6 w-6 text-[hsl(var(--nav-theme-light))]" />
-              <h3 className="text-2xl font-bold">Stack Priorities</h3>
+          <div className="grid gap-6 lg:grid-cols-[1fr_1fr]">
+            <div className={accentPanelClass}>
+              <div className="mb-4 flex items-center gap-3">
+                <Coins className="h-6 w-6 text-[hsl(var(--nav-theme-light))]" />
+                <h3 className="text-2xl font-bold">Stack Priorities</h3>
+              </div>
+              <div className="flex flex-wrap gap-3">
+                {offlineStackPriorities.map((item) => (
+                  <span
+                    key={item}
+                    className="rounded-full border border-[hsl(var(--nav-theme)/0.22)] bg-background/45 px-4 py-2 text-sm"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
             </div>
-            <div className="flex flex-wrap gap-3">
-              {stackPriorities.map((item) => (
-                <span
-                  key={item}
-                  className="rounded-full border border-[hsl(var(--nav-theme)/0.22)] bg-background/45 px-4 py-2 text-sm"
-                >
-                  {item}
-                </span>
-              ))}
+            <div className={panelClass}>
+              <div className="mb-4 flex items-center gap-3">
+                <Clock3 className="h-6 w-6 text-[hsl(var(--nav-theme-light))]" />
+                <h3 className="text-2xl font-bold">Reminder Strip</h3>
+              </div>
+              <div className="grid gap-3 sm:grid-cols-2">
+                {offlineReminderStrip.map((item) => (
+                  <div
+                    key={item.text}
+                    className="rounded-2xl border border-[hsl(var(--nav-theme)/0.22)] bg-background/45 p-4 text-sm text-muted-foreground"
+                  >
+                    <item.icon className="mb-3 h-4 w-4 text-[hsl(var(--nav-theme-light))]" />
+                    {item.text}
+                  </div>
+                ))}
+              </div>
             </div>
+          </div>
+
+          <div className="mt-8 flex justify-center">
+            <a
+              href={offlineCashCta.href}
+              className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--nav-theme))] px-6 py-3 font-semibold text-slate-950 transition hover:brightness-95"
+            >
+              <PiggyBank className="h-4 w-4" />
+              {offlineCashCta.label}
+            </a>
           </div>
         </div>
       </section>
@@ -1489,12 +1619,13 @@ export default function HomePage() {
             eyebrow="Module 11"
             title="Be a Lucky Block"
             highlight="Upgrades Guide"
-            description="Early upgrades should make successful returns easier before they chase ceiling, because consistency is the base of every better farming route."
+            description="Upgrades are about converting safer movement into better drops and stronger income. Early progress is mostly about reaching, escaping, and repeating the loop faster."
           />
 
-          <div className="mb-8 grid gap-4 md:grid-cols-3">
-            {upgrades.map((item) => (
+          <div className="mb-8 grid gap-4 md:grid-cols-2">
+            {upgradeLadder.map((item) => (
               <div key={item.stage} className={panelClass}>
+                <item.icon className="mb-4 h-8 w-8 text-[hsl(var(--nav-theme-light))]" />
                 <p className="mb-2 text-sm font-semibold uppercase tracking-[0.16em] text-[hsl(var(--nav-theme-light))]">
                   {item.stage}
                 </p>
@@ -1508,7 +1639,7 @@ export default function HomePage() {
             <div className={accentPanelClass}>
               <h3 className="mb-4 text-2xl font-bold">Priority Chips</h3>
               <div className="flex flex-wrap gap-3">
-                {upgradeChips.map((item) => (
+                {upgradePriorityChips.map((item) => (
                   <span
                     key={item}
                     className="rounded-full border border-[hsl(var(--nav-theme)/0.22)] bg-background/45 px-4 py-2 text-sm"
@@ -1518,15 +1649,32 @@ export default function HomePage() {
                 ))}
               </div>
             </div>
-            <div className="grid gap-4 md:grid-cols-2">
+            <div className="grid gap-4 md:grid-cols-3">
               {beforeAfterCards.map((item) => (
                 <div key={item.title} className={panelClass}>
-                  <Zap className="mb-4 h-8 w-8 text-[hsl(var(--nav-theme-light))]" />
+                  <item.icon className="mb-4 h-8 w-8 text-[hsl(var(--nav-theme-light))]" />
                   <h3 className="mb-2 text-xl font-bold">{item.title}</h3>
-                  <p className="text-sm text-muted-foreground">{item.text}</p>
+                  <p className="mb-2 text-sm text-muted-foreground">
+                    <span className="font-semibold text-foreground">Before: </span>
+                    {item.before}
+                  </p>
+                  <p className="text-sm text-muted-foreground">
+                    <span className="font-semibold text-foreground">After: </span>
+                    {item.after}
+                  </p>
                 </div>
               ))}
             </div>
+          </div>
+
+          <div className="mt-8 flex justify-center">
+            <a
+              href={upgradesGuideCta.href}
+              className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--nav-theme))] px-6 py-3 font-semibold text-slate-950 transition hover:brightness-95"
+            >
+              <Rocket className="h-4 w-4" />
+              {upgradesGuideCta.label}
+            </a>
           </div>
         </div>
       </section>
@@ -1540,7 +1688,7 @@ export default function HomePage() {
             eyebrow="Module 12"
             title="Be a Lucky Block"
             highlight="Guard Escape Tips"
-            description="The return trip decides whether luck becomes progress or disappears, so escape advice belongs on the homepage alongside routes and upgrades."
+            description="Guard pressure is the risk layer of every farming run. The winning pattern is simple: wait for the roll, collect fast, pick the cleanest route home, and avoid greedy mistakes."
           />
 
           <div className="mb-8 grid gap-6 lg:grid-cols-[1fr_1fr]">
@@ -1563,25 +1711,41 @@ export default function HomePage() {
                 <Compass className="h-6 w-6 text-[hsl(var(--nav-theme-light))]" />
                 <h3 className="text-2xl font-bold">Route Tips</h3>
               </div>
-              <ul className="space-y-3">
+              <div className="grid gap-3">
                 {routeTips.map((item) => (
-                  <li key={item} className="flex items-start gap-3 text-sm">
-                    <ArrowRight className="mt-0.5 h-4 w-4 flex-shrink-0 text-[hsl(var(--nav-theme-light))]" />
-                    <span>{item}</span>
-                  </li>
+                  <div
+                    key={item.title}
+                    className="rounded-2xl border border-[hsl(var(--nav-theme)/0.22)] bg-background/45 p-4"
+                  >
+                    <div className="mb-2 flex items-center gap-2">
+                      <item.icon className="h-4 w-4 text-[hsl(var(--nav-theme-light))]" />
+                      <h4 className="text-sm font-semibold">{item.title}</h4>
+                    </div>
+                    <p className="text-sm text-muted-foreground">{item.description}</p>
+                  </div>
                 ))}
-              </ul>
+              </div>
             </div>
           </div>
 
           <div className="grid gap-4 md:grid-cols-3">
             {failStateCards.map((card) => (
               <div key={card.title} className={panelClass}>
-                <TriangleAlert className="mb-4 h-8 w-8 text-[hsl(var(--nav-theme-light))]" />
+                <card.icon className="mb-4 h-8 w-8 text-[hsl(var(--nav-theme-light))]" />
                 <h3 className="mb-2 text-xl font-bold">{card.title}</h3>
-                <p className="text-sm text-muted-foreground">{card.text}</p>
+                <p className="text-sm text-muted-foreground">{card.description}</p>
               </div>
             ))}
+          </div>
+
+          <div className="mt-8 flex justify-center">
+            <a
+              href={guardEscapeCta.href}
+              className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--nav-theme))] px-6 py-3 font-semibold text-slate-950 transition hover:brightness-95"
+            >
+              <Shield className="h-4 w-4" />
+              {guardEscapeCta.label}
+            </a>
           </div>
         </div>
       </section>

@@ -92,19 +92,19 @@
     },
     "questMap": {
       "title": "Be a Lucky Block Base Guide",
-      "description": "Delivery rhythm and banking priorities"
+      "description": "Base flow cards, priority board, and compact loop tips"
     },
     "bossDrops": {
       "title": "Be a Lucky Block Offline Cash",
-      "description": "Turn secured Brainrots into steady income"
+      "description": "Earnings explainer, stack priorities, and reminder strip"
     },
     "currencyFarm": {
       "title": "Be a Lucky Block Upgrades Guide",
-      "description": "Movement, economy, and route efficiency"
+      "description": "Upgrade ladder, priority chips, and before/after cards"
     },
     "resetPlanner": {
       "title": "Be a Lucky Block Guard Escape Tips",
-      "description": "Clean returns and mistake prevention"
+      "description": "Escape checklist, route tips, and fail-state cards"
     },
     "buildPlanner": {
       "title": "Be a Lucky Block Weekly Updates",
@@ -238,19 +238,19 @@
     },
     "baseGuide": {
       "title": "Be a Lucky Block Base Guide",
-      "summary": "Your base converts a risky run into permanent progress."
+      "summary": "Your base is the center of every run, turning safe returns into stronger passive income."
     },
     "offlineCash": {
       "title": "Be a Lucky Block Offline Cash",
-      "summary": "End sessions after successful deliveries so your Brainrots can keep working while you are away."
+      "summary": "Offline cash scales with base strength, safe deliveries, and smart session endings."
     },
     "upgradesGuide": {
       "title": "Be a Lucky Block Upgrades Guide",
-      "summary": "Early upgrades should make successful returns easier before they chase ceiling."
+      "summary": "Upgrades should convert safer movement into better drops and stronger income."
     },
     "guardEscapeTips": {
       "title": "Be a Lucky Block Guard Escape Tips",
-      "summary": "Clean return routes matter as much as lucky rolls."
+      "summary": "Guard pressure rewards clean routes, fast decisions, and disciplined return timing."
     },
     "weeklyUpdates": {
       "title": "Be a Lucky Block Weekly Updates",
