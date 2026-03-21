@@ -1,7 +1,7 @@
 {
-  "api_key": "sk-yLqZg8MPVFdZtepizamKefkyECaTS0ZJ6FAR5OwVXcO44WaA",
-  "api_base_url": "https://api.apimart.ai/v1/chat/completions",
-  "model": "gemini-2.0-flash",
+  "api_key": "sk-OxJJtxGZLYFWUZkaQoGgo68MacGSEuZ5oPg4oKLElGJ98WvB",
+  "api_base_url": "https://api.apifast.tech/v1/chat/completions",
+  "model": "gemini-2.5-flash",
   "group": "default",
   "temperature": 0.7,
   "max_tokens": 8192,
@@ -9,18 +9,18 @@
   "retry_attempts": 3,
   "retry_delay": 5,
 
-  "languages": ["pt", "es", "id", "tr", "fr", "de", "th"],
+  "languages": ["pt", "es", "ja", "ko", "fr", "de", "th"],
   "default_language": "en",
   "output_dir": "src/locales/",
 
-  "use_value_extraction": true,
+  "use_value_extraction": false,
 
   "game_names": {
     "en": "Be a Lucky Block",
     "pt": "Be a Lucky Block",
     "es": "Be a Lucky Block",
-    "id": "Be a Lucky Block",
-    "tr": "Be a Lucky Block",
+    "ja": "Be a Lucky Block",
+    "ko": "Be a Lucky Block",
     "fr": "Be a Lucky Block",
     "de": "Be a Lucky Block",
     "th": "Be a Lucky Block"
@@ -29,8 +29,8 @@
   "lang_names": {
     "pt": "Portuguese (Brazil)",
     "es": "Spanish (LATAM)",
-    "id": "Indonesian",
-    "tr": "Turkish",
+    "ja": "Japanese",
+    "ko": "Korean",
     "fr": "French",
     "de": "German",
     "th": "Thai"

@@ -200,6 +200,7 @@
     "termsOfService": "Terms of Service"
   },
   "homepage": {
+    "loading": "Loading Be A Lucky Block Wiki...",
     "codes": {
       "title": "Be a Lucky Block Codes",
       "summary": "Redeem the current starter code for a free Brr Brr Patapim and kick off your first offline cash setup."

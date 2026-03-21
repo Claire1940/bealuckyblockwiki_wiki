@@ -46,11 +46,17 @@ import {
 const HeroStats = lazy(() => import("@/components/home/HeroStats"));
 const CTASection = lazy(() => import("@/components/home/CTASection"));
 
-const LoadingPlaceholder = ({ height = "h-64" }: { height?: string }) => (
+const LoadingPlaceholder = ({
+  height = "h-64",
+  label = "Loading Be A Lucky Block Wiki...",
+}: {
+  height?: string;
+  label?: string;
+}) => (
   <div
     className={`${height} flex items-center justify-center rounded-3xl border border-border bg-white/5`}
   >
-    <div className="text-muted-foreground">Loading...</div>
+    <div className="text-muted-foreground">{label}</div>
   </div>
 );
 
@@ -110,6 +116,8 @@ function MetricCard({
 
 export default function HomePage() {
   const t = useMessages() as any;
+  const loadingLabel =
+    t.homepage?.loading || "Loading Be A Lucky Block Wiki...";
   const [copiedCode, setCopiedCode] = useState<string | null>(null);
   const [expandedFaqIndex, setExpandedFaqIndex] = useState<number | null>(0);
 
@@ -997,7 +1005,11 @@ export default function HomePage() {
             </a>
           </div>
 
-          <Suspense fallback={<LoadingPlaceholder height="h-32" />}>
+          <Suspense
+            fallback={
+              <LoadingPlaceholder height="h-32" label={loadingLabel} />
+            }
+          >
             <HeroStats
               stats={[
                 {
@@ -2101,7 +2113,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <Suspense fallback={<LoadingPlaceholder />}>
+      <Suspense fallback={<LoadingPlaceholder label={loadingLabel} />}>
         <CTASection
           title={t.cta.title}
           description={t.cta.description}

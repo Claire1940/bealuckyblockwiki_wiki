@@ -1,876 +1,269 @@
 {
   "seo": {
     "home": {
-      "title": "Be A Lucky Block Wiki - Codes, Tier-Liste, Einheiten & Guides | Be a Lucky Block Roblox",
-      "description": "Vollständiges Be A Lucky Block Wiki Ressourcen-Hub! Holen Sie sich die neuesten funktionierenden Codes, Tier-Listen, Einheiten-Guides, Action-RPG-Strategien und Wiki für das Be a Lucky Block Roblox-Spiel. Meistern Sie jede Welle mit unseren umfassenden Guides!",
-      "keywords": "Be A Lucky Block Wiki, Be a Lucky Block, Be a Lucky Block Codes, Be a Lucky Block Tier-Liste, Be a Lucky Block Einheiten, Be a Lucky Block Guide, Roblox Action-RPG, Anime Action-RPG, Roblox Codes, Action-RPG-Spiel, Anime-Spiel-Codes",
-      "ogTitle": "Be A Lucky Block Wiki - Codes, Tier-Liste, Einheiten & Guides",
-      "ogDescription": "Vollständiges Be A Lucky Block Wiki Ressourcen-Hub! Holen Sie sich die neuesten funktionierenden Codes, Tier-Listen, Einheiten-Guides, Action-RPG-Strategien und Wiki für das Be a Lucky Block Roblox-Spiel.",
-      "twitterTitle": "Be A Lucky Block Wiki - Codes, Tier-Liste, Einheiten & Guides",
-      "twitterDescription": "Vollständiges Be A Lucky Block Wiki Ressourcen-Hub! Holen Sie sich die neuesten funktionierenden Codes, Tier-Listen, Einheiten-Guides und Action-RPG-Strategien."
+      "title": "Be A Lucky Block Wiki - Codes, Routen, Brainrots & Updates",
+      "description": "Be A Lucky Block Wiki mit den aktuellen Codes, Routen-Analysen, Brainrot-Guides, Basis-Tipps, Handelsnotizen und wöchentlicher Berichterstattung über Roblox-Events.",
+      "keywords": "Be A Lucky Block Wiki, Be a Lucky Block, Be a Lucky Block Codes, Be a Lucky Block Routen, Be a Lucky Block Brainrots, Be a Lucky Block Updates, Roblox",
+      "ogTitle": "Be A Lucky Block Wiki - Codes, Routen, Brainrots & Updates",
+      "ogDescription": "Verfolge Be a Lucky Block Codes, Routen, Brainrots, Basiswachstum, Handelsnotizen und wöchentliche Updates in einem zentralen Homepage-Hub.",
+      "twitterTitle": "Be A Lucky Block Wiki - Codes, Routen, Brainrots & Updates",
+      "twitterDescription": "Verfolge Be a Lucky Block Codes, Routen, Brainrots und wöchentliche Updates von einer zentralen Homepage aus."
     }
   },
   "nav": {},
   "common": {
     "home": "Startseite",
     "more": "Mehr",
-    "playNow": "Jetzt Spielen",
+    "playNow": "Be a Lucky Block spielen",
     "switchLanguage": "Sprache wechseln",
     "switchTheme": "Design wechseln",
     "lightMode": "Heller Modus",
     "darkMode": "Dunkler Modus",
     "notFound": "Seite nicht gefunden",
-    "notFoundDescription": "Die Seite, die Sie suchen, existiert nicht.",
+    "notFoundDescription": "Die von Ihnen gesuchte Seite existiert nicht.",
     "backToHome": "Zurück zur Startseite",
-    "relatedArticles": "Verwandte Artikel",
-    "readMore": "Mehr Lesen"
+    "relatedArticles": "Ähnliche Artikel",
+    "readMore": "Mehr lesen"
   },
   "hero": {
-    "badge": "Meistere den Dämonenjäger-Kampf im ultimativen Roblox-RPG-Erlebnis",
+    "badge": "Regenbogen-Brainrot Steal-and-Run Tycoon",
     "title": "Be A Lucky Block Wiki",
-    "description": "Deine ultimative Anlaufstelle für Be a Lucky Block! Meistere Atemtechniken, schalte mächtige Clans frei und dominiere Dämonenschlachten. Hol dir funktionierende Codes, Clan-Ranglisten, Trainingsanleitungen und Boss-Strategien, um der ultimative Dämonenjäger zu werden!",
-    "getFreeCodesCTA": "Kostenlose Codes erhalten",
-    "playOnRobloxCTA": "Auf Roblox spielen",
+    "description": "Verfolge den aktuellen Code, lerne die sicherste Routen-Progression, verstehe den Brainrot-Wert und folge den Samstags-Updates von einer Be a Lucky Block Homepage.",
+    "getFreeCodesCTA": "Zu den Be a Lucky Block Codes springen",
+    "playOnRobloxCTA": "Be a Lucky Block auf Roblox spielen",
     "stats": {
       "stat1": {
-        "value": "300K+",
-        "label": "Gesamtbesuche"
+        "value": "62K+",
+        "label": "Spieler online"
       },
       "stat2": {
-        "value": "1.2K",
-        "label": "Discord Mitglieder"
+        "value": "34M+",
+        "label": "Besuche insgesamt"
       },
       "stat3": {
-        "value": "10+",
-        "label": "Aktive Codes"
+        "value": "1",
+        "label": "Funktionierender Code"
       },
       "stat4": {
-        "value": "Täglich",
-        "label": "Updates"
+        "value": "Samstag",
+        "label": "Update-Rhythmus"
       }
     }
   },
   "gameFeature": {
-    "title": "Be a Lucky Block Trailer",
-    "description": "Meistere Atemtechniken, schalte mächtige Clans frei und dominiere Dämonenschlachten in diesem actiongeladenen Demon Slayer RPG-Erlebnis auf Roblox!"
+    "title": "Be a Lucky Block Gameplay",
+    "description": "Sieh dir ein aktuelles Be a Lucky Block Video an, das sich auf bessere Routen, stärkere Pulls, spezielle Brainrots und Entscheidungsfindungen im Late-Game konzentriert."
   },
   "tools": {
-    "title": "Be a Lucky Block",
-    "titleHighlight": "Ressourcen",
-    "subtitle": "Springe zu einem beliebigen Abschnitt unten",
+    "title": "Be A Lucky Block",
+    "titleHighlight": "Homepage-Navigator",
+    "subtitle": "Scrolle zu jedem Homepage-Modul, ohne die Hauptseite zu verlassen",
     "codes": {
-      "title": "Codes",
-      "description": "Erhalte kostenlose Belohnungen"
+      "title": "Be a Lucky Block Codes",
+      "description": "Funktionierende Codes, Belohnungsdetails und Einlöseschritte"
     },
     "redeemGuide": {
-      "title": "Einlöse-Anleitung",
-      "description": "Erfahre, wie du Codes einlöst"
+      "title": "Be a Lucky Block Wiki",
+      "description": "Kern-Loop, Release-Snapshot und Kurzübersicht"
     },
     "trainingPaths": {
-      "title": "Trainingspfade",
-      "description": "Wähle deinen Weg"
+      "title": "Be a Lucky Block Anfänger-Guide",
+      "description": "Erste Durchläufe, sichere Routen und Basis-Setup"
     },
     "breathingTier": {
-      "title": "Atemtechniken-Rangliste",
-      "description": "Beste Atemtechniken"
+      "title": "Be a Lucky Block Glücks-Guide",
+      "description": "Risiko und Belohnung nach Routendistanz"
     },
     "demonArtTier": {
-      "title": "Dämonenkunst-Rangliste",
-      "description": "Top-Dämonenkünste"
+      "title": "Be a Lucky Block Orte",
+      "description": "Vergleich von nahen, mittleren und fernen Routen"
     },
     "oniRoute": {
-      "title": "Oni-Pfad",
-      "description": "Verwandle dich in einen Oni"
+      "title": "Be a Lucky Block Brainrots",
+      "description": "Seltenheitsstufen, Offline-Einnahmen und Wertfilter"
+    },
+    "specialBrainrots": {
+      "title": "Be a Lucky Block Spezial-Brainrots",
+      "description": "Geheime Chase-Karten, Seltenheits-Spotlight und Wunschliste"
     },
     "controls": {
-      "title": "Steuerung",
-      "description": "Meistere die Tasten"
+      "title": "Be a Lucky Block Handels-Guide",
+      "description": "Handelszeitpunkt, Nachfragebeobachtung und geschützte Täusche"
     },
     "questMap": {
-      "title": "Questkarte",
-      "description": "Finde NPCs und Quests"
+      "title": "Be a Lucky Block Basis-Guide",
+      "description": "Basis-Flow-Karten, Prioritätstafel und Tipps für kompakte Loops"
     },
     "bossDrops": {
-      "title": "Boss-Beute",
-      "description": "Boss-Beute-Leitfaden"
+      "title": "Be a Lucky Block Offline-Cash",
+      "description": "Erläuterung der Einnahmen, Stapel-Prioritäten und Erinnerungsleiste"
     },
     "currencyFarm": {
-      "title": "Währungsfarm",
-      "description": "Verdiene schnell Yen"
+      "title": "Be a Lucky Block Upgrade-Guide",
+      "description": "Upgrade-Leiter, Prioritäts-Chips und Vorher/Nachher-Karten"
     },
     "resetPlanner": {
-      "title": "Reset-Planer",
-      "description": "Plane deine Resets"
+      "title": "Be a Lucky Block Wachen-Fluchttipps",
+      "description": "Flucht-Checkliste, Routen-Tipps und Fail-State-Karten"
     },
     "buildPlanner": {
-      "title": "Build-Planer",
-      "description": "Optimiere deinen Build"
+      "title": "Be a Lucky Block Wöchentliche Updates",
+      "description": "Update-Rhythmus, Kurzinfos und Patch-Karten"
     },
     "thunderBreathing": {
-      "title": "Donneratmung",
-      "description": "Schalte den Donner-Stil frei"
+      "title": "Be a Lucky Block Events",
+      "description": "Live-Fenster, Event-Karten und Follow-CTA"
     },
     "fastLeveling": {
-      "title": "Schnelles Leveln",
-      "description": "Steige schnell auf"
+      "title": "Be a Lucky Block Discord & Community",
+      "description": "Creator-Snapshot, offizielle Links und Highlights"
     },
     "finalSelection": {
-      "title": "Finale Auswahl",
-      "description": "Werde ein Slayer"
+      "title": "Be a Lucky Block FAQ",
+      "description": "Kurzinfos und Akkordeon-Antworten für neue Spieler"
     },
     "clanSystem": {
-      "title": "Clan-System",
-      "description": "Clan-Ränge und -Boni"
+      "title": "Be a Lucky Block Video",
+      "description": "Sieh dir das vorgestellte Gameplay an, bevor du weiter scrollst"
     }
   },
   "whatIs": {
     "title": "Was ist",
     "titleHighlight": "Be a Lucky Block?",
-    "description": "Be a Lucky Block ist ein Demon Slayer-Action-RPG auf Roblox. Meistere Atemtechniken, schalte mächtige Clans frei und bekämpfe Dämonen in intensiven Kämpfen.",
+    "description": "Be a Lucky Block ist ein Roblox-Simulator, bei dem Distanz das Glück erhöht, der Rückweg die Gefahr steigert und Brainrots zur Basiswirtschaft werden, die dich auch offline weiter bezahlt.",
     "features": [
       {
-        "title": "Atemtechniken",
-        "description": "Meistere mächtige Atemtechniken wie Flamme, Wind und Wasser"
+        "title": "Distanzbasiertes Glück",
+        "description": "Fernere Ziele verbessern deine Belohnungsgrenze, aber jeder zusätzliche Schritt macht die Rückkehr gefährlicher."
       },
       {
-        "title": "Clan-System",
-        "description": "Schalte mächtige Clans mit einzigartigen Fähigkeiten frei und verbessere sie"
+        "title": "Brainrot-Wirtschaft",
+        "description": "Brainrots sind wichtig, weil sie einen erfolgreichen Durchlauf in passives Einkommen verwandeln, das du nach dem Ausloggen behältst."
       },
       {
-        "title": "Dämonenschlachten",
-        "description": "Bekämpfe herausfordernde Dämonen und Bosse, um Belohnungen zu verdienen"
+        "title": "Fluchtorientierter Loop",
+        "description": "Ein Durchlauf ist nicht beendet, wenn der Block gut rollt. Er zählt erst, wenn du den Pull zurück zur Basis gebracht hast."
       }
     ]
   },
   "faq": {
-    "title": "Häufig gestellte",
-    "titleHighlight": "Fragen",
-    "subtitle": "Alles, was du über Be a Lucky Block wissen musst",
+    "title": "Be a Lucky Block",
+    "titleHighlight": "FAQ",
+    "subtitle": "Schnelle Antworten auf die häufigsten Fragen beim ersten Laden",
     "questions": [
       {
-        "question": "Wie greife ich in Be a Lucky Block an und blocke?",
-        "answer": "LMB = Angriff, RMB = Schwerer Angriff, F = Blocken."
+        "question": "Wie oft wird Be a Lucky Block aktualisiert?",
+        "answer": "Das Spiel wirbt mit einem wöchentlichen Update-Zeitplan an Samstagen."
       },
       {
-        "question": "Wie renne ich in Be a Lucky Block?",
-        "answer": "Doppelklicke auf W (W+W) zum Rennen."
+        "question": "Was bewirken fernere Ziele?",
+        "answer": "Zu ferneren Zielen zu reisen, bringt dir besseres Glück, daher ist das Vordringen auf tiefere Routen Teil der Kern-Progression."
       },
       {
-        "question": "Wie öffne ich das Menü und die Atmung in Be a Lucky Block?",
-        "answer": "M = Menü, G = Atmung."
+        "question": "Warum sind Brainrots wichtig?",
+        "answer": "Brainrots sind deine Basiswirtschaft. Sobald du sie zurückbringst, verdienen sie weiterhin Geld für dich, auch wenn du offline bist."
       },
       {
-        "question": "Wie benutze ich Fertigkeitstasten in Be a Lucky Block?",
-        "answer": "Benutze 1-9 für Fertigkeiten."
+        "question": "Was passiert, nachdem die Wachen den Lucky Block gewürfelt haben?",
+        "answer": "Sobald der Lucky Block gewürfelt wurde, musst du zu deiner Basis zurückrennen, bevor die Wachen dich fangen."
       },
       {
-        "question": "Wie löse ich Be a Lucky Block-Codes ein?",
-        "answer": "Öffne den Codes-Button/das Menü, gib den Code ein und löse ihn dann ein/gib ihn ein."
+        "question": "Wie löse ich Codes ein?",
+        "answer": "Öffne das Shop-Menü, gehe zum Bereich Codes, gib den Code ein und drücke auf Verifizieren."
       },
       {
-        "question": "Warum funktioniert ein Be a Lucky Block-Code nicht?",
-        "answer": "Häufigste Gründe: abgelaufen, Tippfehler, bereits verwendet."
-      },
-      {
-        "question": "Sind Be a Lucky Block-Codes Groß- und Kleinschreibung-sensitiv?",
-        "answer": "Behandle sie als Groß- und Kleinschreibung-sensitiv und füge sie genau so ein, wie sie aufgeführt sind."
-      },
-      {
-        "question": "Welche Belohnungen geben Be a Lucky Block-Codes normalerweise?",
-        "answer": "Häufige Belohnungen sind Spins, Yen und bestimmte Reset-Effekte."
-      },
-      {
-        "question": "Wo sollte ich zuerst nach neuen Be a Lucky Block-Codes suchen?",
-        "answer": "Offizieller Discord, Roblox-Spielseite/Community-Beiträge und aktive Guide-Tracker."
-      },
-      {
-        "question": "Gibt es ein offizielles Be a Lucky Block Trello?",
-        "answer": "Ja, ein offizieller Be a Lucky Block Trello-Link wird öffentlich geteilt."
-      },
-      {
-        "question": "Welche Trainingspfade gibt es in Be a Lucky Block?",
-        "answer": "Flamme, Wind und Wasser sind die Haupttrainingspfade."
-      },
-      {
-        "question": "Was erfordert das Be a Lucky Block Flammen-Training?",
-        "answer": "Sammle 40 Oni-Hörner und besiege starke Oni-Gegner."
-      },
-      {
-        "question": "Was erfordert das Be a Lucky Block Wind-Training?",
-        "answer": "Kämpfe gegen den Giga-Horn-Boss im Dämonenlager, bis das Horn fällt."
-      },
-      {
-        "question": "Was erfordert das Be a Lucky Block Wasser-Training?",
-        "answer": "Schließe den Parkour ab und zerbrich den Felsen. Der letzte Schritt kostet 2.000 Yen pro Versuch."
-      },
-      {
-        "question": "Welcher Be a Lucky Block-Code kann Atmung/Dämonenkunst zurücksetzen?",
-        "answer": "Beispiel: 1KLIKES setzt Atmung/Dämonenkunst zurück und kann auch das Volk zurücksetzen."
-      },
-      {
-        "question": "Gibt es Codes zum Zurücksetzen der Werte in Be a Lucky Block?",
-        "answer": "Ja, Meilenstein-Codes enthalten Einträge zum Zurücksetzen der Werte."
-      },
-      {
-        "question": "Ändern sich die Be a Lucky Block-Code-Pools oft?",
-        "answer": "Ja, Listen werden häufig um Meilensteine und Bugfix-Fenster herum aktualisiert."
-      },
-      {
-        "question": "Sind genaue Boss-Drop-Raten in Be a Lucky Block bekannt?",
-        "answer": "Drop-Raten werden von den Entwicklern nicht öffentlich bestätigt."
-      },
-      {
-        "question": "Was ist die beste Yen-Farming-Route in Be a Lucky Block?",
-        "answer": "Löse zuerst aktive Codes ein und folge dann den Fortschrittsrouten, während du die Kosten verwaltest."
-      },
-      {
-        "question": "Sollte ich mich früh in Be a Lucky Block auf einen Build festlegen?",
-        "answer": "Nicht empfohlen – teste zuerst Routen und Steuerung und verwende dann Resets strategisch."
+        "question": "Wo sollte ich nach neuen Updates und Codes suchen?",
+        "answer": "Beobachte den Samstags-Patch-Zyklus, folge den Roblox-Event-Seiten und behalte den offiziellen Discord für Ankündigungen im Auge."
       }
     ]
   },
   "cta": {
-    "title": "Bereit, Be a Lucky Block zu meistern?",
-    "description": "Trete der Be a Lucky Block-Community auf Discord bei, um Strategien auszutauschen, Teamkollegen zu finden und die neuesten Codes zu erhalten!",
-    "joinCommunity": "Discord beitreten",
-    "joinGame": "Auf Roblox spielen"
+    "title": "Bereit für deinen nächsten Be a Lucky Block Run?",
+    "description": "Nutze den offiziellen Be a Lucky Block Discord für Update-Benachrichtigungen, kehre dann zu Roblox zurück und teste die Routen-, Brainrot- und Event-Ideen von der Homepage.",
+    "joinCommunity": "Be a Lucky Block Discord beitreten",
+    "joinGame": "Be a Lucky Block auf Roblox spielen"
   },
   "footer": {
-    "title": "Be a Lucky Block",
-    "description": "Deine vollständige Ressourcenzentrale für Be a Lucky Block. Finde Codes, Guides, Trainingspfade und Strategien, um Atemtechniken zu meistern und Dämonenschlachten zu dominieren.",
-    "resources": "Ressourcen",
-    "activeCodes": "Aktive Codes",
-    "trainingGuides": "Trainingsanleitungen",
-    "breathingStyles": "Atemtechniken",
-    "clanGuides": "Clan-Guides",
-    "moreTools": "Community",
+    "title": "Be A Lucky Block Wiki",
+    "description": "Dein von Fans erstellter Hub für Be a Lucky Block Codes, Routenplanung, Brainrot-Werte, Basiswachstum und wöchentliche Update-Verfolgung.",
+    "resources": "Homepage-Module",
+    "activeCodes": "Be a Lucky Block Codes",
+    "trainingGuides": "Be a Lucky Block Anfänger-Guide",
+    "breathingStyles": "Be a Lucky Block Orte",
+    "clanGuides": "Be a Lucky Block Upgrade-Guide",
+    "moreTools": "Offizielle Community",
     "discord": "Offizieller Discord",
-    "trello": "Offizielles Trello",
-    "playNow": "Auf Roblox spielen",
+    "trello": "Offizielles X",
+    "playNow": "Be a Lucky Block auf Roblox spielen",
     "copyright": "© 2026 Be A Lucky Block Wiki. Nicht verbunden mit der Roblox Corporation oder den Entwicklern von Be a Lucky Block.",
-    "privacyPolicy": "Datenschutzbestimmungen",
+    "privacyPolicy": "Datenschutzrichtlinie",
     "termsOfService": "Nutzungsbedingungen"
   },
   "homepage": {
+    "loading": "Be A Lucky Block Wiki wird geladen...",
     "codes": {
-      "title": "Be a Lucky Block",
-      "titleHighlight": "Codes",
-      "subtitle": "Erhalte kostenlose Spins, Yen und Resets, um deinen Fortschritt zu beschleunigen",
-      "cta": "Alle Codes & Einlöse-Anleitung anzeigen",
-      "table": {
-        "headers": {
-          "code": "Code",
-          "reward": "Belohnung",
-          "status": "Status"
-        },
-        "items": [
-          {
-            "code": "morespins",
-            "reward": "20 Spins",
-            "status": "aktiv"
-          },
-          {
-            "code": "100KVISITS",
-            "reward": "15 Spins",
-            "status": "aktiv"
-          },
-          {
-            "code": "1KLIKES",
-            "reward": "Atem-/Dämonenkunst-Reset",
-            "status": "aktiv"
-          },
-          {
-            "code": "guizerayt",
-            "reward": "10 Spins",
-            "status": "aktiv"
-          },
-          {
-            "code": "RELEASE",
-            "reward": "10 Spins",
-            "status": "aktiv"
-          }
-        ]
-      }
+      "title": "Be a Lucky Block Codes",
+      "summary": "Löse den aktuellen Starter-Code für ein kostenloses Brr Brr Patapim ein und starte dein erstes Offline-Cash-Setup."
     },
-    "redeemGuide": {
-      "title": "Be a Lucky Block",
-      "titleHighlight": "Einlöse-Anleitung",
-      "subtitle": "Befolge diese Schritte, um Codes erfolgreich einzulösen",
-      "steps": [
-        {
-          "step": 1,
-          "title": "Spiel starten",
-          "detail": "Öffne Be a Lucky Block in Roblox"
-        },
-        {
-          "step": 2,
-          "title": "Codes öffnen",
-          "detail": "Klicke im Hauptmenü auf den Codes-Button"
-        },
-        {
-          "step": 3,
-          "title": "Code einfügen",
-          "detail": "Gib einen funktionierenden Code in das Code-Feld ein"
-        },
-        {
-          "step": 4,
-          "title": "Belohnungen abholen",
-          "detail": "Drücke Einlösen / Enter und sammle Belohnungen"
-        }
-      ]
+    "wiki": {
+      "title": "Be a Lucky Block Wiki",
+      "summary": "Nutze die Homepage als Übersicht für den Spiel-Loop, den Update-Rhythmus und Community-Links."
     },
-    "trainingPaths": {
-      "title": "Be a Lucky Block",
-      "titleHighlight": "Trainingspfade",
-      "subtitle": "Wähle deinen Trainingspfad: Flamme, Wind oder Wasser",
-      "paths": [
-        {
-          "name": "Flamme",
-          "location": "Pfad in der Nähe des Spawns",
-          "requirements": "40 Oni-Hörner + Besiege starke Onis",
-          "difficulty": "Hoch",
-          "cost": "0 Yen"
-        },
-        {
-          "name": "Wind",
-          "location": "Seedorf",
-          "requirements": "Besiege den Giga-Horn-Boss + Erhalte den Horn-Drop",
-          "difficulty": "Hoch",
-          "cost": "0 Yen"
-        },
-        {
-          "name": "Wasser",
-          "location": "Weizenfelder-Wasserfall",
-          "requirements": "Schließe Parkour ab + Zerbrich Felsen",
-          "difficulty": "Mittel",
-          "cost": "2.000 Yen pro Versuch"
-        }
-      ]
+    "beginnerGuide": {
+      "title": "Be a Lucky Block Anfänger-Guide",
+      "summary": "Starte mit dem kostenlosen Code, übe auf nahen Routen und sichere dir deine ersten soliden Pulls."
     },
-    "breathingTier": {
-      "title": "Be a Lucky Block",
-      "titleHighlight": "Atemtechniken-Rangliste",
-      "subtitle": "Vergleiche Atemtechniken nach PvE/PvP-Leistung und Schwierigkeit",
-      "dataNote": "Community-Testdaten - Ranglisten werden regelmäßig aktualisiert",
-      "table": {
-        "headers": {
-          "breathing": "Atmung",
-          "pveScore": "PvE",
-          "pvpScore": "PvP",
-          "difficulty": "Schwierigkeit",
-          "cost": "Anschaffungskosten"
-        },
-        "items": [
-          {
-            "breathing": "Flamme",
-            "pveScore": "A-Rang",
-            "pvpScore": "A-Rang",
-            "difficulty": "Mittel",
-            "cost": "40 Oni-Hörner + starke Oni-Kämpfe"
-          },
-          {
-            "breathing": "Wind",
-            "pveScore": "S-Rang",
-            "pvpScore": "S-Rang",
-            "difficulty": "Schwer",
-            "cost": "Giga-Horn-Boss-Drop (Zufall)"
-          },
-          {
-            "breathing": "Wasser",
-            "pveScore": "A-Rang",
-            "pvpScore": "B-Rang",
-            "difficulty": "Mittel",
-            "cost": "Parkour + 2.000 Yen pro Versuch"
-          },
-          {
-            "breathing": "Donner",
-            "pveScore": "S-Rang",
-            "pvpScore": "A-Rang",
-            "difficulty": "Schwer",
-            "cost": "Spezielle Freischaltmethode"
-          }
-        ]
-      }
+    "luckGuide": {
+      "title": "Be a Lucky Block Glücks-Guide",
+      "summary": "Die beste Route ist diejenige, die du beständig abschließen kannst, nicht nur die mit der höchsten Belohnungsgrenze."
     },
-    "demonArtTier": {
-      "title": "Be a Lucky Block",
-      "titleHighlight": "Dämonenkunst-Rangliste",
-      "subtitle": "Dämonenkunst-Leistungsranglisten und Schwierigkeitsmatrix",
-      "statusBadge": "Kommt bald",
-      "emptyStateText": "Detaillierte Dämonenkunst-Ranglisten werden bald mit umfassenden Testdaten verfügbar sein.",
-      "knownFacts": [
-        "Dämonenkunst-System ist im Spiel verfügbar",
-        "Atem-/Dämonenkunst-Reset über Codes verfügbar",
-        "Community hat spezielle Oni + Dämonenkunst-Guides"
-      ],
-      "dataGaps": [
-        "Vollständige Liste der Dämonenkünste wird zusammengestellt",
-        "PvE/PvP-Leistungstests laufen",
-        "Kombinationssynergien werden dokumentiert"
-      ],
-      "ctaText": "Verfolge Updates auf Trello/Discord"
+    "locations": {
+      "title": "Be a Lucky Block Orte",
+      "summary": "Distanz steigert das Glück, aber längere Routen erhöhen den Rückkehrdruck, daher sollte die Progression Stufe für Stufe erfolgen."
     },
-    "oniRoute": {
-      "title": "Be a Lucky Block",
-      "titleHighlight": "Oni-Pfad",
-      "subtitle": "Verwandle dich in einen Oni und schalte Dämonenkünste frei",
-      "statusBadge": "Anleitung verfügbar",
-      "warningText": "Befolge die Transformationsschritte, um ein Oni zu werden und auf mächtige Dämonenkünste zuzugreifen.",
-      "flowNodes": [
-        {
-          "id": 1,
-          "title": "Starte als Mensch",
-          "type": "Start",
-          "known": true
-        },
-        {
-          "id": 2,
-          "title": "Verwandle dich in Oni",
-          "type": "Zweig",
-          "known": true
-        },
-        {
-          "id": 3,
-          "title": "Erhalte / Spinne Dämonenkunst",
-          "type": "Fortschritt",
-          "known": true
-        },
-        {
-          "id": 4,
-          "title": "Build-Spezialisierung",
-          "type": "Optimierung",
-          "known": true
-        }
-      ],
-      "unknowns": [
-        "Transformations-NPC-Standort",
-        "Benötigte Gegenstände und Level",
-        "Transformationskosten",
-        "Beste Dämonenkunst-Kombinationen"
-      ]
+    "brainrots": {
+      "title": "Be a Lucky Block Brainrots",
+      "summary": "Brainrots treiben den Loop vom Ziehen zur Basis bis zum Offline-Cash an, wobei RELEASE der aktuelle Einstiegshaken für den kostenlosen Start ist."
     },
-    "controls": {
-      "title": "Be a Lucky Block",
-      "titleHighlight": "Steuerung",
-      "subtitle": "Meistere die Tastatursteuerung für den Kampf",
-      "keys": [
-        {
-          "key": "LMB",
-          "action": "Angriff"
-        },
-        {
-          "key": "RMB",
-          "action": "Schwerer Angriff"
-        },
-        {
-          "key": "F",
-          "action": "Blocken"
-        },
-        {
-          "key": "W + W",
-          "action": "Rennen"
-        },
-        {
-          "key": "M",
-          "action": "Menü"
-        },
-        {
-          "key": "G",
-          "action": "Atmung"
-        },
-        {
-          "key": "1-9",
-          "action": "Fertigkeiten"
-        }
-      ]
+    "specialBrainrots": {
+      "title": "Be a Lucky Block Spezial-Brainrots",
+      "summary": "Inferno Secret, Divine, Void, Cyborg und Mogging Secret sind herausragende Chase-Lines im Late-Game."
     },
-    "questMap": {
-      "title": "Be a Lucky Block",
-      "titleHighlight": "Questkarte",
-      "subtitle": "Finde Quest-NPCs und Trainingsorte",
-      "recommendedSequence": "Empfohlene Reihenfolge: Flamme → Wasser → Wind",
-      "pins": [
-        {
-          "id": 1,
-          "name": "Spawn-Pfad (Flammen-Start)",
-          "region": "In der Nähe des Spawns",
-          "objective": "Starte Flammen-Training",
-          "requirements": [
-            "40 Oni-Hörner",
-            "Besiege mehrere zähe Onis"
-          ],
-          "rewards": [
-            "Flammenpfad-Fortschritt"
-          ]
-        },
-        {
-          "id": 2,
-          "name": "Dämonenlager (Wind-Schritt)",
-          "region": "Seedorf",
-          "objective": "Besiege Giga-Horn und erhalte Horn-Drop",
-          "requirements": [
-            "Boss-Clear",
-            "Drop-Glück (Zufall)"
-          ],
-          "rewards": [
-            "Windpfad-Fortschritt"
-          ]
-        },
-        {
-          "id": 3,
-          "name": "Wasserfall-Prüfung",
-          "region": "Große Weizenfelder",
-          "objective": "Parkour-Herausforderung + Felsen zerbrechen",
-          "requirements": [
-            "2.000 Yen pro letztem Schritt-Versuch"
-          ],
-          "rewards": [
-            "Wasserpfad-Fortschritt"
-          ]
-        }
-      ]
+    "tradingGuide": {
+      "title": "Be a Lucky Block Handels-Guide",
+      "summary": "Handle erst, wenn dein Basiseinkommen stabil ist, gib zuerst Duplikate ab und verfolge Nachfrageänderungen über Community-Kanäle."
     },
-    "bossDrops": {
-      "title": "Be a Lucky Block",
-      "titleHighlight": "Boss-Beute",
-      "subtitle": "Boss-Beute und Drop-Anforderungen",
-      "riskNotice": "Boss-Drops basieren auf Zufall. Farme weiter, bis du die Gegenstände bekommst, die du brauchst!",
-      "table": {
-        "headers": {
-          "drop": "Drop",
-          "source": "Quelle",
-          "howToObtain": "Wie man es erhält",
-          "primaryUse": "Primäre Verwendung"
-        },
-        "items": [
-          {
-            "drop": "Giga-Horn",
-            "source": "Giga-Horn-Boss (Dämonenlager)",
-            "howToObtain": "Besiege den Giga-Horn-Boss, bis das Horn fällt",
-            "primaryUse": "Erforderlich für den Wind-Trainingsfortschritt"
-          },
-          {
-            "drop": "Oni-Horn x40",
-            "source": "Oni-Gegner",
-            "howToObtain": "Farme Oni und sammle 40 Hörner",
-            "primaryUse": "Erforderlich für den Flammen-Trainingsfortschritt"
-          },
-          {
-            "drop": "Boss-Materialien",
-            "source": "Verschiedene Bosse",
-            "howToObtain": "Überprüfe Trello/Discord für die neuesten Boss-Drops",
-            "primaryUse": "Herstellung und Fortschritt"
-          }
-        ]
-      }
+    "baseGuide": {
+      "title": "Be a Lucky Block Basis-Guide",
+      "summary": "Deine Basis ist das Zentrum jedes Durchlaufs und verwandelt sichere Rückkehr in stärkeres passives Einkommen."
     },
-    "currencyFarm": {
-      "title": "Be a Lucky Block",
-      "titleHighlight": "Währungsfarm",
-      "subtitle": "Beste Methoden, um Yen effizient zu verdienen",
-      "disclaimer": "Verwende diese bewährten Methoden, um deine Yen-Einnahmen in Be a Lucky Block zu maximieren.",
-      "methods": [
-        {
-          "rank": 1,
-          "method": "Code-Einlösung",
-          "expectedReturn": "Spins + Yen (variiert je nach Code)",
-          "timeToValue": "1-3 min",
-          "riskLevel": "Niedrig",
-          "howTo": [
-            "Öffne das Spielmenü und löse zuerst aktive Codes ein",
-            "Verwende Spins, bevor du dich auf lange Grind-Schleifen festlegst"
-          ]
-        },
-        {
-          "rank": 2,
-          "method": "Intelligentes Ressourcenmanagement",
-          "expectedReturn": "Spare Yen, indem du fehlgeschlagene Versuche vermeidest",
-          "timeToValue": "Sofort",
-          "riskLevel": "Niedrig",
-          "howTo": [
-            "Bereite die Anforderungen vor hochpreisigen Trainingsversuchen vor",
-            "Der letzte Versuch des Wasserpfads kostet 2.000 Yen pro Versuch"
-          ]
-        },
-        {
-          "rank": 3,
-          "method": "Kampf-Fortschrittsschleife",
-          "expectedReturn": "Yen und EXP von Quests",
-          "timeToValue": "Mittel",
-          "riskLevel": "Mittel",
-          "howTo": [
-            "Befolge Anfänger-Fortschrittsanleitungen",
-            "Überprüfe Discord auf optimale Farming-Routen"
-          ]
-        }
-      ]
+    "offlineCash": {
+      "title": "Be a Lucky Block Offline-Cash",
+      "summary": "Offline-Cash skaliert mit der Basisstärke, sicheren Lieferungen und klugen Session-Abschlüssen."
     },
-    "resetPlanner": {
-      "title": "Be a Lucky Block",
-      "titleHighlight": "Reset-Planer",
-      "subtitle": "Plane deine Resets strategisch - setze niemals blind zurück",
-      "startQuestion": "Was ist dein aktueller Engpass?",
-      "decisions": [
-        {
-          "question": "Fühlen sich die Kernwerte falsch zugeordnet an?",
-          "yesAction": "Überprüfe, ob du einen Code zum Zurücksetzen der Werte hast",
-          "noAction": "Überprüfe, ob Atmung/Dämonenkunst für dein Ziel ungeeignet ist"
-        },
-        {
-          "question": "Hast du einen Code zum Zurücksetzen der Werte?",
-          "yesAction": "Verwende jetzt Werte-Reset - Wende den Reset an und baue dann um deinen Zielmodus herum neu auf (PvE/PvP/Hybrid)",
-          "noAction": "Verzögere den Reset und farme Ressourcen - Verwende zuerst aktive Spin/Yen-Codes und die Fortschrittsroute"
-        },
-        {
-          "question": "Atmung/Dämonenkunst ist für dein Ziel ungeeignet?",
-          "yesAction": "Kannst du jetzt einen Code zum Zurücksetzen von Atmung/Dämonenkunst verwenden?",
-          "noAction": "Behalte den Build, optimiere die Ausführung - Konzentriere dich auf die Beherrschung der Steuerung, bevor du neu würfelst"
-        },
-        {
-          "question": "Kannst du jetzt einen Code zum Zurücksetzen von Atmung/Dämonenkunst verwenden?",
-          "yesAction": "Verwende Atmung/Dämonenkunst-Reset - Bekannte Reset-Beispiele beinhalten Resets, die auch das Volk beeinflussen können",
-          "noAction": "Kein Panik-Reset - Warte auf den nächsten Meilenstein/Update-Code-Drop; verfolge Discord-Ankündigungen"
-        }
-      ]
+    "upgradesGuide": {
+      "title": "Be a Lucky Block Upgrade-Guide",
+      "summary": "Upgrades sollten sicherere Bewegung in bessere Drops und ein höheres Einkommen umwandeln."
     },
-    "buildPlanner": {
-      "title": "Be a Lucky Block",
-      "titleHighlight": "Build-Planer",
-      "subtitle": "Optimiere deinen Charakter-Build mit zielbasierter Planung",
-      "dataNote": "Plane deinen Build basierend auf deinem Spielstil und deinen Zielen",
-      "inputFields": [
-        {
-          "key": "ZielModus",
-          "label": "Zielmodus",
-          "type": "auswählen",
-          "options": [
-            "PvE-Fortschritt",
-            "Boss-Fokus",
-            "PvP-Duell",
-            "Hybrid"
-          ]
-        },
-        {
-          "key": "Route",
-          "label": "Route",
-          "type": "auswählen",
-          "options": [
-            "Slayer",
-            "Oni"
-          ]
-        },
-        {
-          "key": "AktuelleAtmung",
-          "label": "Aktuelle Atmung",
-          "type": "Text"
-        },
-        {
-          "key": "AktuelleDämonenkunst",
-          "label": "Aktuelle Dämonenkunst",
-          "type": "Text"
-        },
-        {
-          "key": "YenBudget",
-          "label": "Aktuelles Yen",
-          "type": "Nummer"
-        },
-        {
-          "key": "SpinsVerfügbar",
-          "label": "Verfügbare Spins",
-          "type": "Nummer"
-        }
-      ],
-      "presetExamples": [
-        {
-          "name": "Starter Slayer (Niedriges Budget)",
-          "goalMode": "PvE-Fortschritt",
-          "route": "Slayer",
-          "yenBudget": 2000,
-          "spinsAvailable": 10,
-          "output": {
-            "now": "Löse aktive Codes ein und wähle eine stabile Fortschrittsroute",
-            "next": "Bereite die Anforderungen vor dem Training vor, um keine Yen zu verschwenden",
-            "after": "Verwende den Reset strategisch, wenn du die Richtung ändern musst"
-          }
-        },
-        {
-          "name": "Routenwechsel-Kandidat",
-          "goalMode": "Hybrid",
-          "route": "Oni",
-          "yenBudget": 5000,
-          "spinsAvailable": 20,
-          "output": {
-            "now": "Bestätige dein Routenziel und deine Reset-Strategie",
-            "next": "Wende einen selektiven Reset an, anstatt einen vollständigen Neuaufbau",
-            "after": "Teste im Boss-/Fortschrittsschleife vor dem nächsten Reset"
-          }
-        }
-      ]
+    "guardEscapeTips": {
+      "title": "Be a Lucky Block Wachen-Fluchttipps",
+      "summary": "Wachendruck belohnt saubere Routen, schnelle Entscheidungen und diszipliniertes Rückkehr-Timing."
     },
-    "thunderBreathing": {
-      "title": "Be a Lucky Block",
-      "titleHighlight": "Donneratmung",
-      "subtitle": "Vollständige Anleitung zum Freischalten des Donneratmungsstils",
-      "steps": [
-        {
-          "step": 1,
-          "title": "Finde den Donner-Trainer",
-          "detail": "Reise zum Berg in der Nähe des Schnee-Dorfes"
-        },
-        {
-          "step": 2,
-          "title": "Nimm die Quest an",
-          "detail": "Sprich mit dem Trainer und nimm die Süßigkeiten-Quest an"
-        },
-        {
-          "step": 3,
-          "title": "Sammle Materialien",
-          "detail": "Sammle 6 Weizen und 3 Eier aus den Anbaugebieten"
-        },
-        {
-          "step": 4,
-          "title": "Schließe das Training ab",
-          "detail": "Kehre zum Trainer zurück und schließe die Donneratmungsfreischaltung ab"
-        }
-      ],
-      "requirements": {
-        "title": "Anforderungen",
-        "items": [
-          "6 Weizen",
-          "3 Eier",
-          "Schließe die Süßigkeiten-Quest ab"
-        ]
-      },
-      "difficulty": "Mittel",
-      "location": "Berg in der Nähe des Schnee-Dorfes"
+    "weeklyUpdates": {
+      "title": "Be a Lucky Block Wöchentliche Updates",
+      "summary": "Verfolge den Samstags-Rhythmus, Kurzinfos und Patch-Karten in einem Homepage-Modul."
     },
-    "fastLeveling": {
-      "title": "Be a Lucky Block",
-      "titleHighlight": "Schnelles Leveln",
-      "subtitle": "Effiziente Methoden, um in Be a Lucky Block schnell aufzusteigen",
-      "methods": [
-        {
-          "title": "Questtypen",
-          "icon": "Karte",
-          "description": "Konzentriere dich auf die richtigen Quests für maximale XP",
-          "tips": [
-            "Grüne Quests = Lieferung (schneller Abschluss)",
-            "Gelbe Quests = Kampf (hohe XP-Belohnungen)",
-            "Blaue Quests = Sammeln (mäßige XP)"
-          ]
-        },
-        {
-          "title": "Nahrungssystem",
-          "icon": "Besteck",
-          "description": "Verwende Nahrung, um HP zu erhalten und effizient zu farmen",
-          "tips": [
-            "Bewahre Nahrung im Inventar zur HP-Regeneration auf",
-            "Reduziert die Ausfallzeit zwischen Kampfsituationen",
-            "Unerlässlich für kontinuierliches Quest-Grinding"
-          ]
-        },
-        {
-          "title": "Fortschrittsroute",
-          "icon": "Route",
-          "description": "Befolge optimale Leveling-Pfade",
-          "tips": [
-            "Schließe zuerst Quests im Startergebiet ab",
-            "Wechsle schrittweise in höherlevelige Zonen",
-            "Verwende Codes für Bonus-XP und Spins"
-          ]
-        }
-      ]
+    "events": {
+      "title": "Be a Lucky Block Events",
+      "summary": "Nutze die Roblox-Event-Seiten, um Live-Drops, Follow-Seiten und aktuelle Event-Zeitfenster zu finden."
     },
-    "finalSelection": {
-      "title": "Be a Lucky Block",
-      "titleHighlight": "Finale Auswahl",
-      "subtitle": "Schließe die Finale Auswahl ab, um ein offizieller Slayer zu werden",
-      "overview": "Die Finale Auswahl ist ein entscheidender Meilenstein, bei dem du deinen Wert als Dämonenjäger beweist. Schließe diese Parkour-Herausforderung ab, um deine Slayer-Uniform und deinen offiziellen Status zu verdienen.",
-      "details": {
-        "location": "Parkour-Herausforderung im Waldgebiet",
-        "timing": "Alle 1 Stunde (Echtzeit)",
-        "maxPlayers": "Bis zu 12 Spieler pro Sitzung",
-        "difficulty": "Mittel bis Schwer"
-      },
-      "rewards": {
-        "title": "Belohnungen",
-        "items": [
-          "Offizielle Slayer-Uniform",
-          "Slayer Corps Mitgliedschaft",
-          "Zugang zum Slayer Corps Herrenhaus",
-          "Schalte das Kürbis-Trainingssystem frei"
-        ]
-      },
-      "tips": {
-        "title": "Tipps",
-        "items": [
-          "Übe Parkour, bevor du es versuchst",
-          "Warte, bis das stündliche Event startet",
-          "Tu dich mit anderen Spielern zusammen, um Unterstützung zu erhalten",
-          "Gib nicht auf - du kannst es nach jeder Stunde erneut versuchen"
-        ]
-      }
+    "community": {
+      "title": "Be a Lucky Block Discord & Community",
+      "summary": "Springe mit einem Klick von der Homepage zu den offiziellen Roblox-, Discord- und X-Links."
     },
-    "clanSystem": {
-      "title": "Be a Lucky Block",
-      "titleHighlight": "Clan-System",
-      "subtitle": "Clan-Ränge, Boni und wie du deinen Clan neu würfelst",
-      "overview": "Clans bieten einzigartige Boni und Fähigkeiten, die deinen Charakter verbessern. Jeder Clan hat unterschiedliche Seltenheiten und besondere Vorteile.",
-      "tiers": [
-        {
-          "tier": "Gewöhnlich",
-          "color": "grau",
-          "dropRate": "Hoch",
-          "description": "Grundlegende Clans mit Standard-Boni"
-        },
-        {
-          "tier": "Selten",
-          "color": "blau",
-          "dropRate": "Mittel",
-          "description": "Verbesserte Boni und Fähigkeiten"
-        },
-        {
-          "tier": "Episch",
-          "color": "lila",
-          "dropRate": "Niedrig",
-          "description": "Mächtige Clan-Fähigkeiten"
-        },
-        {
-          "tier": "Legendär",
-          "color": "Gold",
-          "dropRate": "Sehr niedrig",
-          "description": "Top-Tier-Clans mit außergewöhnlichen Boni"
-        }
-      ],
-      "notableClans": {
-        "title": "Bemerkenswerte Clans",
-        "clans": [
-          {
-            "name": "Tsugikuni",
-            "tier": "Legendär",
-            "benefit": "Außergewöhnliche Kampf-Boni"
-          },
-          {
-            "name": "Kamado",
-            "tier": "Legendär",
-            "benefit": "Verbesserte Atemtechniken"
-          },
-          {
-            "name": "Agatsuma",
-            "tier": "Episch",
-            "benefit": "Donneratmungs-Boni"
-          }
-        ]
-      },
-      "howToSpin": {
-        "title": "Wie man Spinnt/Neu würfelt",
-        "steps": [
-          "Verwende Spins, die du aus Codes oder Gameplay erhalten hast",
-          "Greife im Spiel auf das Clan-Menü zu",
-          "Gib Spins aus, um für bessere Clans neu zu würfeln",
-          "Clans höherer Stufen haben niedrigere Drop-Raten"
-        ]
-      }
+    "faq": {
+      "title": "Be a Lucky Block FAQ",
+      "summary": "Schließe ab mit Kurzinfos und schnellen Antworten auf die häufigsten Fragen der ersten Spielsitzung."
     }
   }
 }

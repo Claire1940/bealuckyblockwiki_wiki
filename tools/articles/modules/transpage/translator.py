@@ -7,6 +7,7 @@ import json
 import aiohttp
 import asyncio
 import os
+import re
 from pathlib import Path
 from typing import Optional
 
@@ -215,7 +216,7 @@ class MessagesTranslator:
 
         # Get language name and game name
         lang_name = self.lang_names.get(target_lang, target_lang)
-        game_name = self.game_names.get(target_lang, 'Slayerbound')
+        game_name = self.game_names.get(target_lang, 'Be a Lucky Block')
 
         # Build prompt from template
         prompt = self.values_translation_prompt_template.format(
@@ -281,8 +282,16 @@ class MessagesTranslator:
                                 lines = lines[:-1]
                             translated_content = '\n'.join(lines)
 
-                        # Split by newlines to get list of translated values
-                        translated_lines = translated_content.split('\n')
+                        # Split by newlines and normalize
+                        # Some models insert blank lines or numbering; clean those first
+                        raw_lines = translated_content.split('\n')
+                        translated_lines = []
+                        for line in raw_lines:
+                            normalized = line.strip()
+                            if not normalized:
+                                continue
+                            normalized = re.sub(r'^\d+\s*[\)\].:-]\s*', '', normalized)
+                            translated_lines.append(normalized)
 
                         # Validate line count matches
                         if len(translated_lines) != len(values):
