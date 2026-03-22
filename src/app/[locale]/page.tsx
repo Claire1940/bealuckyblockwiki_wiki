@@ -33,7 +33,7 @@ import {
   Zap,
 } from "lucide-react";
 import { useMessages } from "next-intl";
-import { AdBanner, NativeBannerAd } from "@/components/ads";
+import { AdBanner, NativeBannerAd, SidebarAd } from "@/components/ads";
 import { VideoFeature } from "@/components/home/VideoFeature";
 import {
   HERO_IMAGE_URL,
@@ -583,11 +583,6 @@ export default function HomePage() {
     },
   ];
 
-  const baseGuideCta = {
-    label: "Build a Better Base Loop",
-    href: "/base-guide",
-  };
-
   const offlineEarningsExplainer = [
     {
       icon: Coins,
@@ -622,11 +617,6 @@ export default function HomePage() {
     { icon: Coins, text: "Offline income keeps working after you leave." },
     { icon: CalendarDays, text: "Saturday updates can change the best farming rhythm." },
   ];
-
-  const offlineCashCta = {
-    label: "Boost Your Offline Earnings",
-    href: "/offline-cash",
-  };
 
   const upgradeLadder = [
     {
@@ -687,11 +677,6 @@ export default function HomePage() {
     },
   ];
 
-  const upgradesGuideCta = {
-    label: "Choose the Next Upgrade",
-    href: "/upgrades-guide",
-  };
-
   const escapeChecklist = [
     "Use the closest destination until the route feels automatic.",
     "Wait for the guards to roll the Lucky Block before you commit.",
@@ -739,11 +724,6 @@ export default function HomePage() {
       description: "The drop is only valuable if you actually get it back to base.",
     },
   ];
-
-  const guardEscapeCta = {
-    label: "Master the Escape Route",
-    href: "/guard-escape-tips",
-  };
 
   const weeklyBadge = {
     label: "Update Cadence",
@@ -795,11 +775,6 @@ export default function HomePage() {
     },
   ];
 
-  const weeklyUpdatesCta = {
-    label: "Track This Week's Update",
-    href: OFFICIAL_LINKS.updateEvent,
-  };
-
   const eventCountdownChip = {
     label: "Live Window",
     value: "Mar 21-23, 2026",
@@ -841,11 +816,6 @@ export default function HomePage() {
     },
   ];
 
-  const eventsCta = {
-    label: "Follow Official Event Pages",
-    href: OFFICIAL_LINKS.updateEvent,
-  };
-
   const creatorCard = {
     label: "Creator",
     value: "xFrozen x Dudes",
@@ -880,11 +850,6 @@ export default function HomePage() {
     "Roblox event pages are used for update reminders and limited-time drops.",
     "X is useful for broader studio teasers around Saturday content pushes.",
   ];
-
-  const communityCta = {
-    label: "Join the Community",
-    href: OFFICIAL_LINKS.discord,
-  };
 
   const faqQuickAnswerChips = [
     "Saturday updates",
@@ -969,6 +934,27 @@ export default function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
+
+      <div className="sticky top-20 z-20 border-b border-border py-2 bg-background/95 backdrop-blur-sm">
+        <AdBanner
+          type="banner-320x50"
+          adKey={process.env.NEXT_PUBLIC_AD_MOBILE_320X50}
+        />
+      </div>
+
+      <div className="hidden lg:block fixed left-4 top-24 z-10">
+        <SidebarAd
+          type="sidebar-160x600"
+          adKey={process.env.NEXT_PUBLIC_AD_SIDEBAR_160X600}
+        />
+      </div>
+
+      <div className="hidden lg:block fixed right-4 top-24 z-10">
+        <SidebarAd
+          type="sidebar-160x300"
+          adKey={process.env.NEXT_PUBLIC_AD_SIDEBAR_160X300}
+        />
+      </div>
 
       <section className="relative overflow-hidden px-4 pb-20 pt-12">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,hsl(var(--nav-theme-light)/0.18),transparent_30%),radial-gradient(circle_at_20%_30%,hsl(var(--nav-theme)/0.15),transparent_22%),linear-gradient(180deg,hsl(var(--background)),transparent)]" />
@@ -1056,12 +1042,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      <div className="py-8">
-        <AdBanner
-          type="banner-320x50"
-          adKey={process.env.NEXT_PUBLIC_AD_MOBILE_320X50}
-        />
-      </div>
+      <AdBanner
+        type="banner-728x90"
+        adKey={process.env.NEXT_PUBLIC_AD_BANNER_728X90}
+      />
 
       <section className="px-4 py-20">
         <div className="container mx-auto">
@@ -1087,6 +1071,11 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <AdBanner
+        type="banner-300x250"
+        adKey={process.env.NEXT_PUBLIC_AD_BANNER_300X250}
+      />
 
       <section id="codes" className="scroll-mt-28 px-4 py-20">
         <div className="container mx-auto max-w-6xl">
@@ -1180,12 +1169,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      <div className="py-8">
-        <AdBanner
-          type="banner-468x60"
-          adKey={process.env.NEXT_PUBLIC_AD_BANNER_468X60}
-        />
-      </div>
+      <AdBanner
+        type="banner-468x60"
+        adKey={process.env.NEXT_PUBLIC_AD_BANNER_468X60}
+      />
 
       <section id="wiki" className="scroll-mt-28 px-4 py-20 bg-white/[0.02]">
         <div className="container mx-auto max-w-6xl">
@@ -1234,6 +1221,11 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <AdBanner
+        type="banner-320x50"
+        adKey={process.env.NEXT_PUBLIC_AD_MOBILE_320X50}
+      />
 
       <section id="beginner-guide" className="scroll-mt-28 px-4 py-20">
         <div className="container mx-auto max-w-6xl">
@@ -1357,6 +1349,12 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <AdBanner
+        type="banner-300x250"
+        adKey={process.env.NEXT_PUBLIC_AD_BANNER_300X250}
+        className="my-8"
+      />
 
       <section id="locations" className="scroll-mt-28 px-4 py-20">
         <div className="container mx-auto max-w-6xl">
@@ -1543,6 +1541,12 @@ export default function HomePage() {
         </div>
       </section>
 
+      <AdBanner
+        type="banner-728x90"
+        adKey={process.env.NEXT_PUBLIC_AD_BANNER_728X90}
+        className="my-8"
+      />
+
       <section
         id="trading-guide"
         className="scroll-mt-28 px-4 py-20 bg-white/[0.02]"
@@ -1644,15 +1648,6 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="mt-8 flex justify-center">
-            <a
-              href={baseGuideCta.href}
-              className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--nav-theme))] px-6 py-3 font-semibold text-slate-950 transition hover:brightness-95"
-            >
-              <House className="h-4 w-4" />
-              {baseGuideCta.label}
-            </a>
-          </div>
         </div>
       </section>
 
@@ -1714,17 +1709,14 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="mt-8 flex justify-center">
-            <a
-              href={offlineCashCta.href}
-              className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--nav-theme))] px-6 py-3 font-semibold text-slate-950 transition hover:brightness-95"
-            >
-              <PiggyBank className="h-4 w-4" />
-              {offlineCashCta.label}
-            </a>
-          </div>
         </div>
       </section>
+
+      <AdBanner
+        type="banner-468x60"
+        adKey={process.env.NEXT_PUBLIC_AD_BANNER_468X60}
+        className="my-8"
+      />
 
       <section id="upgrades-guide" className="scroll-mt-28 px-4 py-20">
         <div className="container mx-auto max-w-6xl">
@@ -1780,15 +1772,6 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="mt-8 flex justify-center">
-            <a
-              href={upgradesGuideCta.href}
-              className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--nav-theme))] px-6 py-3 font-semibold text-slate-950 transition hover:brightness-95"
-            >
-              <Rocket className="h-4 w-4" />
-              {upgradesGuideCta.label}
-            </a>
-          </div>
         </div>
       </section>
 
@@ -1851,15 +1834,6 @@ export default function HomePage() {
             ))}
           </div>
 
-          <div className="mt-8 flex justify-center">
-            <a
-              href={guardEscapeCta.href}
-              className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--nav-theme))] px-6 py-3 font-semibold text-slate-950 transition hover:brightness-95"
-            >
-              <Shield className="h-4 w-4" />
-              {guardEscapeCta.label}
-            </a>
-          </div>
         </div>
       </section>
 
@@ -1911,19 +1885,14 @@ export default function HomePage() {
             ))}
           </div>
 
-          <div className="flex justify-center">
-            <a
-              href={weeklyUpdatesCta.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--nav-theme))] px-6 py-3 font-semibold text-slate-950 transition hover:brightness-95"
-            >
-              <CalendarDays className="h-4 w-4" />
-              {weeklyUpdatesCta.label}
-            </a>
-          </div>
         </div>
       </section>
+
+      <AdBanner
+        type="banner-300x250"
+        adKey={process.env.NEXT_PUBLIC_AD_BANNER_300X250}
+        className="my-8"
+      />
 
       <section id="events" className="scroll-mt-28 px-4 py-20 bg-white/[0.02]">
         <div className="container mx-auto max-w-6xl">
@@ -1972,17 +1941,6 @@ export default function HomePage() {
             ))}
           </div>
 
-          <div className="flex justify-center">
-            <a
-              href={eventsCta.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--nav-theme))] px-6 py-3 font-semibold text-slate-950 transition hover:brightness-95"
-            >
-              <PartyPopper className="h-4 w-4" />
-              {eventsCta.label}
-            </a>
-          </div>
         </div>
       </section>
 
@@ -2038,17 +1996,6 @@ export default function HomePage() {
             ))}
           </div>
 
-          <div className="flex justify-center">
-            <a
-              href={communityCta.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--nav-theme))] px-6 py-3 font-semibold text-slate-950 transition hover:brightness-95"
-            >
-              <MessageCircle className="h-4 w-4" />
-              {communityCta.label}
-            </a>
-          </div>
         </div>
       </section>
 
