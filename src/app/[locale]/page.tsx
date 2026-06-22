@@ -1,5 +1,6 @@
 "use client";
 
+import { setRequestLocale } from 'next-intl/server'
 import { Suspense, lazy, useState } from "react";
 import {
   ArrowRight,

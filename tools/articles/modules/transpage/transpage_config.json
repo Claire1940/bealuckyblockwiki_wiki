@@ -5,16 +5,21 @@
   "group": "default",
   "temperature": 0.7,
   "max_tokens": 8192,
-  "timeout": 1800,
+  "timeout": 300,
   "retry_attempts": 3,
   "retry_delay": 5,
-
-  "languages": ["pt", "es", "ja", "ko", "fr", "de", "th"],
+  "languages": [
+    "pt",
+    "es",
+    "ja",
+    "ko",
+    "fr",
+    "de",
+    "th"
+  ],
   "default_language": "en",
   "output_dir": "src/locales/",
-
   "use_value_extraction": false,
-
   "game_names": {
     "en": "Be a Lucky Block",
     "pt": "Be a Lucky Block",
@@ -25,7 +30,6 @@
     "de": "Be a Lucky Block",
     "th": "Be a Lucky Block"
   },
-
   "lang_names": {
     "pt": "Portuguese (Brazil)",
     "es": "Spanish (LATAM)",
